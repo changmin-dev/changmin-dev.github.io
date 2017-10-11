@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 9월 13일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="분명 처음에 파일명을 11로 만들었는데 어느새 13일이 되버렸다. 하나 하나 정리하기는 힘들다.
+
+" />
+    <meta property="og:description" content="분명 처음에 파일명을 11로 만들었는데 어느새 13일이 되버렸다. 하나 하나 정리하기는 힘들다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 9월 13일 TIL" />
+    <meta property="twitter:title" content="2017년 9월 13일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/twibeat.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 9월 13일 TIL</h1>
+
+  <div class="entry">
+    <p>분명 처음에 파일명을 11로 만들었는데 어느새 13일이 되버렸다. 하나 하나 정리하기는 힘들다.</p>
+
+<h1 id="프로그래밍-언어">프로그래밍 언어</h1>
+<h2 id="c언어-매크로에서---사용">C언어 매크로에서 #, ## 사용</h2>
+<p>처음 보는 연산자가 있어서 찾아봤는데 매크로에서 사용하는 것이었다.
+#n은 숫자 n을 스트링으로 만들어준다.<br />
+x##y는 두 수 x, y를 연속적으로 연결해준다.</p>
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#define sharp(n) #n
+#define doubleSharp(x,y) x##y
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
+	<span class="kt">char</span><span class="o">*</span> <span class="n">string</span> <span class="o">=</span> <span class="n">sharp</span><span class="p">(</span><span class="n">number</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%s = %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">number</span><span class="p">);</span>
+	
+	<span class="kt">int</span> <span class="n">integer</span> <span class="o">=</span> <span class="n">doubleSharp</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">integer</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="자바에서-객체-배열-초기화">자바에서 객체 배열 초기화</h2>
+<p>자주 잊게되는 것들 중하나 객체 배열을 생성할때는 배열 요소마다 생성자를 호출 해주어야한다. 그리고 향상된 포문으로 하면 안된다. 이것 때문에 해맸다. 자주 쓰는 <code class="highlighter-rouge">char[]</code>과 <code class="highlighter-rouge">int[]</code>은 그냥 사용했기 때문에 혼동되므로 주의해야한다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">SomeObject</span><span class="o">[]</span> <span class="n">someObjects</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeObject</span><span class="o">[</span><span class="n">size</span><span class="o">];</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">someObjects</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+    <span class="n">someObjects</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeObject</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<h1 id="알고리즘">알고리즘</h1>
+<h2 id="해시-구현하기">해시 구현하기</h2>
+<p><code class="highlighter-rouge">다양한 예제로 학습하는 데이터 구조와 알고리즘</code>을 참고 했는데 오타가 너무 많다. 만들기는 했는데 뭔가 쓸대 없이 복잡한거 같다.</p>
+
+<p>키와 데이터를 저장할 노드</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KeyValueNode</span><span class="o">{</span>
+    <span class="n">Object</span> <span class="n">data</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">key</span><span class="o">;</span>
+    <span class="n">KeyValueNode</span> <span class="n">next</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setData</span><span class="o">(</span><span class="n">Object</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">KeyValueNode</span> <span class="nf">getNext</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">next</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNext</span><span class="o">(</span><span class="n">KeyValueNode</span> <span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getKey</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">key</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setKey</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>내부에 노드를 가지는 클래스 <code class="highlighter-rouge">blockCount</code>를 이용해서 노드에 몇개나 있는지 카운트한다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashTableNode</span> <span class="o">{</span>
+    <span class="n">KeyValueNode</span> <span class="n">startNode</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">blockCount</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HashTableNode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">startNode</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">KeyValueNode</span> <span class="nf">getStartNode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">startNode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStartNode</span><span class="o">(</span><span class="n">KeyValueNode</span> <span class="n">startNode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">startNode</span> <span class="o">=</span> <span class="n">startNode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getBlockCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">blockCount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBlockCount</span><span class="o">(</span><span class="kt">int</span> <span class="n">blockCount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">blockCount</span> <span class="o">=</span> <span class="n">blockCount</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>이제 해시 테이블 해시테이블 노드의 배열로 구성된다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashTable</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">tableSize</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+    <span class="n">HashTableNode</span><span class="o">[]</span> <span class="n">table</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HashTable</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">tableSize</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">table</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashTableNode</span><span class="o">[</span><span class="n">tableSize</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tableSize</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+            <span class="n">table</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashTableNode</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getTableSize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">tableSize</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTableSize</span><span class="o">(</span><span class="kt">int</span> <span class="n">tableSize</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">tableSize</span> <span class="o">=</span> <span class="n">tableSize</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">table</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashTableNode</span><span class="o">[</span><span class="n">tableSize</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tableSize</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+            <span class="n">table</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashTableNode</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCount</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">count</span> <span class="o">=</span> <span class="n">count</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">HashTableNode</span><span class="o">[]</span> <span class="nf">getTable</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">table</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTable</span><span class="o">(</span><span class="n">HashTableNode</span><span class="o">[]</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>해시 클래스다. 해시테이블에 적용되는 연산이 있다. 나중에 해시 테이블이랑 합쳐야겠다. 코드만 복잡해지는거 같다.
+로드 팩터는 상수로 되어 있는데 이것은 기준이되어서 기준을 넘으면 Rehash 한다. 체이닝으로 구현되어있다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hash</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">LOADFACTOR</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+    <span class="n">HashTable</span> <span class="n">hashTable</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Hash</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">createHashTable</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">Hash</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">){</span>
+        <span class="n">createHashTable</span><span class="o">(</span><span class="n">size</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createHashTable</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashTable</span><span class="o">();</span>
+        <span class="n">hashTable</span><span class="o">.</span><span class="na">setTableSize</span><span class="o">(</span><span class="n">size</span><span class="o">/</span><span class="n">LOADFACTOR</span><span class="o">);</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="n">HashTableNode</span> <span class="n">htNode</span> <span class="o">:</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()){</span>
+            <span class="n">htNode</span><span class="o">.</span><span class="na">setStartNode</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createHashTable</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">createHashTable</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hash</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">data</span> <span class="o">%</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTableSize</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">search</span><span class="o">(</span><span class="n">Object</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">hash</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span><span class="n">data</span><span class="o">);</span>
+        <span class="n">KeyValueNode</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">].</span><span class="na">getStartNode</span><span class="o">();</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">temp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">getData</span><span class="o">()</span> <span class="o">==</span> <span class="n">data</span><span class="o">)</span>
+                <span class="k">return</span> <span class="n">data</span><span class="o">;</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="o">(</span><span class="n">KeyValueNode</span><span class="o">)</span><span class="n">temp</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">insert</span><span class="o">(</span><span class="n">Object</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">index</span><span class="o">;</span>
+        <span class="n">KeyValueNode</span> <span class="n">temp</span><span class="o">,</span> <span class="n">newNode</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">search</span><span class="o">(</span><span class="n">data</span><span class="o">)</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+
+        <span class="n">index</span> <span class="o">=</span> <span class="n">hash</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span><span class="n">data</span><span class="o">);</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="o">(</span><span class="n">KeyValueNode</span><span class="o">)</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">]</span>
+                                <span class="o">.</span><span class="na">getStartNode</span><span class="o">();</span>
+
+
+        <span class="n">newNode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KeyValueNode</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">newNode</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Memory Error"</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+        <span class="n">newNode</span><span class="o">.</span><span class="na">setKey</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">temp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">newNode</span><span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">]</span>
+                    <span class="o">.</span><span class="na">getStartNode</span><span class="o">().</span><span class="na">getNext</span><span class="o">()</span>
+            <span class="o">);</span>
+
+            <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">]</span>
+                    <span class="o">.</span><span class="na">getStartNode</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="n">newNode</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">newNode</span><span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+            <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">]</span>
+                    <span class="o">.</span><span class="na">setStartNode</span><span class="o">(</span><span class="n">newNode</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">]</span>
+                <span class="o">.</span><span class="na">setBlockCount</span><span class="o">(</span><span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">]</span>
+                                        <span class="o">.</span><span class="na">getBlockCount</span><span class="o">()</span>
+                                <span class="o">);</span>
+        <span class="n">hashTable</span><span class="o">.</span><span class="na">setCount</span><span class="o">(</span><span class="n">hashTable</span><span class="o">.</span><span class="na">getCount</span><span class="o">()</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">hashTable</span><span class="o">.</span><span class="na">getCount</span><span class="o">()</span> <span class="o">/</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTableSize</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">LOADFACTOR</span><span class="o">)</span>
+            <span class="n">rehash</span><span class="o">();</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">delete</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">KeyValueNode</span> <span class="n">temp</span><span class="o">,</span><span class="n">prev</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">hash</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+        <span class="n">HashTableNode</span> <span class="n">selectedTable</span> <span class="o">=</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="n">temp</span> <span class="o">=</span> <span class="n">selectedTable</span><span class="o">.</span><span class="na">getStartNode</span><span class="o">(),</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="n">temp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="n">prev</span> <span class="o">=</span> <span class="n">temp</span><span class="o">,</span> <span class="n">temp</span><span class="o">.</span><span class="na">getNext</span><span class="o">()</span>
+            <span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">getData</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">data</span><span class="o">)){</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">prev</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                    <span class="n">prev</span><span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">getNext</span><span class="o">());</span>
+                <span class="n">selectedTable</span><span class="o">.</span><span class="na">setStartNode</span><span class="o">(</span><span class="n">prev</span><span class="o">);</span>
+                <span class="n">selectedTable</span><span class="o">.</span><span class="na">setBlockCount</span><span class="o">(</span>
+                        <span class="n">selectedTable</span><span class="o">.</span><span class="na">getBlockCount</span><span class="o">()-</span><span class="mi">1</span><span class="o">);</span>
+                <span class="n">hashTable</span><span class="o">.</span><span class="na">setCount</span><span class="o">(</span><span class="n">hashTable</span><span class="o">.</span><span class="na">getCount</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rehash</span><span class="o">(){</span>
+        <span class="kt">int</span> <span class="n">oldsize</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">index</span><span class="o">;</span>
+        <span class="n">KeyValueNode</span> <span class="n">p</span><span class="o">,</span> <span class="n">temp1</span><span class="o">,</span> <span class="n">temp2</span><span class="o">;</span>
+        <span class="n">HashTableNode</span><span class="o">[]</span> <span class="n">oldTable</span><span class="o">;</span>
+        <span class="n">oldsize</span> <span class="o">=</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTableSize</span><span class="o">();</span>
+        <span class="n">oldTable</span> <span class="o">=</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">();</span>
+        <span class="n">hashTable</span><span class="o">.</span><span class="na">setTableSize</span><span class="o">(</span><span class="n">hashTable</span><span class="o">.</span><span class="na">getTableSize</span><span class="o">()</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="n">hashTable</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashTable</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Memory Error"</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">oldsize</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">temp1</span> <span class="o">=</span> <span class="n">oldTable</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getStartNode</span><span class="o">();</span>
+                <span class="n">temp1</span><span class="o">!=</span><span class="kc">null</span><span class="o">;</span>
+                <span class="n">temp1</span> <span class="o">=</span> <span class="o">(</span><span class="n">KeyValueNode</span><span class="o">)</span><span class="n">temp1</span><span class="o">.</span><span class="na">getNext</span><span class="o">())</span>
+            <span class="o">{</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">hash</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span><span class="n">temp1</span><span class="o">.</span><span class="na">getData</span><span class="o">());</span>
+                <span class="n">temp2</span> <span class="o">=</span> <span class="n">temp1</span><span class="o">;</span>
+                <span class="n">temp1</span> <span class="o">=</span> <span class="o">(</span><span class="n">KeyValueNode</span><span class="o">)</span><span class="n">temp1</span><span class="o">.</span><span class="na">getNext</span><span class="o">();</span>
+                <span class="n">temp2</span><span class="o">.</span><span class="na">setNext</span><span class="o">(</span><span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">i</span><span class="o">].</span><span class="na">getStartNode</span><span class="o">());</span>
+                <span class="n">hashTable</span><span class="o">.</span><span class="na">getTable</span><span class="o">()[</span><span class="n">index</span><span class="o">].</span><span class="na">setStartNode</span><span class="o">(</span><span class="n">temp2</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="date">
+    Written on September 13, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/twibeat"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/twibeat22"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

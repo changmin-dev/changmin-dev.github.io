@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 10월 5일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="알고리즘
+계단오르기문제를 했다. 처음에 점화식을 잘못 해서 많은 시간을 소모했다. 이제는 문제당 최대 1시간 제한을 두어야 겠다.
+
+" />
+    <meta property="og:description" content="알고리즘
+계단오르기문제를 했다. 처음에 점화식을 잘못 해서 많은 시간을 소모했다. 이제는 문제당 최대 1시간 제한을 두어야 겠다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 10월 5일 TIL" />
+    <meta property="twitter:title" content="2017년 10월 5일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/twibeat.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 10월 5일 TIL</h1>
+
+  <div class="entry">
+    <h1 id="알고리즘">알고리즘</h1>
+<p><a href="https://www.acmicpc.net/problem/2579">계단오르기</a>문제를 했다. 처음에 점화식을 잘못 해서 많은 시간을 소모했다. 이제는 문제당 최대 1시간 제한을 두어야 겠다.</p>
+
+<h2 id="풀이">풀이</h2>
+<p>규칙을 생각해보면</p>
+<ol>
+  <li>한번 혹은 2번 오를 수 있고</li>
+  <li>마지막 계단은 밟아야한다.</li>
+  <li>연속 3개의 계단을 밟을수 없다.</li>
+</ol>
+
+<p>마지막 계단과 이전계단, 마지막 계단과 n-2계단 
+마지막계단과 이전계단을 오르는 경우 반드시 n-3번째 계단에서 나와야한다. 한번(n-2는 3번연속으로 되어서 불가능) 혹은 2번(n-3에서 n-1로) 오를수 있기 때문이다.
+그러므로 점화식은 다음과 같다. <br />
+<code class="highlighter-rouge">DP[n] = max(in[n] + DP[n-2] + in[n] + in[n-1] + DP[n-3])</code></p>
+<h2 id="구현">구현</h2>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BJ2579</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">DP</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">output</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+            <span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="n">DP</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">input</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="n">DP</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">input</span><span class="o">[</span><span class="mi">1</span><span class="o">],</span> <span class="n">input</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="n">DP</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">input</span><span class="o">[</span><span class="mi">2</span><span class="o">],</span> <span class="n">input</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">input</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+           <span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="o">],</span> <span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">3</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre>
+</div>
+<h1 id="네트워크">네트워크</h1>
+<p>KOCW에서 <a href="http://www.kocw.net/home/search/kemView.do?kemId=1169634&amp;ar=relateCourse">괜찮은 강의</a>를 찾았다. 설명을 너무 잘해주신다.</p>
+
+<h2 id="tcp-vs-udp">TCP vs UDP</h2>
+<p>UDP : 빠르다. 그냥 보내니까 하지만 보장이 안됨(not reliable) 아무 의미 없는 속도가 될 수 있다. 리얼타임이 필요하고 유실된게 티가 안나는 경우(voip), 우체통에 넣는것에 비유
+TCP - 대부분에사용 내생각에는 동영상도 이거해야 되지 않나 책에서는 UDP를 쓰라는데 내 아이돌이 깨지면 마음 아프겠다. 등기 우편 - 안정적이지만 비쌈, 비용(리소스)가 든다.</p>
+
+<h3 id="tcp">TCP</h3>
+<p>연결지향방식 - ㅅTCP
+flow-control
+-샌더와 리시버가 맞도록
+congestion control</p>
+
+<h3 id="udp">UDP</h3>
+<p>연결 x
+컨트롤 x
+아무것도 안해준다.</p>
+
+<h2 id="프로토콜">프로토콜</h2>
+<p>메시지를 주고 받기위한 준비 동작</p>
+
+<h2 id="스위칭">스위칭</h2>
+<ul>
+  <li>서킷스위칭 : 과거 유선전화에서 사용, 출발지에서 목적지에서 길을 예약</li>
+  <li>패킷 스위칭 : 인터넷에서 사용</li>
+</ul>
+
+<p>서킷 스위칭에서는 1개의 라우터에서 1Mbps의 대역폭을 가지고 각 사용자에서 100kbps를 필요로 한다면 10명까지 이용 가능하다. 보통은 인터넷에 연결하는 것은 짧은 순간(웹페이지를 가져오는 경우 등)이므로 회선이 사용되지 않는 시간이 많다. <br />
+패킷스위칭은 같은 환경에서 사용할 수 있는 만큼 회선을 사용이 가능하다. 정확히 동일한 시간에 10명이 요청을 보내는게 아니라면 제한없이 사용이 가능하다. 하지만 요청이 많은경우(티케팅, 수강신청)에서 문제
+인터넷사용은 한번 가져온 다음에 사용안하는 기간이 많다. 그래서 서킷 스위칭은 낭비되서 인터넷에서는 패킹스위칭 사용한다.</p>
+
+<h2 id="딜레이">딜레이</h2>
+<ol>
+  <li>프로세싱 딜레이 : 패킷의 목적지를 확인할때 걸리는 시간. 라우터를 좋은거로 바꾸는 방법으로 개선한다.</li>
+  <li><code class="highlighter-rouge">큐잉 딜레이</code> : 유저가 많이 들어와서 감당가능한 bandwith보다 크게되면 문제가 생긴다. 그래서 큐가 존재 하게 됨, 큐에서 기다리는 시간이 큐잉 딜레이다. <code class="highlighter-rouge">가장 힘든 문제</code> 사용자수는 바꿀수 없기 때문이다.</li>
+  <li>트랜스미션 딜레이 - 패킷의 첫번째비트부터 마지막 비트까지 나가는 시간 - (패킷 크기/링크bandwith)더 좋은 bandwith 사용함으로써 개선</li>
+  <li>프로파게이션 딜레이 - 물리적 링크의 크기 / 프로파게이션 속도로 계산된다. 전파 속도에 영향을 받는다. 자연적이라서 사람이 어떻게 할수가 없다.</li>
+</ol>
+
+<h3 id="패킷-스위칭의-문제---큐">패킷 스위칭의 문제 - 큐</h3>
+<p>큐 크기보다 더 큰게 들어오면???
+유실된다. 대부분의 유실은 큐 크기를 넘어 가서 유실됨
+해결을 위해 큐를 여러개를 둔다!!!
+사람이 적으면 대기없이 사용
+사람이 많으면 대기가 커짐
+TCP에서 패킷이 도착하지 않는다면 재전송이 필요함 재전송은 <code class="highlighter-rouge">1. 시작점 부터(인터넷)</code>할 수 있고  2. 손실된곳부터 재전송을 할 수 있다.
+종단에서 제어하고 중간의 라우터들은 전달만 한다. 다른걸하면 느려지기 때문이다.</p>
+
+  </div>
+
+  <div class="date">
+    Written on October  5, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/twibeat"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/twibeat22"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

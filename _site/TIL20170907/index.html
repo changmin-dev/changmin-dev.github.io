@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 9월 7일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="하루에 여러가지를 하는것은 힘들다 하지만 해야하니 잘 분배해야 겠다.
+
+" />
+    <meta property="og:description" content="하루에 여러가지를 하는것은 힘들다 하지만 해야하니 잘 분배해야 겠다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 9월 7일 TIL" />
+    <meta property="twitter:title" content="2017년 9월 7일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/twibeat.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 9월 7일 TIL</h1>
+
+  <div class="entry">
+    <p>하루에 여러가지를 하는것은 힘들다 하지만 해야하니 잘 분배해야 겠다.</p>
+
+<h1 id="웹">웹</h1>
+<p>지금은 로그인 페이지를 만들고 있다. 이후에 관리 페이지를 만들어야 한다.
+로그인 페이지는 JSON으로 Request를 보내야한다. 일단 JSON으로 만드는 법이 필요할꺼 같아서 <a href="https://codepen.io/gabrieleromanato/pen/LpLVeQ?editors=1000">참조</a>해서 공부 하였다.</p>
+
+<h2 id="찾아-본-내용들">찾아 본 내용들</h2>
+
+<h3 id="eventtarget">EventTarget</h3>
+<p>Element, document, window 등의 이벤트 리스너를 붙일 수 있는 요소들을 말한다.
+<a href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget">MDN</a></p>
+
+<h3 id="eventtargetaddeventlister">EventTarget.addEventLister</h3>
+<p>EventTarget에서 발생하는 이벤트에 리스너를 추가한다.  <a href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener">MDN</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>document.addEventListener("이벤트", 이벤트함수(){}){
+
+}
+</code></pre>
+</div>
+
+<h3 id="pre-태그"><code class="highlighter-rouge">pre</code> 태그</h3>
+<p>서식이 지정된 텍스트를 나타낸다. 파일에 쓰인 서식대로 나온다.</p>
+
+<h3 id="eventpreventdefault">event.preventDefault</h3>
+<p>이벤트를 취소 할 수 있는 경우 이벤트의 전파를 막지않고 그 이벤트를 취소한다.</p>
+
+<p><a href="https://developer.mozilla.org/ko/docs/Web/API/Event/preventDefault">MDN</a><br />
+<a href="http://programmingsummaries.tistory.com/313">자바 스크립트의 이벤트 전파 중단에 대한 설명</a></p>
+
+<h3 id="domcontentloaded">DOMContentLoaded</h3>
+<p>문서가 로드되었을 때를 의미하는 이벤트 <br />
+<a href="https://developer.mozilla.org/ko/docs/Web/Events/DOMContentLoaded">MDN</a></p>
+
+<h3 id="queryselectorall">querySelectorAll</h3>
+<p>요소들을 리스트 의 형태로 리턴 받는다.<br />
+아래는 폼에서 input과 textarea 요소들을 받아낸다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>var form = getElementById("form_id");
+form.querySelectorAll("input textarea");
+</code></pre>
+</div>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/API/Document/querySelectorAll">MDN</a></p>
+
+<h3 id="jsonstringify">JSON.stringify</h3>
+<p>입력된 값을 JSON string 으로 바꾼다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>var object;
+object["name"] = yourname;
+JSON.stringify(object);//{"name": yourname}
+</code></pre>
+</div>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify">MDN</a></p>
+
+<h3 id="크로스-도메인-문제">크로스 도메인 문제</h3>
+<p>로컬에서 연습용으로 만든 html에서 로그인 테스트하다가 혼란스러웠다.
+CORS문제였다. 일반적으로 브라우저에서는 크로스 브라우징을 막는다고 한다. 
+[MDN] (https://developer.mozilla.org/ko/docs/Web/HTTP/Access_control_CORS)<br />
+<a href="https://spring.io/guides/gs/rest-service-cors/">Spring.io</a><br />
+<a href="https://www.html5rocks.com/en/tutorials/cors/">Java script CORS</a></p>
+
+<h2 id="의문점">의문점</h2>
+<p>js파일을 보다보면 이런 형태가 있다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>(function(){
+    //js파일의 내용들
+})();
+</code></pre>
+</div>
+<p><code class="highlighter-rouge">windows.onload = function(){}</code>와 비슷한 의도로 사용한다고 한다.</p>
+
+
+  </div>
+
+  <div class="date">
+    Written on September  7, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/twibeat"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/twibeat22"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

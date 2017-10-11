@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 10월 7일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="네트워크
+약자의 원래 이름과 왜 이런지 생각하기
+
+" />
+    <meta property="og:description" content="네트워크
+약자의 원래 이름과 왜 이런지 생각하기
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 10월 7일 TIL" />
+    <meta property="twitter:title" content="2017년 10월 7일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/twibeat.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 10월 7일 TIL</h1>
+
+  <div class="entry">
+    <h1 id="네트워크">네트워크</h1>
+<p>약자의 원래 이름과 왜 이런지 생각하기</p>
+
+<h2 id="패킷">패킷</h2>
+<p>패킷 - 비트들의 묶음으로 중간에 라우터를 거쳐서 이동
+패킷을 검사한다. - 목적지가 어디인가?</p>
+
+<p>다음 라우터로 갈때까지
+12초후 - 첫번째 넘어감
+프로파게이션은 - 빛의 속도
+앞부분은 이미 도착
+패킷의 앞부분이 도착하면 - 모든 부분이 올떄까지 기다림
+송아지 ㅅ이 온다고 가는게 아니라 송아지가 와야 감</p>
+
+<h2 id="인터넷-프로토콜-스택">인터넷 프로토콜 스택</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>이   름</th>
+      <th>주요 프로토콜</th>
+      <th style="text-align: center"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Application</td>
+      <td>HTTP</td>
+      <td style="text-align: center">Process의 위치</td>
+    </tr>
+    <tr>
+      <td>Transport</td>
+      <td>TCP, UDP</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Network</td>
+      <td>IP</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Data Link</td>
+      <td>Ethernet, WIFI</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Physical</td>
+      <td>Twisted Pair</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>라우터의 계층은 네트워크 까지만 존재한다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>이   름</th>
+      <th>주요 프로토콜</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Network</td>
+      <td>IP</td>
+    </tr>
+    <tr>
+      <td>Data Link</td>
+      <td>Ethernet, WIFI</td>
+    </tr>
+    <tr>
+      <td>Physical</td>
+      <td>Twisted Pair</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="ip-주소">IP 주소</h2>
+<p>IP 인터넷 상의 각 컴퓨는 각각의 주소를 가지고 있다. 이를 IP주소라고 한다.</p>
+<ul>
+  <li>서버 : 고정된 ip주소 필요하다. 사람들이 찾아간다.윛기가 바뀐다면 찾기 힘듬</li>
+  <li>클라이언트 : 고정되지 않아도 된다.</li>
+</ul>
+
+<h2 id="ipc를-위한-인터페이스---소켓">ipc를 위한 인터페이스 - 소켓</h2>
+<p>소켓을 인덱싱(주소 역할)하는 것은 IP 주소와 포트번호(프로세스를 구별 하기 위함)
+브라우저에서 입력하는 방법 www.naver.com
+실제로는 www.naver.com:80 포트는 생략하면 80으로</p>
+
+<h3 id="어플리케이션끼리-같은-포트를-사용하는-이유">어플리케이션끼리 같은 포트를 사용하는 이유?</h3>
+<p>서버 24시간 켜야하고, 주소가 일정해야 한다.
+DNS는 주소만 해석함,  포트가 다르면 귀찮아짐</p>
+
+<p>트랜스포트 계층에서 하면 좋겠는거
+데이타 무결성 - 이것만 가능!!!
+타이밍
+쓰루풋
+보안</p>
+
+<h2 id="http">HTTP</h2>
+<p>하이퍼텍스트? - 택스트 인데 중간에 링크들이 있음
+HTTP는 대부분 TCP를 사용해서 TCP 커넥션이 필요
+HTTP- state less, 상태를 기억하지 않음</p>
+
+<h3 id="persistent-http-연결을-재사용">Persistent HTTP (연결을 재사용)</h3>
+<p>클라이언트에서 정보를 다 밭았다고 판단 했을때 TCP를 끊음 실제는 보통 persistent를 사용한다.</p>
+<h3 id="non-persistent-http연결을-끊음">non persistent HTTP(연결을 끊음)</h3>
+<p>TCP연결을 설정, 상대편이 설정하면 연결완료되면 HTTP통신을 한다.이후 TCP 끊음
+1개 페이지가 여러개 로 구성되어 있다면 계속 TCP부터 연결</p>
+
+<p>실제로는 한번에 리소스 여러개 요청을 보낸다.(파이프라인 방식)</p>
+
+<h2 id="소켓-프로그레밍">소켓 프로그레밍</h2>
+<p>어플리케이션 프로그램 OS가 아니다. OS에서 제공하는 서비스를 사용 OS가 제공하는 인터페이스를 사용하는것이다.
+TCP/UDP에 맞게 해당하는 소켓을 사용해서 데이터를 주고 받는다.</p>
+
+<p>socket(domain, type, protocol);
+ bind() - 서버를 특정포트에 바인딩 / 클라이언트는 바인드 할필요가 없음 아무 포트사용해도 됨
+ accept() -  listen()</p>
+
+<p>브라우저를 클라이언트로 하고 서버를 구현하는거를 수업시간에 시키는구나 요청한 파일을 전송해주는거를 진행한다.
+index.html을 요청한다면 여기에 있는 리소도 같이 한다.ㅏ</p>
+
+<h2 id="멀티-플랙싱과-디멀티-플랙싱">멀티 플랙싱과 디멀티 플랙싱</h2>
+<p>TCP에서는 세그먼트를 주고 받는다. 데이터에 TCP헤더가 추가된것이다.
+디멀티 플랙싱 - 세그먼트에 맞게 데이터를 전달 - 리시버 쪽에서
+멀티플랙싱 - 다양한 데이터를 세그먼트로 만들어줌 - 샌더쪽에서 
+헤더의 여러필드가 있는데 그중에서 중요한 것은 소스와 데스트네이션의 포트번호이다.
+클라이 언트에서 소스 - 자기자신, 데스트네이션-서버</p>
+
+<p>TCP는 소켓을 구별 - 소스, 데스네이션 아이피와 포트번호 4가지 하나라도 틀리면 다른 소켓이다.
+TCP 연결지향 - 특정 연결에 대한 소켓을 만든다. 자원소모가 크다.</p>
+
+<p>UDP 아무나 전달, 그냥 소켓으로 전달만함</p>
+
+<p>브로드 캐스트 - 각각 TCP연결을한다.</p>
+
+<p>UDP - 신뢰성 보장x, 트랜스포트에서 제공하는 것은 제공함</p>
+
+<p><code class="highlighter-rouge">헤더필드</code>에 있는 것들을 알아라
+UDP 헤더 필드 
+소스포트16/목적지포트16비트/길이-멀티플랙싱, 디멀티 플랙싱에 사용 /체크섬 4가지가 있다.
+ㅊ큿ㅁ으로 에러 파악, 전송하지 않고 죽이는 식
+TCP에 비해 간단하다.</p>
+
+<p>#DNS</p>
+
+
+  </div>
+
+  <div class="date">
+    Written on October  7, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/twibeat"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/twibeat22"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Operating System 3 – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Process 개념
+OS에서 가장 중요한 엔티티가 프로세스이다. 프로세스를 중심으로 CPU의 할당과 동작이 이루어진다.
+컴퓨터 시스템에 여러가지 일(인터럽트, 자원 점유 등)이 일어나는 원인과 결과를 귀속시킬 대상이ㅏ.
+
+" />
+    <meta property="og:description" content="Process 개념
+OS에서 가장 중요한 엔티티가 프로세스이다. 프로세스를 중심으로 CPU의 할당과 동작이 이루어진다.
+컴퓨터 시스템에 여러가지 일(인터럽트, 자원 점유 등)이 일어나는 원인과 결과를 귀속시킬 대상이ㅏ.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="Operating System 3" />
+    <meta property="twitter:title" content="Operating System 3" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/twibeat.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Operating System 3</h1>
+
+  <div class="entry">
+    <h1 id="process-개념">Process 개념</h1>
+<p>OS에서 가장 중요한 엔티티가 프로세스이다. 프로세스를 중심으로 CPU의 할당과 동작이 이루어진다.
+컴퓨터 시스템에 여러가지 일(인터럽트, 자원 점유 등)이 일어나는 원인과 결과를 귀속시킬 대상이ㅏ.</p>
+
+<h2 id="프로세스의-특징">프로세스의 특징</h2>
+<ol>
+  <li>프로그램을 수행시키는 기본 주체, 런타임 시스템의 <code class="highlighter-rouge">수행 주체</code>, CPU같은 <code class="highlighter-rouge">자원을 할당하는 대상</code></li>
+  <li>컴퓨터 시스템에 많은 일들이 일어나는 데 이를 정리하는 Decomposition의 한 유닛</li>
+</ol>
+
+<h3 id="복잡한-시스템의-중요한-2가지">복잡한 시스템의 중요한 2가지</h3>
+<p>Abstraction : 추상화
+Decompostion : 복잡한 문제를 단순한 여러 문제로 나눈다. 소프트웨어의 <code class="highlighter-rouge">복잡성을 해소</code> 한다. 구현도 작은거를 조합해서 만든다. 
+복잡하면 -&gt; 쪼갠다. -&gt; 각 조각이 관리될 수있을때까지 쪼갠다. -&gt; 수행의 단위가 되었을때 process라고 할수 있다.</p>
+
+<h2 id="프로세스의-정의">프로세스의 정의</h2>
+<p><code class="highlighter-rouge">수행중인 프로그램</code>(Program in excution)<br />
+특정 프로세스 위에서 실행되는 스트림</p>
+
+<h2 id="프로그램-vs-프로세스">프로그램 vs 프로세스</h2>
+<ul>
+  <li>프로그램 : 저장매체에 저장된 수동적인 코드 시퀀스, 수동적</li>
+  <li>프로세스 : 실행하면 프로세스, 능동적(excution stream(Thread))</li>
+</ul>
+
+<p>OS는 실행가능한 파일을 메모리에 로드 한다. 그리고 CPU를 할당한다. 프로세스는 실행중 IO디바이스 같은 자원을 사용한다.</p>
+
+<h2 id="process-state">Process State</h2>
+<p>프로그램이 실행될떄 기억해야하는 콜렉션 정보</p>
+<ol>
+  <li>Memory Context
+    <ul>
+      <li>Code, Data(프로그램의 전역 변수), Stack(지역 변수, 함수를 위한 공간들) (3가지는 컴파일러, 로더와 관련), Heap</li>
+    </ul>
+  </li>
+  <li>HW Context : CPU, IO
+    <ul>
+      <li>Register values</li>
+    </ul>
+  </li>
+  <li>System Context : Per-Proc Kernel Infomation(커널이 관리하는 프로세스 정보)
+    <ul>
+      <li>Process Table, Open file Table, Page Table</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="excution-stream">Excution stream</h2>
+<p>프로세스가 첫번째 부터 명령어 부터 지금까지 수행한 모든 명령어들의 순서</p>
+
+<h2 id="용어-정리">용어 정리</h2>
+<ul>
+  <li>멀티프로그래밍 : 여러개의 Active Process가 Load(메모리 관점)</li>
+  <li>유니프로그래밍 : 메인 메모리에 한개만 로드</li>
+  <li>멀티 프로세싱 : Cpu가 여러개를 다중화(Cpu관점)</li>
+  <li>Swapping : 메모리 부족 문제를 해결하기 위해 CPU를 사용하지 않는 프로세스의 데이터를 메모리에서 다른 저장 장치로 내보내고 CPU를 사용할 프로세스의 데이터를 메모리로 로드</li>
+</ul>
+
+<h2 id="design-time-entity로써의-프로세스">Design-time Entity로써의 프로세스</h2>
+<p>SW System 개발 과정</p>
+<ol>
+  <li>설계(상대적으로 어려움) :
+ 요구사항 명세서 -&gt; 설계 -&gt; task(독립적 구성요소)의 set</li>
+  <li>구현(상대적으로 쉬움) : 
+ task set -&gt; 구현 -&gt; program(코드) set
+Task들이 Process와 Mapping되므로 바로 runtime이 될수 있다.</li>
+</ol>
+
+<p>프로그램 = <code class="highlighter-rouge">데이터 구조</code> + 알고리즘<br />
+데이터 구조가 어떻게 되는가? 알고리즘이 어떻게 되는가에 대해 고민
+자료구조로써의 프로세스(메모리,hw,system) 구현
+pcb,proc table..</p>
+
+<h3 id="pcb에-저장되는-내용들">PCB에 저장되는 내용들</h3>
+<ul>
+  <li>프로세스 상태</li>
+  <li>프로그램 카운터</li>
+  <li>CPU 레지스터</li>
+  <li>CPU 스케줄링 정보</li>
+  <li>주기억장치 관리 정보 - base, bound</li>
+  <li>회계 정보(통계정보)</li>
+  <li>입출력 상태정보</li>
+</ul>
+
+<h2 id="프로세스-구조화">프로세스 구조화</h2>
+<p>프로세스의 정보를 저장-Process control block
+구현? -&gt; Array(구현과 관리가 쉬움, 개수가 제한 됨),Linked List(개수가 제한 x) - Process Table
+메모리 context
+하드웨어 context
+시스템 context</p>
+
+<h2 id="프로세스-상태">프로세스 상태</h2>
+<ul>
+  <li>new</li>
+  <li>ready</li>
+  <li>runing</li>
+  <li>wating</li>
+</ul>
+
+<h2 id="프로세스-생명주기">프로세스 생명주기</h2>
+<p>프로세스가 생성되서 종료될떄까지의 상태 전이
+프로세스생성(new) -&gt; ready(active이지만 cpu 못받음{ready queue}) -&gt; running(수행중 0~1) -&gt; waiting(이벤트 발생으로 cpu넘겨줌, 여러개의 프로세스가 가능, 이유가 여러개 waiting이유마다 큐가 각각존재{devicequeue}) -&gt; ready</p>
+<ul>
+  <li>ready queue - pcb의 링크드 리스트
+프로세스가 생성되면 pcb를 할당하고 프로세스를 일련의 조건에 따라서 상태를 전이시킴
+구현 - ready queue, waiting queue
+runing -&gt; ready - cpu 선점 당했을떄
+watting-&gt;ready-&gt; 원하는 이벤트가 발생하면</li>
+</ul>
+
+  </div>
+
+  <div class="date">
+    Written on October  4, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/twibeat"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/twibeat22"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

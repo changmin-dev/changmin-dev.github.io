@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 10월 4일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="OS
+운영체제 3
+
+" />
+    <meta property="og:description" content="OS
+운영체제 3
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 10월 4일 TIL" />
+    <meta property="twitter:title" content="2017년 10월 4일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/twibeat.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 10월 4일 TIL</h1>
+
+  <div class="entry">
+    <h1 id="os">OS</h1>
+<p><a href="../OS3">운영체제 3</a></p>
+
+<h1 id="네트워크">네트워크</h1>
+<p><a href="https://www.google.co.kr/search?q=%EC%84%B1%EA%B3%B5%EA%B3%BC+%EC%8B%A4%ED%8C%A8%EB%A5%BC+%EA%B2%B0%EC%A0%95%ED%95%98%EB%8A%94+1%25+%EC%9D%98+%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC+%EC%9B%90%EB%A6%AC">성공과 실패를 결정하는 1% 네트워크 원리</a>책이 설명이 잘되어 있는거 같아서 좋은거 같다. 하지만 단종된 책이다. 일단 도서관에서 빌렸는데 중고라도 알아 봐야 겠다.</p>
+
+<h2 id="http에서-사용되는-url">HTTP에서 사용되는 URL</h2>
+<p><a href="../HTTP공부하기4">HTTP공부하기 4</a></p>
+
+<h2 id="ip주소와-도메인">IP주소와 도메인</h2>
+<p>브라우저는 HTTP 메세지를 만들 수 있지만, 요청은 불가능하다. 브라우저도 User프로그램 이기 때문이다. 그래서 OS에 의뢰해서 송신한다. 하지만 OS에 의뢰하기 전에 도메인명대신 IP주소로 상대를 지정해야한다.</p>
+
+<h3 id="ip-주소">IP 주소</h3>
+<p>엑세스 대상의 서버까지 메시지를 전송할 때 IP주소는 32비트(IPv4)의 주소로 네트워크 번호와 호스트 번호로 이루어져 있다. 네트워크 번호와 호스트 번호는 사용자가 정한다. 이것을 나타내는 정보를 넷마스크 라고한다. 넷마스크는 다음과 같이 표한한다. 비트 수를 나타낼수도 있고 IP주소와 같이 나타낼 수 있다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>123.456.789.2/255.255.255.0
+123.456.789.2/24
+</code></pre>
+</div>
+
+<h3 id="리졸버">리졸버</h3>
+<p>DNS에 도메인을 조회 하고 해당되는 IP를 불러 오는 프로그램 이 동작을 Name resolution이라고 부른다.</p>
+
+<h1 id="java">JAVA</h1>
+<h2 id="string의-최대-크기-배열의-최대크기">String의 최대 크기, 배열의 최대크기</h2>
+<p>둘 다 최대 크기는 Integer.MAX_VALUE이다. 알고리즘 문제 푸는 경우 조심해야한다. 물론 charAt()도 문서를 보면 charAt(int)이다.</p>
+
+<h1 id="알고리즘">알고리즘</h1>
+<p>레퍼런스를 안보고 최초로 DP문제를 맞췄다. 많이 뿌듯하다. 따로 배열을 만들지 않아도 풀리는 쉬운 문제 지만</p>
+<h2 id="숫자-삼각형">숫자 삼각형</h2>
+<p>삼각형에서 아래쪽과 오른쪽으로 더해 나가는데 여기서 최대 값을 구하는것이다.
+<a href="https://www.acmicpc.net/problem/1932">백준 저지</a>문제이다.
+0번 col을 먼저 누적해서 더해준다. 삼각형을 입력으로 들어오는 모양으로 생각하면 
+점화식은 DP[row][col] = DP[row][col] + max(DP[row-1][col-1], DP[row-1][col])이 된다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BJ1932</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="o">;</span> <span class="o">++</span><span class="n">j</span><span class="o">){</span>
+                <span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+            <span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">input</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="o">++</span><span class="n">row</span><span class="o">){</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="o">++</span><span class="n">col</span><span class="o">){</span>
+                <span class="n">input</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="n">input</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">col</span><span class="o">-</span><span class="mi">1</span><span class="o">],</span> <span class="n">input</span><span class="o">[</span><span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">col</span><span class="o">]);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="kt">int</span> <span class="n">output</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]).</span><span class="na">max</span><span class="o">().</span><span class="na">getAsInt</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">output</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="date">
+    Written on October  4, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/twibeat"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/twibeat22"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

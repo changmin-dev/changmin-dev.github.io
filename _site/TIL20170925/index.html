@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 9월 25일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="HTTP
+HTTP공부하기2
+
+" />
+    <meta property="og:description" content="HTTP
+HTTP공부하기2
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 9월 25일 TIL" />
+    <meta property="twitter:title" content="2017년 9월 25일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/twibeat.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 9월 25일 TIL</h1>
+
+  <div class="entry">
+    <h1 id="http">HTTP</h1>
+<p><a href="../HTTP공부하기2">HTTP공부하기2</a></p>
+
+<h1 id="알고리즘">알고리즘</h1>
+<p>미쳐 하지 못하더라도 쉬운문제라도 풀고 자려고 해야겠다.
+<a href="https://codefights.com">codefights의 문제이다.</a> 풀고나면 효과가 나와서 풀고 싶어진다. 그리고 다른 분들의 풀이를 볼 수있다.</p>
+
+<h2 id="짝수-입력을-절반으로-나누어서-같은지-여부를-출력하기">짝수 입력을 절반으로 나누어서 같은지 여부를 출력하기</h2>
+<p>그냥 무식하게 풀었다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">isLucky</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">input</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+    
+    <span class="k">if</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">halfLength</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+
+    <span class="kt">int</span> <span class="n">firstSum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">number</span> <span class="o">:</span> <span class="n">input</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">halfLength</span><span class="o">).</span><span class="na">toCharArray</span><span class="o">()){</span>
+        <span class="n">firstSum</span> <span class="o">+=</span> <span class="n">number</span> <span class="o">-</span> <span class="sc">'0'</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="n">secondSum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">number</span> <span class="o">:</span> <span class="n">input</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">halfLength</span><span class="o">).</span><span class="na">toCharArray</span><span class="o">()){</span>
+        <span class="n">secondSum</span> <span class="o">+=</span> <span class="n">number</span> <span class="o">-</span> <span class="sc">'0'</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="k">if</span><span class="o">(</span><span class="n">firstSum</span> <span class="o">==</span> <span class="n">secondSum</span><span class="o">)</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+
+</code></pre>
+</div>
+<p>짝수의 인덱스를 2로 나누면 같다는 점을 이용한 풀이가 좀 있다. String.valueOf() 말고 Integer.toString()을 사용 하셔서 가져왔다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">boolean</span> <span class="nf">isLucky</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+    
+    <span class="n">String</span> <span class="n">number</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">number</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">/</span> <span class="mi">2</span><span class="o">;</span>
+    
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mid</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">number</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="n">sum</span> <span class="o">-=</span> <span class="n">number</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">mid</span><span class="o">);</span>
+     <span class="o">}</span>
+
+    <span class="k">return</span> <span class="n">sum</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="date">
+    Written on September 25, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/twibeat"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/twibeat22"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

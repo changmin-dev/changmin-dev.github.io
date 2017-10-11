@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mac 시에라에서 OpenCV 사용하기 (Xcode) – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="이번에 mac을 구매해서 OpenCV를 설치해 보았다. 3.x 보다는 2.4가 안정적이고 예전에 사용했던 소스도 사용할 수 있을 것 같아서 2.4로 설치하였다.
+기본적인 소스는 잘되지만, 과거에 했던것들도 잘될지는 모르겠다.
+
+" />
+    <meta property="og:description" content="이번에 mac을 구매해서 OpenCV를 설치해 보았다. 3.x 보다는 2.4가 안정적이고 예전에 사용했던 소스도 사용할 수 있을 것 같아서 2.4로 설치하였다.
+기본적인 소스는 잘되지만, 과거에 했던것들도 잘될지는 모르겠다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="mac 시에라에서 OpenCV 사용하기 (Xcode)" />
+    <meta property="twitter:title" content="mac 시에라에서 OpenCV 사용하기 (Xcode)" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/twibeat.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>mac 시에라에서 OpenCV 사용하기 (Xcode)</h1>
+
+  <div class="entry">
+    <p>이번에 mac을 구매해서 OpenCV를 설치해 보았다. 3.x 보다는 2.4가 안정적이고 예전에 사용했던 소스도 사용할 수 있을 것 같아서 2.4로 설치하였다.
+기본적인 소스는 잘되지만, 과거에 했던것들도 잘될지는 모르겠다.</p>
+
+<h2 id="다운로드-및-설치">다운로드 및 설치</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/opencv/opencv.git
+git checkout 2.4
+cd opencv
+mkdir build
+cd build
+cmake ..
+sudo make install
+</code></pre>
+</div>
+
+<h2 id="xcode-설정하기">Xcode 설정하기</h2>
+<p>프로젝트를 생성후 그룹을 만든다
+. ./framework/opencv</p>
+
+<p>add files를 통해서 빌드한 /usr/local/lib/의 libopencv_*.dylib파일들을 추가한다.</p>
+
+<p><img src="/images/OpenCVmac1.png" alt="dylib설정" /></p>
+
+<p>Build Settings에서 다음과 같이 설정</p>
+
+<ul>
+  <li>Header Search Paths:
+    <div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/include/ 
+/usr/local/include/opencv/
+</code></pre>
+    </div>
+  </li>
+  <li>Library Search Paths:
+    <div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/lib/
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<p><img src="/images/OpenCVmac2.png" alt="path설정" /></p>
+
+<h2 id="간단한-파일-열기-예제">간단한 파일 열기 예제</h2>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;opencv2/core.hpp&gt;
+#include &lt;opencv2/highgui.hpp&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">image</span> <span class="o">=</span> <span class="n">cv</span><span class="o">::</span><span class="n">imread</span><span class="p">(</span><span class="s">"당신의 이미지 경로"</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">image</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+        <span class="n">cv</span><span class="o">::</span><span class="n">imshow</span><span class="p">(</span><span class="s">"image"</span><span class="p">,</span> <span class="n">image</span><span class="p">);</span>
+        <span class="n">cv</span><span class="o">::</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span><span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="s">"empty image"</span> <span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+<p>core
+2.4버전은 추가적인 설정없이도 문제 없이 실행된다.</p>
+
+<h2 id="참고한-자료">참고한 자료 </h2>
+<p>https://mansoo-sw.blogspot.kr/2016/10/macos-xcode-opencv.html</p>
+
+  </div>
+
+  <div class="date">
+    Written on April 17, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/twibeat"><i class="svg-icon github"></i></a>
+
+
+
+
+<a href="https://www.twitter.com/twibeat22"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
