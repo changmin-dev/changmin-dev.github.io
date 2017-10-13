@@ -1,6 +1,6 @@
 ---
 layout: post
-title: docker 사용하기
+title: docker에서 nginx 사용하기
 ---
 docker pull nginx
 docker run -t -i --name 컨테이너이름 -p 80:80 -d 이미지이름 /bin/bash
@@ -9,7 +9,7 @@ docker run -t -i --name 컨테이너이름 -p 80:80 -d 이미지이름 /bin/bash
 -i : 상호작용
 둘다 써야함 뒤에 /bin/bash로 쉘을 정함
 --name : 컨테이너의 이름을 정해준다.
--P : 포트를 엽니다. docker ps로 포트를 확인 가능(안될수도있음)
+-P : 포트를 연다. docker ps로 포트를 확인 가능(안될수도있음)
 -p 80:80 컨테이너의 포트와 바인딩
 -d : 백그라운드에서 실행하며, 컨테이너 id를 출력
 nginx : 실행할 이미지 이름
