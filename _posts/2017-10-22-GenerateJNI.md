@@ -12,7 +12,7 @@ title: JNI와 javah
 `native` 키워드가 사용된다. 이 메소드가 구현된 라이브러리를 불러오기 위해서 `System.loadLibrary()`함수를 사용한다.
 
 ## java 구현 코드
-아래와 같은 자바 코드에 대해서 
+아래와 같은 자바 코드에 대해서 헤더 파일을 생성해야한다.
 ```java
 public class NativeMethodTest{
     public native void printInt(int val);
