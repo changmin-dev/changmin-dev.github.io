@@ -2,6 +2,15 @@
 
 플라스크 run()함수를 호출시 호스트를 0.0.0.0으로 해야 외부에서 접근이 가능하다. 사실 이것때문에 사용하던 Azure Web App에서 접근이 안되는거 일 수도 있겠는데 확인해봐야겠다. 지금 하는 프로젝트가 포트폴리오용으로 바뀐다면 그쪽으로 보내주는게 좋겠다.
 
+특 정 계정 그룹 확인 하기
+groups [계정명]
+그룹 추가
+gpasswd -a [그룹명] [계정명]
+그룹 삭제
+gpasswd -d [그룹명] [계정명]
+http://withcoding.com/102
+pem.key로 관리 하기
+http://lifeignite.tistory.com/17
 ## 토큰을 이용한 인증하기 
 API를 호출을 위해서는 토큰을 이용하는 인증 방식을 사용하기로 했다.
 [생활 코딩](https://opentutorials.org/course/2473/16571)그리고 [이곳](https://velopert.com/2350)을 통해서 어떻게 하는지 감을 잡았다.
@@ -25,3 +34,10 @@ Flask-SQLAchemy라는 친구가 있는데 사실 이런거 까지 쓰기는 싫�
 pymysql에서 AttributeError: 'builtin_function_or_method' object has no attribute 'translate'
 라는 에러가 떴는데  시간을 가지는 칼럼이 있는데 datetime.utcnow라고 값을 입력해서 문제가 발생했다. ()괄호를 뒤에 붙이지 않아서 문제가 된거 같다. 모델 선언시에는 괄호를 쓰지 않아서 똑같이 해줬더니 문제가 발생했다.
 처음에는 
+업데이트 문제 app.config["SQLALCHEMY_COMMIT_ON_TEARDOWN"] = True 임시로 해결함
+ 삭제 안되는 문제 select, delete하는 세션이 달라서 였음 세션을 복사해서 성공
+
+ ## Custom JSONEnocoder
+ json
+
+##  
