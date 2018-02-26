@@ -40,4 +40,28 @@ pymysql에서 AttributeError: 'builtin_function_or_method' object has no attribu
  ## Custom JSONEnocoder
  json
 
-##  
+## nginx
+플라크스는 WAS의 기능을 수행한다.(DB에서 정보를 받아서 가공해서 제공, 템플릿 엔진 등으로 동적인 html페이지 제공) 플라스크는 WSGI를 만족하므로 웹서비스를 제공할수 있따. 그렇다면 웹서버를 사용해야하는 이유가 무엇인가? WAS가 동적인 정보를 제공한다면, 웹서버는 정적인 정보를 제공한다.(HTML, css 등) [자바 진영의 톰캣은 5.5부터 Httpd의 native 모듈을 사용해서 스태틱 파일을 처리하는 기능을 제공한다.(무려 2010년도 글이다.)](http://toby.epril.com/?p=1125)
+
+## 고려한 친구들
+fabric 원격 배포 도구 - 쉘이 있는데 굳이 써야하나
+
+## 배포
+쉘 스크립트가 있는데 코딱지만한 프로젝트에서 fabric 같은 도구가 있지만 솔직히 쓸 필요가 있나 싶다.
+그리 익숙하지는 않지만 설치 없이 사용하기 좋다.
+명령어만 하는 방식은 느린건지 잘 모르겠다.
+이거는 실행이 안되는거 같은데 echo만 나오는 듯
+```
+ssh -i 인증키
+bash deploy.sh
+ssh -i 인증키 'bash deploy.sh' 이상하게 ssh연결이 끝나지 않지만 정상 작동되는 걸로 추정(로그로 확인)
+```
+
+접속하고 run 실행이 꿀이긴하지
+
+비공개 레포라면 로그 정보를 저장 해야함
+git config credential.helper store
+
+## 로깅
+http://www.jinniahn.com/2016/10/python-logger.html
+
