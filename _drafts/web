@@ -1,0 +1,19 @@
+
+rich text : 워드등에서 쓰는 색, 폰트등이 있는 텍스트
+plain tex:t : 아스키 코드를 의미
+
+tree
+컴퓨터 공학에서 데이터의 계층 관계를 나타내는 방법
+html에서도 트리로 요소들을 나타낼수 있다.
+'''html 
+<div>
+<h1>pizza</h1>
+<p>pizza</p>
+<div>
+'''
+h1은 div의 자식 속성이 된다. div는 h1의 
+strong, b
+em, i
+
+html유효성체크 
+https://validator.w3.org/#validate_by_input
