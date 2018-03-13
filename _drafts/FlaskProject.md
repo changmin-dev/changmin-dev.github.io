@@ -65,3 +65,11 @@ git config credential.helper store
 ## 로깅
 http://www.jinniahn.com/2016/10/python-logger.html
 
+
+
+## 관계가 있는 테이블을 삭제할때
+1 : 다 관계에서 1의 테이블이 참조되는 상황이코 1을 삭제려는 경우에 문제가 발생했다. 
+cascade를 이용한다. 
+다음과 같이 삭제 할 모듈에 정의한다.
+변수 = db.relationship("삭제할 모델을 참조하는  클래스 이름", cascade="all, delete-orphan")
+http://docs.sqlalchemy.org/en/latest/orm/cascades.html

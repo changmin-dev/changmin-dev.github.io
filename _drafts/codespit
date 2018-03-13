@@ -111,3 +111,136 @@ case 에 조건 넣기
 -> java의 경우는 불가 - 상수만 가능
 
 case에 식으로 할때는 복잡해 질수 있다.
+
+레이블은 흐름 제어의 기본이다.
+조건문과 반복문 이용해서 명시적으로 사용함
+
+if문 
+if else문만 존재
+else if는
+else{
+    if
+}
+로생각
+
+언어에서 파서가 허용한다면
+else switch{
+
+}
+
+else for{
+
+}
+같은것도 가능
+
+if else는 후방 결합
+else if는 되도록 사용하지 하지 말자 else뒤에 괄호를 쓰자(연산자 우선 순위를 괄호를 사용하는거 처럼)
+습관으로 복잡성을 줄이자. 
+else <statements> <statements>
+병렬일때는 조심하라!!!!! 컴파일 
+
+if{
+
+}else if{
+
+}
+는 병행이 쓰면 안됨 스위처럼 쓸꺼면
+
+if는 선택이지만 if else는 절대 실행해야함(mandatory)
+if(c == 1){
+
+}else{
+    if(c == 2){
+
+    }else ;//
+}
+수정에 대응이 잘된다. - 코드가 잘되어 있다면 그렇다.
+정확한 의도에 맞춰서 코드를 짜야한다. 변화가 일어날 때 바꿀수 있음
+
+switch문은 default가 무조건 반드시 예외가 있을수 있기때문이다.
+else -> switch -> default가 있으니 mandatory가 가능
+
+var a = 3;선언문은 식은 아니라 식이라면 대입됨
+for(선언문 or ex; ex - truety; ex-for문의 마지막에 실행){
+
+}
+'', false, 0, undefind, null, NaN //falsy -> 예전에 조건문이 이것들이면 빨랐지만 지금은 같다.
+
+for(;;;)는 무한루프. 가운데 식이 없으면 언어로 ture로 정의함 일반적으로 empty는 falsy다.
+
+while(truethy){}은 식이 있어야한다.
+
+한번은 실행하야하는경우 자바에서 레퍼런스
+do{
+
+}while(truethy);//세미콜론 붙여야함
+
+while문과 do while문은 평가식에 있는 코드가 바디에 없다면 많은 경우 무한루프
+while(act.method().c){
+    other.action();
+}
+이라면 문제가 되므로 
+a = act.method().c
+while(a){
+    other.action();
+    a = act.method().c;//이러면 로그로 찍어볼 생각이 날것이다.
+    //a값을 바꿔보는 테스트가 가능하다.
+}
+무조건 밖으로 빼야함
+
+while문은 2줄이상 써야한다.
+
+do <statements> while(<condition>)
+
+for( of );
+for( in );
+
+인터페이스 : 사양에 맞는 값과 연결된 속성키의 셋
+덕다이핑에서 나옴 - 런타임에 타입체크가 되지 않아서 사용
+어떤 인터페이스를 만족(구현)한다면 그 인터페이스를 사용한다.
+이런 인터페이스이스는 외울수 밖에 없음
+const Test = class{
+    test(str){
+        return true;
+    }
+};
+
+const test = new Test();
+
+
+
+
+iterator interface
+1. next라는 키를 갖고
+2.
+3.
+4.
+
+const iterator = {
+    next(){
+        return{
+            done: true,//반복 가능 여부
+            value : 1// 가져올수 있는 값
+        };
+    }
+};
+국산 자바스크립트 책은 안되에!!!!!! 역서를 보셈요 아니면 원서, 스펙문서를 같이보셈셈
+완벽가이드 -> ES5는 완벽함
+
+iterable interface
+1. Sysmbol.iterator라는 키를 잦고
+2. 값으로 인자를 받지 않고 
+
+Sysmbol 프리미티브
+const s = Sysmbol()
+
+const iterable{
+    //well knowned Sysmbol -> @@문자열로 대체가 가능하다.//
+    //key가오고 괄호가 오면 :function이  생략됨
+    [Sysmbol.iterator](){
+
+    }
+    //['@@iterator'] 근데 걍쓰지마라
+}
+
+왠만해서는 iterable, interface는 구현되어 있음
