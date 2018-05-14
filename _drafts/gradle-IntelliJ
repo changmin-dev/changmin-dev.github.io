@@ -1,0 +1,4 @@
+IntelliJ로 Gradle로 프로젝트(스프링 프로젝트가 아닌 프로젝트)를 만들때 주의 해야 할점이 있다.
+Create separate module per source set을 사용하면 모듈을 추가할때 마다. 별도의 그레이들 패키지가 생긴다. 때문에 해제 하는게 좋다.
+Create directories for empty content roots automatically는 익숙한 프로젝트 구조가 추가되므로 사용하는게 좋다.
+Use auto-import는 암시적으로 import해주는데 명시적으로 하는게 더 좋다고 판단해서 체크하지 않았다.

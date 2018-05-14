@@ -1,0 +1,41 @@
+# JMagick 
+JMagick은 JNI(Java Native Interface)를 이용해서 ImagickMagick을 사용할 수 있도록 해준다. 
+
+## JMagick의 문제점
+JMagick은 maven 패키지가 있었지만, IntelliJ에서 확인하면 해당 패키지에 so파일은 포함되지 않은 것으로 나온다. 
+<img width="347" alt="jmagick_maven" src="https://user-images.githubusercontent.com/7522327/39757408-b87e7190-5307-11e8-8386-99b2e9b14afa.png">
+프로젝트를 빌드하게되면 `Exception in thread "main" java.lang.UnsatisfiedLinkError: no JMagick in java.library.path`라는 메시지가 나타난다. JMagick은 JNI를 이용하므로 Native에 해당하는 바이너리가 필요하다.
+
+## JMagick 빌드하기
+[이슈](https://github.com/techblue/jmagick/issues/41)를 읽어보니 2017년 기준으로 master branch를 이용해서 ImageMagick 최신버전(7번대 버전)으로 바이너리 빌드가 되는 것을 알게 되었고 다음과 같은 방법으로 Make가 가능하게 되었다.(먼저 autoconf와 automake의 설치가 필요하다. 이들은 [autotools](http://kthan.tistory.com/entry/%EB%A6%AC%EB%88%85%EC%8A%A4-Linux-autotool%EB%A1%9C-%EC%86%90%EC%89%BD%EA%B2%8C-Makefile-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0-autoscan-autoconf-automake-etc)도구이다.)
+```
+autoreconf --force --install
+automake --add-missing
+./configure
+```
+
+ 하지만 `./configure`단계에서 내가 사용하고 있는 맥의 java path를 찾지 못해서 [과거에 찾아본 내용](https://www.snip2code.com/Snippet/1458563/ImageMagick-and-JMagick-install-on-Mac-O) 을 참고해서 옵션을 추가 해주었다.
+```
+./configure --with-java-home=/System/Library/Frameworks/JavaVM.framework/Versions/Current
+```
+실제 java의 경로를 알고 싶다면 `which java`명령어를 사용하면 되고 링크된 경로가 나올 수 있으므로 `readlink 자바의 링크 경로`명령어로 자바의 위치를 알 수 있다. Home의 경로가 필요하므로 맞는 상위 경로를 지정해 주면 된다.(보통은 include, lib같은 폴더가 있는 곳이 Home이다.)
+
+이후에는 원래 알던 Make를 사용하면 빌드가 된다.
+```
+make clean
+make
+```
+이제 `/make한 프로젝트 폴더/lib` 폴더에 필요한 파일이 생성된다.
+
+## 프로젝트 다시 빌드하기
+`File - Project Structure - Project Settings - Module`에서 새로 빌드한 .jar파일을 추가해 주었다.
+이제는 패키지에 so파일이 있는것으로 나온다.
+<img width="305" alt="new_build_jmagick" src="https://user-images.githubusercontent.com/7522327/39759790-8c19f7d0-530e-11e8-9e4f-4887eb04618a.png">
+
+하지만 아직도 프로젝트에서는 빌드가 되지 않았다. 문제는 java.library.path에서 JMagick을 찾는DJava="경로"를 이용한 빌드도 해보았고 System.setProperty(' java.library.path', 'so파일 위치')도 시도해 봤지만 되지 않았다.
+
+결국 [스택 오버 플로우](https://stackoverflow.com/questions/8791986/jmagick-setup-problems-with-eclipse-in-os-x-unsatisfiedlinkerror-no-jmagick-i)에서 답을 찾았다. so파일을 .jnilib 파일로 링크 시켜줘야한다. [애플 문서](https://developer.apple.com/library/content/documentation/Java/Conceptual/Java14Development/05-CoreJavaAPIs/CoreJavaAPIs.html)에서도 .jnilib을 사용하는 것으로 나와있다.
+```
+sudo ln -s /Users/changmin/Projects/jmagick/lib/libJMagick.so /Library/Java/Extensions/libJMagick.jnilib
+```
+이후에는 성공적으로 프로젝트가 빌드 되었다.

@@ -4,7 +4,7 @@ title: Java에서 ImageMagick사용하기
 ---
 
 ## ImageMagick
-ImageMagick은 이미지를 새로 만들거나 고치는데 사용되는 오픈 소스 소프트웨어다. 커맨드 라인 형태로 사용이 가능하고 x
+ImageMagick은 이미지를 새로 만들거나 고치는데 사용되는 오픈 소스 소프트웨어다. 커맨드 라인 형태로 사용이 가능하고
 OSX에서는 brew를 이용해서 설치가 가능하다.
 ```
 brew install imagemagick
@@ -77,3 +77,7 @@ sudo ln -s /Users/changmin/Projects/jmagick/lib/libJMagick.so /Library/Java/Exte
 3. make clean, make
 4. 빌드된 .so파일을 .jnilib파일로 링크한다.
 5. IDE에서 빌드된 .jar파일 추가 
+
+
+
+
