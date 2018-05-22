@@ -1,9 +1,15 @@
-# JMagick 
-JMagick은 JNI(Java Native Interface)를 이용해서 ImagickMagick을 사용할 수 있도록 해준다. 
+---
+layout: post
+title : JMagick
+---
+
+JMagick은 JNI(Java Native Interface)를 이용해서 ImageMagick을 사용할 수 있도록 해준다. 
+[ImageMagick](https://www.imagemagick.org/script/index.php)은 커맨드 방식의 이미지를 다루는 소프트웨어이다.
+JMagick은 
 
 ## JMagick의 문제점
 JMagick은 maven 패키지가 있었지만, IntelliJ에서 확인하면 해당 패키지에 so파일은 포함되지 않은 것으로 나온다. 
-<img width="347" alt="jmagick_maven" src="https://user-images.githubusercontent.com/7522327/39757408-b87e7190-5307-11e8-8386-99b2e9b14afa.png">
+[패키지에 so파일이 없는 모습](/images/JMagick1.png)
 프로젝트를 빌드하게되면 `Exception in thread "main" java.lang.UnsatisfiedLinkError: no JMagick in java.library.path`라는 메시지가 나타난다. JMagick은 JNI를 이용하므로 Native에 해당하는 바이너리가 필요하다.
 
 ## JMagick 빌드하기
@@ -30,7 +36,7 @@ make
 ## 프로젝트 다시 빌드하기
 `File - Project Structure - Project Settings - Module`에서 새로 빌드한 .jar파일을 추가해 주었다.
 이제는 패키지에 so파일이 있는것으로 나온다.
-<img width="305" alt="new_build_jmagick" src="https://user-images.githubusercontent.com/7522327/39759790-8c19f7d0-530e-11e8-9e4f-4887eb04618a.png">
+[so파일에 ]
 
 하지만 아직도 프로젝트에서는 빌드가 되지 않았다. 문제는 java.library.path에서 JMagick을 찾는DJava="경로"를 이용한 빌드도 해보았고 System.setProperty(' java.library.path', 'so파일 위치')도 시도해 봤지만 되지 않았다.
 

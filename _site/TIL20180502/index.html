@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 5월 2일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="알고리즘
+
+" />
+    <meta property="og:description" content="알고리즘
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 5월 2일 TIL" />
+    <meta property="twitter:title" content="2018년 5월 2일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 5월 2일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="알고리즘">알고리즘</h2>
+
+<h3 id="쉬운-계단-수">쉬운 계단 수</h3>
+<p>길이가 N이고 마지막 수가 L인 쉬운 계단 수의 개수는 길이가 N-1이고 마지막 수가 L-1혹은 L+1인 쉬운 계단수 들의 합이 된다. 때문에 <code class="highlighter-rouge">D[N][L] = D[N-1][L-1] + D[N-1][L-1]</code>이 점화식이 된다.</p>
+
+<h2 id="im4java">im4java</h2>
+<p>ImageMagick이라는 프로그램을 자바로 사용할 수 있게 해주는 일종의 wrapper같은 라이브러리다. JMagick이라는 패키지도 있지만, 문제가 있어서 사용해 보지 못했다.(아마 별도의 바이너리연결이 필요한거 같다.)  <a href="http://im4java.sourceforge.net/">문서</a>가 잘되어 있다.<br />
+Maven을 통해서 다음과 같이 설정했다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+         <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+    <span class="nt">&lt;groupId&gt;</span>im4javaTest<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>im4javaTest<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.im4java/im4java --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.im4java<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>im4java<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre>
+</div>
+
+<p>공식 문서에 있는 예제를 따라해 보았다. 이미지의 크기를 변경한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>import org.im4java.core.*;
+
+public class TestIm4java {
+    public static void main(String[] args) throws Exception{
+        // create command
+        ConvertCmd cmd = new ConvertCmd();
+
+        // create the operation, add images and operators/options
+        IMOperation op = new IMOperation();
+        op.addImage("myimage.jpg");
+        op.resize(200,300);
+        op.addImage("myimage_resize.jpg");
+
+        // execute the operation
+        cmd.run(op);
+
+    }
+}
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="date">
+    Written on May  2, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

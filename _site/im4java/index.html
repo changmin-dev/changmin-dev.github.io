@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>im4java – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="im4java는 커멘드로 사용하는 ImageMagick을 자바로 사용하도록 만들었다. 프로세스를 실행하는 방법으로 사용되는거 같다. JNI를 이용한 JMagick과는 다른 방법이다. 문서가 JMagick보다 잘되어있다.
+
+" />
+    <meta property="og:description" content="im4java는 커멘드로 사용하는 ImageMagick을 자바로 사용하도록 만들었다. 프로세스를 실행하는 방법으로 사용되는거 같다. JNI를 이용한 JMagick과는 다른 방법이다. 문서가 JMagick보다 잘되어있다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="im4java" />
+    <meta property="twitter:title" content="im4java" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>im4java</h1>
+
+  <div class="entry">
+    <p>im4java는 커멘드로 사용하는 ImageMagick을 자바로 사용하도록 만들었다. 프로세스를 실행하는 방법으로 사용되는거 같다. JNI를 이용한 JMagick과는 다른 방법이다. <a href="http://im4java.sourceforge.net/index.html">문서</a>가 JMagick보다 잘되어있다.</p>
+
+<h2 id="사용하기os-x-sierra">사용하기(OS X Sierra)</h2>
+<p>MacOS sierra에서 IntelliJ를 사용하였고 Maven 메뉴를 이용해서 프로젝트를 생성했다.</p>
+
+<h3 id="brew를-통해서-imagemagick-설치">brew를 통해서 ImageMagick 설치</h3>
+<p>im4java는 ProcessBuild를 통해서 내부에서 ImageMagick을 호출한다. 때문에 ImageMagick을 설치해야 한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>brew install imagemagick
+</code></pre>
+</div>
+
+<h3 id="maven을-통해서-의존성-추가">Maven을 통해서 의존성 추가</h3>
+<p><a href="https://mvnrepository.com">mvnrepository</a>에서 찾아서 의존성을 추가 해주어야한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+         <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+    <span class="nt">&lt;groupId&gt;</span>im4javaTest<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>im4javaTest<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.im4java/im4java --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.im4java<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>im4java<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="테스트-프로젝트">테스트 프로젝트</h3>
+<p>이미지 사이즈 크기를 바꾸는 명령을 테스트하였다.(convert -resize 200x300 Input.jpg Output.jpg에 해당한다.)이미지 파일의 위치는 IntelliJ에서 생성한 프로젝트 폴더 최상위에 위치한다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.im4java.core.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestIm4java</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">{</span>
+        <span class="c1">// 커멘드를 만든다. ImageMagick의 명령중하나인 convert에 해당한다.</span>
+        <span class="n">ConvertCmd</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConvertCmd</span><span class="o">();</span>
+
+        <span class="c1">// Operation은 ImageMagick의 인자들에 해당한다.</span>
+        <span class="n">IMOperation</span> <span class="n">op</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IMOperation</span><span class="o">();</span>
+        <span class="c1">// resize함수는 순서가 뒤에 와도 상관이 없다. 하지만 입출력 파일의 순서는 지켜야한다.</span>
+        <span class="n">op</span><span class="o">.</span><span class="na">resize</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">op</span><span class="o">.</span><span class="na">addImage</span><span class="o">(</span><span class="s">"Input.jpg"</span><span class="o">);</span>
+        <span class="n">op</span><span class="o">.</span><span class="na">addImage</span><span class="o">(</span><span class="s">"Output.jpg"</span><span class="o">);</span>
+
+        <span class="c1">// 실행한다.</span>
+        <span class="n">cmd</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">op</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="후기">후기</h2>
+<p>im4java는 문서가 잘되어 있지만, 프로세스를 실행시키는 방식으로 되어 있기 때문에 인터페이스가 직관적이지는 않다. 또한 Mac에서는 brew를 통해서 쉽게 했지만, Windows나 Linux에서는 의존성 설정이 필요할 수 있다. 문서에서는  Windows에는 의존성 설정이 필요한거로 나온다.<img src="/images/im4java1.png" alt="의존성" /></p>
+
+  </div>
+
+  <div class="date">
+    Written on May 22, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년  5월 9일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="자바스크립트 오버라이딩
+최대한 JQuery사용을 줄이려고 해서 request요청을 보내는 메서드를 구현해서 사용하고 있었다. 하지만 토큰을 헤더에 포함에서 요청하는 기능은 사용하지 않았었다. 엑세스 토큰을 필요로하는 요청을 해야할 필요가 있어서 자바스크립트의 오버라이딩에 대해서 찾아보았지만 공식적으로 지원하지는 않았고 그냥 함수 호출시에 일부를 인자를 생략해도 호출이 가능했다.
+
+" />
+    <meta property="og:description" content="자바스크립트 오버라이딩
+최대한 JQuery사용을 줄이려고 해서 request요청을 보내는 메서드를 구현해서 사용하고 있었다. 하지만 토큰을 헤더에 포함에서 요청하는 기능은 사용하지 않았었다. 엑세스 토큰을 필요로하는 요청을 해야할 필요가 있어서 자바스크립트의 오버라이딩에 대해서 찾아보았지만 공식적으로 지원하지는 않았고 그냥 함수 호출시에 일부를 인자를 생략해도 호출이 가능했다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년  5월 9일 TIL" />
+    <meta property="twitter:title" content="2018년  5월 9일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년  5월 9일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="자바스크립트-오버라이딩">자바스크립트 오버라이딩</h2>
+<p>최대한 JQuery사용을 줄이려고 해서 request요청을 보내는 메서드를 구현해서 사용하고 있었다. 하지만 토큰을 헤더에 포함에서 요청하는 기능은 사용하지 않았었다. 엑세스 토큰을 필요로하는 요청을 해야할 필요가 있어서 자바스크립트의 오버라이딩에 대해서 찾아보았지만 공식적으로 지원하지는 않았고 그냥 함수 호출시에 일부를 인자를 생략해도 호출이 가능했다.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">,</span><span class="nx">c</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">c</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
+        <span class="c1">//c가 있을때만 실행되는 내용</span>
+    <span class="p">}</span>
+    <span class="c1">//나머지 내용</span>
+<span class="p">}</span>
+<span class="c1">//둘다 호출 가능하다.</span>
+<span class="nx">func</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="nx">func</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h3 id="javascript의-json객체">javascript의 JSON객체</h3>
+<p><code class="highlighter-rouge">JSON.parse()</code>함수로 데이터를 json형태로 파싱할수 있다. <code class="highlighter-rouge">JSON.stringify()</code>함수로 딕셔너리를 string으로 바꿀 수 있다. XMLHttpRequest로 요청을 보낼때는 string형태로 요청을 보내야하므로 유용하다.</p>
+
+<h2 id="알고리즘">알고리즘</h2>
+
+<h3 id="이친수">이친수</h3>
+<p><a href="https://www.acmicpc.net/problem/2193">링크</a>
+0으로 시작 할 수 없고 1이 연속으로 올 수 없는 이진수가 이친수이다.
+자리수가 늘어날때마다 마지막 자리수가 0이라면 0과 1이 추가될 수 있고 1이라면 0만 추가 될수 있다. 따라서 다음과 같이 점화식을 새워 볼 수 있다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="c1">//마지막 자리 0에 추가되는 경우</span>
+<span class="n">D</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">D</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">D</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span>
+<span class="c1">//마지막 자리 1에 추가되는 경우</span>
+<span class="n">D</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">D</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="date">
+    Written on May  9, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

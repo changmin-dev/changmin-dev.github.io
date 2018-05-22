@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 1월 9일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="알고리즘
+올해 IOS 개발을 해보려고 생각을 하면서 swift로 알고리즘을 풀어 보려고한다. 손코딩은 자바로 하고 검증하고 swift로 하는 것은 효율적인지는 모르겠다. 일주일 후 확인해봐야 겠다.
+
+" />
+    <meta property="og:description" content="알고리즘
+올해 IOS 개발을 해보려고 생각을 하면서 swift로 알고리즘을 풀어 보려고한다. 손코딩은 자바로 하고 검증하고 swift로 하는 것은 효율적인지는 모르겠다. 일주일 후 확인해봐야 겠다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 1월 9일 TIL" />
+    <meta property="twitter:title" content="2018년 1월 9일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 1월 9일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="알고리즘">알고리즘</h2>
+<p>올해 IOS 개발을 해보려고 생각을 하면서 swift로 알고리즘을 풀어 보려고한다. 손코딩은 자바로 하고 검증하고 swift로 하는 것은 효율적인지는 모르겠다. 일주일 후 확인해봐야 겠다.</p>
+
+<h3 id="회의실-배정">회의실 배정</h3>
+<p><a href="https://www.acmicpc.net/problem/1931">문제 링크</a>  <br />
+그리디로 풀기 위해서는 기준을 정해야한다. 시작시간, 종료시간, 회의 진행시간이 있다. 시작시간은 시작 시간만 빠르고 진행시간이 긴 경우가 생길 수 있어서 안되고 진행시간은 중간에 짧은 진행시간이 겹쳐서 다른 회의가 불가능한 경우가 있으므로 안된다.</p>
+
+<h3 id="atm">ATM</h3>
+<p><a href="https://www.acmicpc.net/problem/11399">문제 링크</a> <br />
+오름 차순으로 정렬해서 작은 값 부터 누적값과 함께 더해가면서 값을 구하면 된다. 누적값이 아닌 합을 계속 더해서 문제가 발생했었다.</p>
+
+<h3 id="잃어-버린-괄호">잃어 버린 괄호</h3>
+<p><a href="https://www.acmicpc.net/problem/1541">문제 링크</a>    <br />
+중간에 -가 하나라도 나온다면 값을 뺀다.</p>
+
+<h2 id="swift">Swift</h2>
+<h3 id="readline">readLine()</h3>
+<p>한 줄을 입력 받는다. 이때 입력 받는 것은 옵셔널 타입이므로 주의 해야한다.</p>
+
+<h3 id="componets-split">componets(), split()</h3>
+<p>readline()으로 입력 받아서 문자열을 나누기 위해서 찾아 보았다. 2가지를 찾아서 차이점이 무엇인지 찾아 보았다.
+<a href="https://stackoverflow.com/questions/46344649/componentseparatedby-versus-splitseparator">스택 오버 플로우</a>를 보면 성능에 차이가 있다는 말이 있고 components -&gt; split으로 될지도 모른다는 주장도 있다. 스택 오버 플로우 보다는 레딧 같다. 일단 익숙하기도 한 split()을 사용하기로 했다.</p>
+
+<h3 id="문자열-substring하기">문자열 substring하기</h3>
+<p>swift4부터는 문자열[시작…종료]형태로 분리 할 수 있다.</p>
+
+<h3 id="문자열-인덱스">문자열 인덱스</h3>
+<p>문자열은 그냥 접근이 안되고 따로 인덱스를 받아 내야한다. <code class="highlighter-rouge">문자열.startIndex</code>로 첫번째 인덱스를 저장 할 수 있다. <code class="highlighter-rouge">문자열.index(after: 숫자)</code>로 해당 숫자 이후의 인덱스를 얻을 수 있다. <code class="highlighter-rouge">문자열.index()</code>는 여러가지 오버로딩이 있는거 같다.</p>
+
+  </div>
+
+  <div class="date">
+    Written on January  9, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

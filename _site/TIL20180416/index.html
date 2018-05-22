@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 4월 16일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Flask에서 Thread사용하기
+프로젝트에서 여러 곳에서 요청을 보내니 문제가 발생했다. Thread사용 가능 여부를 찾아 보았는데 가능했다. Thread Local을 사용한다고 한다.
+Flask에서 Thread 사용하기
+Flask Thread Local
+Thread Local
+Thread Safe
+
+" />
+    <meta property="og:description" content="Flask에서 Thread사용하기
+프로젝트에서 여러 곳에서 요청을 보내니 문제가 발생했다. Thread사용 가능 여부를 찾아 보았는데 가능했다. Thread Local을 사용한다고 한다.
+Flask에서 Thread 사용하기
+Flask Thread Local
+Thread Local
+Thread Safe
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 4월 16일 TIL" />
+    <meta property="twitter:title" content="2018년 4월 16일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 4월 16일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="flask에서-thread사용하기">Flask에서 Thread사용하기</h2>
+<p>프로젝트에서 여러 곳에서 요청을 보내니 문제가 발생했다. Thread사용 가능 여부를 찾아 보았는데 가능했다. Thread Local을 사용한다고 한다.
+<a href="https://stackoverflow.com/questons/14814201/can-i-serve-multiple-clients-using-just-flask-app-run-as-standalone">Flask에서 Thread 사용하기</a>
+<a href="http://flask-docs-kr.readthedocs.io/ko/latest/advanced_foreword.html">Flask Thread Local</a>
+<a href="http://javacan.tistory.com/entry/ThreadLocalUsage">Thread Local</a>
+<a href="http://gompangs.tistory.com/7">Thread Safe</a></p>
+
+<h2 id="swift">Swift</h2>
+
+<h3 id="반복문의-컬렉션-부분-접근">반복문의 컬렉션 부분 접근</h3>
+<p>For in문에서 컬렉션의 인덱스 부분만 접근이 가능하다. 아래는 2부터 마지막 까지를 순회한다.</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="kt">MyCollection</span><span class="p">[</span><span class="mi">2</span><span class="o">...</span><span class="p">]{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">//인덱스 2부터 출력된다.</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="multiline-string">Multiline String</h3>
+<p><code class="highlighter-rouge">"""</code>사이에 스트링이 있는것을 뜻한다.</p>
+<pre><code class="language-switf">"""
+    Piza
+    Chicken
+        ramen
+"""
+</code></pre>
+<p>중요한 것은 ramen이전의 이전 라인이랑 줄 맞춘 공백은 문자열의 일부가 된다는 점이다.</p>
+
+<h3 id="유니코드-스칼라">유니코드 스칼라</h3>
+<p>유니코드 표준의 특정 문자를 나타내는 21비트 짜리 수다. Swift의 String은 유니코드 스칼라로 이루어져있다.
+다음과 같이 사용한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>let unicode = \u{1F60E}
+</code></pre>
+</div>
+<p>유니코드 스칼라는 조합이 가능하다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>let extented = \u{0061}\u{0301} //엑센트가 들어간 a가된다.
+let ="\u{00E1}" //위의 두문자를 합친 모양과 같다. 위와 값도 같게 나온다.
+</code></pre>
+</div>
+
+<h3 id="string-인덱스">String 인덱스</h3>
+<p>String.Index 타입을 사용한다. 다음과 같이 사용이 가능하다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>let word = "word"
+let startIndex = word.startIndex
+let end = word.index(start, offsetBy: 2)
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="date">
+    Written on April 16, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

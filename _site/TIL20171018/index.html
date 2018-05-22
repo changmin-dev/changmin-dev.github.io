@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 10월 18일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="HTTP 스터디
+동아리 스터디 주제가 HTTP/RESTful이라서 HTTP 완벽 이해 가이드로 HTTP를 먼저 공부하기로 했다. 이해를 높이기 위해서
+
+" />
+    <meta property="og:description" content="HTTP 스터디
+동아리 스터디 주제가 HTTP/RESTful이라서 HTTP 완벽 이해 가이드로 HTTP를 먼저 공부하기로 했다. 이해를 높이기 위해서
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 10월 18일 TIL" />
+    <meta property="twitter:title" content="2017년 10월 18일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 10월 18일 TIL</h1>
+
+  <div class="entry">
+    <h1 id="http-스터디">HTTP 스터디</h1>
+<p>동아리 스터디 주제가 HTTP/RESTful이라서 <code class="highlighter-rouge">HTTP 완벽 이해 가이드</code>로 HTTP를 먼저 공부하기로 했다. 이해를 높이기 위해서</p>
+
+<h1 id="네트워크">네트워크</h1>
+<p>라우팅 프로토콜은 내부 네트워크에서는 사용된다. 전체 인터넷에서는 계층적 라우팅 사용된다.</p>
+
+<h2 id="계층적-라우팅">계층적 라우팅</h2>
+<ul>
+  <li>AS : 하나의 도메인에 eogks 자치권을 가지는 라우팅 도메인, 모든 AS는 AS의 넘버를 가진다. ex)학교의 회사 네트워크
+    <h3 id="기존의-라우팅-프로토콜은-intra-as-대상">기존의 라우팅 프로토콜은 Intra-AS 대상</h3>
+  </li>
+  <li>RIP</li>
+  <li>OSPF
+    <h3 id="inter-as를-위한프로토콜">Inter-AS를 위한프로토콜</h3>
+  </li>
+  <li>BGP</li>
+</ul>
+
+<h3 id="as-number">AS Number</h3>
+<p>모든 AS는 각자의 번호를 가지고 있다. AS는 6만개가 넘개 존재함</p>
+
+<h3 id="provider와-customer-관계">Provider와 Customer 관계</h3>
+<p>AS를 운영하기 위해서 비용이 필요하다. 비용을 지불한 사람에게 네트워크를 제공한다. 학교 같은 곳은 ISP와 계층을 이룬다.
+ex) ISP - 학교 - 학생</p>
+
+<h3 id="peering-관계">Peering 관계</h3>
+<p>제공자와 사용자가 나누어 지지 않은 관계, 서로 네트워크를 이용하게 한다. ISP끼리 생긴다. 비용이 지불되지 않는다면, 트래픽을 받지 않는다.
+ex) KT와 SKT</p>
+
+<h2 id="bgpboader-gateway-protocol">BGP(Boader Gateway protocol)</h2>
+<p>Policy based - 최적화 보다는 AS끼리의 정책에 따라서 결정된다.</p>
+
+<h3 id="as-path">AS Path</h3>
+<p>목적지로 가면서 AS번호를 저장해 간다. 목적지에서는 경로를 알 수 있다. 홉(연결)이 적은게 아니라 <code class="highlighter-rouge">정책</code>이 어떻게 되나가 우선시 된다.(피해야할 AS를 정하거나 돈이 되는 곳으로)</p>
+
+<h1 id="알고리즘">알고리즘</h1>
+<p>어제 푼 문제의 소스코드에 주석을 달면서 개선해 봤다. 그리고 Codility문제를 풀어 보았다. 영어이지만, 문제를 제출하게 되면 보고서 형태로 각 테스트 케이스와 통과 여부를 알려준다.</p>
+
+  </div>
+
+  <div class="date">
+    Written on October 18, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

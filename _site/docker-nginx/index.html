@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>docker에서 nginx 사용하기 – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="docker pull nginx
+docker run -t -i –name 컨테이너이름 -p 80:80 -d 이미지이름 /bin/bash
+
+" />
+    <meta property="og:description" content="docker pull nginx
+docker run -t -i –name 컨테이너이름 -p 80:80 -d 이미지이름 /bin/bash
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="docker에서 nginx 사용하기" />
+    <meta property="twitter:title" content="docker에서 nginx 사용하기" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>docker에서 nginx 사용하기</h1>
+
+  <div class="entry">
+    <p>docker pull nginx
+docker run -t -i –name 컨테이너이름 -p 80:80 -d 이미지이름 /bin/bash</p>
+
+<p>-t : 터미널 사용 
+-i : 상호작용
+둘다 써야함 뒤에 /bin/bash로 쉘을 정함
+–name : 컨테이너의 이름을 정해준다.
+-P : 포트를 연다. docker ps로 포트를 확인 가능(안될수도있음)
+-p 80:80 컨테이너의 포트와 바인딩
+-d : 백그라운드에서 실행하며, 컨테이너 id를 출력
+nginx : 실행할 이미지 이름</p>
+
+<p>ffmpeg -f mp4 -i “/root/TT.mp4” -f flv rtmp://localhost/live</p>
+
+<h3 id="참고">참고</h3>
+<p>http://blog.nacyot.com/articles/2014-01-27-easy-deploy-with-docker/
+http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter03
+https://blog.docker.com/2014/06/why-you-dont-need-to-run-sshd-in-docker/
+https://docs.docker.com/engine/reference/commandline/run/#options</p>
+
+<p>컨테이너로 파일 복사
+http://shy-blg.tistory.com/entry/Docker%EB%8F%84%EC%BB%A4-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EC%97%90-%ED%8C%8C%EC%9D%BC-%EC%A0%84%EC%86%A1%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95</p>
+
+<p>rtmp-nginx 도커
+https://www.atlantic.net/community/howto/install-rtmp-ubuntu-14-04/</p>
+
+<p>변경 사항이 있는 도커 포트
+https://stackoverflow.com/questions/19335444/how-do-i-assign-a-port-mapping-to-an-existing-docker-container</p>
+
+  </div>
+
+  <div class="date">
+    Written on May 23, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

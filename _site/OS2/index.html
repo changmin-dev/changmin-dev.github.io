@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Operating System 2 – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="운영체제는 크고 복잡하다. 계속적인 개발을 필요로 한다.
+
+" />
+    <meta property="og:description" content="운영체제는 크고 복잡하다. 계속적인 개발을 필요로 한다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="Operating System 2" />
+    <meta property="twitter:title" content="Operating System 2" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Operating System 2</h1>
+
+  <div class="entry">
+    <p>운영체제는 크고 복잡하다. 계속적인 개발을 필요로 한다.</p>
+
+<h2 id="os의-기능">os의 기능</h2>
+<p>중재, 추상화, 기본 라이브러리</p>
+<h2 id="중재">중재</h2>
+<p>Coodinator - 충돌에 대한 중재</p>
+<h2 id="추상화-illusion-generator">추상화 Illusion generator</h2>
+<p>런타임 기능들(화면 표시, 키보드입력 등)을 제공
+복잡한 것을 추상화시킴(HW를 몰라도 인터페이스를 제공)
+추상레이어를 제공함, 여러유저에게 동일하게 제공함</p>
+
+<h3 id="추상화의-사례">추상화의 사례</h3>
+<p>timesharing threshing
+쓰레싱-타자를쳤는데 전달이 늦게됨,(원격접속할때 느끼지 않나?),사용자의 수가 일정 수준 넘으면 발생,tiemsharing(추상화 기능중 하나)의 task의 수가 너무 많음</p>
+<h2 id="기본-라이브러리">기본 라이브러리</h2>
+<p>제공되는 드라이브들을 활용해서 프로그램을 작성 가능</p>
+
+<h2 id="os-구조">OS 구조</h2>
+<ul>
+  <li>cpu</li>
+  <li>메모리</li>
+  <li>IO</li>
+  <li>파일 시스템 : 하드디스크-io</li>
+  <li>네트워크 시스템 : 네트워크 자료-io</li>
+</ul>
+
+<h3 id="io-장치의-3분류">I/O 장치의 3분류</h3>
+<ol>
+  <li>Char I/O</li>
+  <li>Block I/O (대용량 데이터) - 파일시스템
+io관리를 어떻게 하는가에 따라 성능이 결정된다.</li>
+  <li>Network I/O (소켓같은거):
+큐에 데이터가 들어있다. 막히면 빨리가려고 해도 빨리 갈 수가 없음. 비디오같은게 지연 되면 문제가 된다. -&gt; 속도에 민감한 패킷은 별로의 큐로 보낸다. 패킷스케줄링은  네트워크가 영향을 많이 받는다.</li>
+</ol>
+
+<h3 id="캐쉬">캐쉬</h3>
+<p>강의실로 데이터를 가져 온다면 캐쉬는 학교 정문에서 가져오는 정도이고 디스크는 달나라에서 가져오는 정도이다.
+캐쉬를 메모리를 이용해서 소프트웨어적으로 구현할수도 있다.(디스크 캐시)</p>
+
+<h1 id="하드웨어-구성요소">하드웨어 구성요소</h1>
+
+<h2 id="시스템버스">시스템버스</h2>
+<p>CPU - Memory - IO디바이스와 연결
+버스는 Read와 Write 연산을 한다.
+io디바이스는 컨트롤러를 가지고 있다.
+이는 시스템 버스에 연결되어 있다.</p>
+<h3 id="data-bus">Data Bus</h3>
+<p>실제 데이터를 전달</p>
+
+<h3 id="address-bus">Address Bus</h3>
+<p>데이터의 Source와 Destnation지정</p>
+
+<h3 id="bus-master">bus master</h3>
+<p>버스를 사용할 수 있는 장치, 버스 사용을 위해서는 버스를 장악해야한다.</p>
+<ul>
+  <li>CPU</li>
+  <li>I/O Controller</li>
+  <li>DMA</li>
+</ul>
+
+<h3 id="bus-slave">Bus Slave</h3>
+<p>데이터를 담고 있는 장치, 주소를 가지고 있다.</p>
+<ul>
+  <li>Memory</li>
+  <li>IO Controller(장치의 Register)</li>
+</ul>
+
+<h3 id="bus중재기">bus중재기</h3>
+<p>여러 마이스터가 버스를 요청하므로 조정해야한다.
+리퀘스트 시그널을 받고 우선순위가 높은 거에 먼저 버스를 제공 grant신호를 받아서</p>
+
+<h2 id="io-controller">I/O Controller</h2>
+<p>cpu가 데이터 레지스터에 데이터가 저장되고 output명령, io장치가 가용하면 i/o수행</p>
+
+<h3 id="폴링-vs-인터럽트">폴링 vs 인터럽트</h3>
+<p>Polling : I/O컨르롤러의 레지스터를 확인하면서 I/O가 끝날떄까지 기다림</p>
+
+<h3 id="메모리맵-vs-포트맵io맵">메모리맵 vs 포트맵(io맵)</h3>
+<p>I/O Maped I/O : 장치를 위한 별도의 공간을 마련, Intel
+Memory Maped I/O : 메모리의 일부를 사용함,</p>
+
+<h2 id="dma-controller">DMA Controller</h2>
+<p>대부분은 char I/O이지만, DMA는 block I/O같은 경우씀  끝나면 인터럽트
+DMA는 CPU가 관여하지 않고 IO를 가능하게 한다. 이를 위해서 
+CPU가 OP명령, DMA에 시작 주소, Block크기를 DMA로 넘겨준다.</p>
+<ul>
+  <li>싸이클 스틸링 : CPU가 버스를 사용하지 않을 때 점유 했다가 돌려줌</li>
+  <li>블록 트랜스퍼 : 대등하게 버스를 사용함</li>
+</ul>
+
+<h1 id="hw-매커니즘">HW 매커니즘</h1>
+<h2 id="인터럽트-매커니즘">인터럽트 매커니즘</h2>
+<p>OS를 위해서 HW가 지원하는 기능중 가장 중요한 기능 
+OS는 Interrupt Driven 하다.</p>
+<h3 id="hw인터럽트">HW인터럽트</h3>
+<p>cpu외부에서 cpu가 필요한 걸 알려줌, <code class="highlighter-rouge">비동기적</code>, 진행중에 갑자기 다른 일을 하게 되는 것, 프로세서에 인터럽트 시그널을 받는 Pin이 있어야한다. Pin에는 Interrupt 소스(IO 컨트롤러 등)가 연결되어 있다.</p>
+
+<h3 id="sw-인터럽트trap">SW 인터럽트(Trap)</h3>
+<p>현재 수행하려는 것에 문제가 있을때(Exception), 임의로 int발생, 코드분석을 통해서 어디서 발생했는지 알수있다. <code class="highlighter-rouge">동기적</code></p>
+
+<p>개념의 이해 - 왜?? 어떻게??</p>
+
+<p>int source -io장치들</p>
+
+<h3 id="인터럽트-과정">인터럽트 과정</h3>
+<ol>
+  <li>현재 수행중인 프로그램의 명령어를 끝내고, 현재 상태(PC값 등)를 저장</li>
+  <li>현재 수행중인 프로그램을 중단.</li>
+  <li>IRQ번호를 확인</li>
+  <li>벡터 테이블(ISR들이 저장) 검색</li>
+  <li>ISR로 점프 후 수행</li>
+</ol>
+
+<h3 id="프로그래머블-인터럽트-컨트롤러">프로그래머블 인터럽트 컨트롤러</h3>
+<p>시스템이 복잡해지면서 인터럽트 핀이 많이 필요해짐 -&gt; 확장성(scalebility)의 문제를 해결하기 위함.
+입력 라인이 16개 까지 처리 가능하다면 그 이상이면 새로추가한다. 원래 핀에 여러개를 연결함으로 써 cascading으로 구현 한다.
+특정 인터럽트를 disable시키는 경우가 필요</p>
+<ul>
+  <li>Flag : 값에 따라 on, off, ISR 이 16개라면 flag가 16비트</li>
+  <li>Mask regster : flag를 제어하기 위해 인터럽트 마스크하는 IO연산이 필요함(sw)</li>
+</ul>
+
+<h2 id="hw-protection">HW protection</h2>
+<p>멀티 프로그래밍을 할때 여러 JOB이있는데 자신의 메모리가 아니라 다른 JOB의 메모리에  접근할 수 있어서
+그를 막기위해 base레지스터와 bound 레지스터사용</p>
+
+<h3 id="priviliged-instruction-실행을-위한-mode">Priviliged instruction 실행을 위한 Mode</h3>
+<p>mode : 컴퓨터의 레지스터에 의해 결정(사람의 mood와 관련지어서 이해) <br />
+mode = 0 kernel : privileged mode, superviser mode라고도 불림, Priviliged Instruction 수행가능  <br />
+mode = 1 user : Privileged instruction(메모리접근 같은거)은 불가<br />
+user 프로그램은 기본적으로 신뢰하지 않는다. (버그가 있을 수 있기 때문) 그래서 통제적인 환경에서 수행 해야함.
+명령을 해석할때 mode bit를 확인한다.</p>
+
+<h3 id="os가-커널-모드에서-수행될-때-부여받는-주요-권한">OS가 커널 모드에서 수행될 때 부여받는 주요 권한</h3>
+<ol>
+  <li>모든 메모리 접근</li>
+  <li>Privileged 명령어 사용</li>
+</ol>
+
+<h3 id="어떻게-모드를-바꾸어야-하는가">어떻게 모드를 바꾸어야 하는가?</h3>
+<p>모드를 os(무한신뢰의대상)가 정하도록한다.<br />
+User가 I/O가 필요함(HW매커니즘이필요) -&gt; Interrupt를 요청하면 커널모드로 해줌(SW INT)
+Kernel에서 User로 가는 상황은 문제가 거의 없음</p>
+
+<p>인터럽트는 낮은 수준, 함수 호출(High)로 가능하게 하는것은 System Call</p>
+
+<h3 id="io-보호">I/O 보호</h3>
+<p>여러 JOB들이 다른JOB을  건드리지 않도록, I/O를 특정 프로세스가 통제하는 것
+-&gt;privileged inst.로 접근 함수를 만듬</p>
+
+<h2 id="메모리-보호">메모리 보호</h2>
+<p>Base + bound를 이용해서 다른 JOB의 메모리에 접근하지 못하도록 한다.</p>
+
+<h2 id="cpu-보호">CPU 보호</h2>
+<p>운영체제가 항상 제어권을 확보할 수 있도록 해야한다. 
+타이머 세팅 후 일정시간이 지나면 타이머 인터럽트를 이용해서 OS에 제어권을 넘긴다.</p>
+
+  </div>
+
+  <div class="date">
+    Written on October  1, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

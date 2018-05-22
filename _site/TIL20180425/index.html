@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 4월 25일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Javascript
+로그아웃을 하기 위해서는 로그인을 위한 정보를 가지고 있는 쿠키를 삭제해야 했다.
+
+" />
+    <meta property="og:description" content="Javascript
+로그아웃을 하기 위해서는 로그인을 위한 정보를 가지고 있는 쿠키를 삭제해야 했다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 4월 25일 TIL" />
+    <meta property="twitter:title" content="2018년 4월 25일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 4월 25일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="javascript">Javascript</h2>
+<p>로그아웃을 하기 위해서는 로그인을 위한 정보를 가지고 있는 쿠키를 삭제해야 했다.</p>
+
+<h3 id="쿠키-삭제하기">쿠키 삭제하기</h3>
+<p>쿠키를 삭제하기 위해서는 해당 쿠키의 내용을 지우고 지난 날짜를 만료시간으로 둔다.</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="s2">"my_cookie=;expires=Thu, 01 Jan 1970 00:00:01 GMT;"</span>
+</code></pre>
+</div>
+
+<h2 id="알고리즘">알고리즘</h2>
+<p>간단한 동적 계획법 문제를 풀어 보았다.</p>
+
+<h3 id="1로-만들기">1로 만들기</h3>
+<p>n-1, n/3, n/2 각각 비교하면서 DP를 수행해야한다.
+<a href="https://www.acmicpc.net/problem/1463">링크</a></p>
+
+<h3 id="2-x-n-타일링">2 x n 타일링</h3>
+<p>n-1과 n-2에서 n이 되는 경우를 생각해 보면 된다. 10007로 나눈 나머지가 답이므로 조심해야한다.
+<a href="https://www.acmicpc.net/problem/11726">링크</a></p>
+
+<h3 id="2-x-n-타일링-2">2 x n 타일링 2</h3>
+<p>2 x 2타일이 추가 되었다. n-2에서 2 x 2가 추가되는 경우도 고려해야한다. 10007로 나눈 나머지가 답이므로 조심해야한다.
+<a href="https://www.acmicpc.net/problem/11727">링크</a></p>
+
+
+  </div>
+
+  <div class="date">
+    Written on April 25, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

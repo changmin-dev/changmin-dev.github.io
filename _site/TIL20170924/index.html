@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 9월 24일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="알고리즘
+문자열 뒤집기
+파이썬으로는 input[::-1]으로 끝낼수도 있다.(참고)
+::에서 3번째로 오는 숫자는 Offset을 의미한다. 파이썬은 음수로도 인덱스 접근이 가능하다.
+Java로는 거꾸로 for문을 돌거나 스택으로 하면 될거 같다.
+
+" />
+    <meta property="og:description" content="알고리즘
+문자열 뒤집기
+파이썬으로는 input[::-1]으로 끝낼수도 있다.(참고)
+::에서 3번째로 오는 숫자는 Offset을 의미한다. 파이썬은 음수로도 인덱스 접근이 가능하다.
+Java로는 거꾸로 for문을 돌거나 스택으로 하면 될거 같다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 9월 24일 TIL" />
+    <meta property="twitter:title" content="2017년 9월 24일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 9월 24일 TIL</h1>
+
+  <div class="entry">
+    <h1 id="알고리즘">알고리즘</h1>
+<h3 id="문자열-뒤집기">문자열 뒤집기</h3>
+<p>파이썬으로는 <code class="highlighter-rouge">input[::-1]</code>으로 끝낼수도 있다.<a href="http://pythoncentral.io/cutting-and-slicing-strings-in-python/">(참고)</a>
+<code class="highlighter-rouge">::</code>에서 3번째로 오는 숫자는 Offset을 의미한다. 파이썬은 음수로도 인덱스 접근이 가능하다.<br />
+Java로는 거꾸로 for문을 돌거나 스택으로 하면 될거 같다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">reverse</span><span class="o">(</span><span class="n">String</span> <span class="n">input</span><span class="o">){</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">input</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">Stack</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">();</span>
+    <span class="n">StringBuffer</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+
+    <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="o">:</span> <span class="n">string</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">()){</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">ch</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">while</span><span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">empty</span><span class="o">()){</span>
+        <span class="n">output</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="문자열-rotate-시키기">문자열 rotate 시키기</h3>
+<p>문자열과 숫자가 주어진다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">rotate</span><span class="o">(</span><span class="n">String</span> <span class="n">string</span><span class="o">,</span> <span class="kt">int</span> <span class="n">rotateNumber</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">output</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">rotateNumber</span> <span class="o">%</span> <span class="n">string</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">rotateNumber</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">string</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">+</span> <span class="n">rotateNumber</span><span class="o">)</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">string</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">+</span> <span class="n">rotateNumber</span><span class="o">);</span>
+    <span class="k">else</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">start</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">output</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>원래 인덱스를 하나 하나 계산하려고 했는데 문제가 생긴거 같아서 이렇게 했다. 시작 위치만 계산하면 되니까 간단하다.</p>
+
+<h3 id="문자열-암호화-하기">문자열 암호화 하기</h3>
+<p>문자열과 비밀키가 주어진다.
+문자열과 비밀키의 같은 인덱스 값을 더해서 암호화(비밀키의 인덱스 부족하다면 0부터 다시 시작)한다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">encrypt</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">,</span> <span class="n">String</span> <span class="n">secret</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">secretIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="n">StringBuilder</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+    <span class="kt">char</span> <span class="n">calculated</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">ch</span> <span class="o">:</span> <span class="n">message</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">()){</span>
+
+        <span class="n">calculated</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="n">ch</span> <span class="o">+</span> <span class="o">(</span><span class="n">secret</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">secretIndex</span><span class="o">))</span> <span class="o">-</span> <span class="sc">'a'</span><span class="o">);</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">calculated</span> <span class="o">&gt;</span> <span class="sc">'z'</span><span class="o">){</span>
+            <span class="n">calculated</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="n">calculated</span> <span class="o">-</span> <span class="sc">'z'</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="sc">'a'</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">output</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">calculated</span><span class="o">);</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">secretIndex</span><span class="o">++</span> <span class="o">&gt;=</span> <span class="n">secret</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+            <span class="n">secretIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="문자열-비교하기">문자열 비교하기</h3>
+<p>2개의 소문자로 된 문자열에서 같은 문자들의 개수를 출력하기 문자열의 최대 길이는 15</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">commonCharacterCount</span><span class="o">(</span><span class="n">String</span> <span class="n">s1</span><span class="o">,</span> <span class="n">String</span> <span class="n">s2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">char</span><span class="o">[]</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+    <span class="kt">char</span><span class="o">[]</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">s2</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+    
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">c1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">c2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="o">++</span><span class="n">j</span><span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">c1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">c2</span><span class="o">[</span><span class="n">j</span><span class="o">]){</span>
+                <span class="o">++</span><span class="n">count</span><span class="o">;</span>
+                <span class="n">c2</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">+=</span> <span class="mh">0x20</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>그냥 무식하게 돌려버렸다. 
+다른 분 풀이를 보니 이런식으로 푸셨다. 아스키 범위라면 확장도 가능하다. Character.MAX_</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">commonCharacterCount</span><span class="o">(</span><span class="n">String</span> <span class="n">s1</span><span class="o">,</span> <span class="n">String</span> <span class="n">s2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="sc">'z'</span> <span class="o">-</span> <span class="sc">'a'</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">count1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">length</span><span class="o">];</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">count2</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">length</span><span class="o">];</span>
+    <span class="kt">int</span> <span class="n">output</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">token</span> <span class="o">:</span> <span class="n">s1</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">()){</span>
+        <span class="o">++</span><span class="n">count1</span><span class="o">[</span><span class="n">token</span> <span class="o">-</span> <span class="sc">'a'</span><span class="o">];</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">token</span> <span class="o">:</span> <span class="n">s2</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">()){</span>
+        <span class="o">++</span><span class="n">count2</span><span class="o">[</span><span class="n">token</span> <span class="o">-</span> <span class="sc">'a'</span><span class="o">];</span>
+    <span class="o">}</span>
+    
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">count1</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">count2</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+    <span class="o">}</span>
+    
+    <span class="k">return</span> <span class="n">output</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h1 id="http">HTTP</h1>
+<p><a href="../HTTP공부하기1">링크</a></p>
+
+<h1 id="알게-된것">알게 된것</h1>
+<h3 id="참고-try-catch">참고 try(){} catch(){}</h3>
+<p>close가 필요한 자원은 이런 방식으로 close하는 메서드를 호출하지 않고 close 할 수 있다.(JAVA7 이상)</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="k">try</span><span class="o">(</span><span class="n">Close</span> <span class="err">해줘야하는</span> <span class="err">자원</span><span class="o">){</span>
+
+<span class="o">}</span><span class="k">catch</span><span class="o">(){</span>
+
+<span class="o">}</span>
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="date">
+    Written on September 24, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

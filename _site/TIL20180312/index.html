@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 3월 12일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="알고리즘
+
+" />
+    <meta property="og:description" content="알고리즘
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 3월 12일 TIL" />
+    <meta property="twitter:title" content="2018년 3월 12일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 3월 12일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="알고리즘">알고리즘</h2>
+
+<h3 id="이분-그래프">이분 그래프</h3>
+<p>그래프의 모든 정점이 두 그룹으로 나누어지고 서로 다른 그룹의 정점이 간선으로 연결되어져 있는 그래프. 이분 그래프의 기준은 정점인 것을 기억해야한다.</p>
+
+<h3 id="순열-싸이클">순열 싸이클</h3>
+<p>싸이클이 존재한다면 시작요소로 돌아갈 수 밖에 없다.</p>
+
+<h3 id="반복-수열">반복 수열</h3>
+<p>입력된 수가 0보다 작지 않으면 10 모듈려 연산한 수를 p번 곱해서 계산한다.
+한번 입력된 값이 다시 나온다면 같은 숫자가 반복 되므로
+계산 값을 리스트에 넣고 contain()가 참이라면 그 인덱스를 리턴 하도록 했다. zero index이므로 인덱스를 바로 리턴한다.</p>
+
+<h2 id="도커로-mysql-사용하기">도커로 mysql 사용하기</h2>
+<p>로컬에 할 필요가 있나 싶은데 필요할 때마다 생성하고 지우고 싶어서 하기로 했다.
+내가 한 설정은 비밀 번호 없이 접속하고 나의 로컬 포트인 13306와 컨테이너의 3306포트를 연결했다.
+그냥 하면 한글문제가 발생한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>docker run -d -p 13306:3306 \
+ -e MYSQL_ALLOW_EMPTY_PASSWORD=true \
+ --name &lt;인스턴스 이름&gt; mysql:5.7 \
+ --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+</code></pre>
+</div>
+<p>-p <호스트 포트="">:<컨테이너 포트=""> : 컨테이너의 외부포트를 노출할때 사용, 포트는 65535까지이니 적절히 분배하면 될거 같다.
+-d : 데몬으로 실행(백그라운드 실행)
+-e : 환경 변수 설정, 환경 변수는 [도커 허브 MySQL페이지](https://hub.docker.com/_/mysql/)에 잘 나와있다. 
+--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci: 한글을 위한 utf-8설</컨테이너></호스트></p>
+
+<p>이제 콘솔이나 워크 밴치에서 사용하면 된다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>create database &lt;데이터 베이스 이름&gt;
+use &lt;데이터 베이스 이름&gt;
+show variables like 'char%' # UTF-8확인
+</code></pre>
+</div>
+<h3 id="참고-링크">참고 링크</h3>
+<p><a href="https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html">https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html</a></p>
+
+
+  </div>
+
+  <div class="date">
+    Written on March 12, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

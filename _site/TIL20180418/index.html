@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 4월 18일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Swift
+강제 언래핑
+기본 적으로 옵셔너값은 nil값을 가지는데 이를 추출해서 사용한다.
+let unwrapped = optionalValue! 
+
+
+" />
+    <meta property="og:description" content="Swift
+강제 언래핑
+기본 적으로 옵셔너값은 nil값을 가지는데 이를 추출해서 사용한다.
+let unwrapped = optionalValue! 
+
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 4월 18일 TIL" />
+    <meta property="twitter:title" content="2018년 4월 18일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 4월 18일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="swift">Swift</h2>
+<h3 id="강제-언래핑">강제 언래핑</h3>
+<p>기본 적으로 옵셔너값은 nil값을 가지는데 이를 추출해서 사용한다.</p>
+<pre><code class="language-swfit">let unwrapped = optionalValue! 
+</code></pre>
+
+<h3 id="옵셔널-바인딩">옵셔널 바인딩</h3>
+<p>존재 한다면 바인딩한다. nil체크를 하는 것보다 코드가 간결해진다. 여러값을 연속적으로 판단도 가능하며 조건문과 섞을 수 있다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>if let theError = errorCodeString, let errorCodeInteger = Int(theError),
+    errorCodeInteger == 404 {
+    print("\(theError): \(errorCodeInteger)")
+}
+</code></pre>
+</div>
+
+<h3 id="암묵적-언래핑">암묵적 언래핑</h3>
+<p>다음과 같은것이 가능하므로 위험 하다. 클래스 초기화 같이 제한적인 상황에서 쓰인다.</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">var</span> <span class="nv">implicitlyUnwrapped</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span> <span class="o">=</span> <span class="kc">nil</span>
+</code></pre>
+</div>
+
+<h3 id="옵셔널-체이닝">옵셔널 체이닝</h3>
+<p>연속적으로 옵셔널의 값을 확인 할 수 있는 방법 존재 하지 않으면 nil이 된다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>let chain = optionalValue?.test()
+</code></pre>
+</div>
+
+<h3 id="nil-결합-연산자">nil 결합 연산자</h3>
+<p>옵셔널 바인딩을 간단하게 한다.</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="k">let</span> <span class="nv">disc</span> <span class="o">=</span> <span class="n">error</span> <span class="p">??</span> <span class="s">"No error"</span>
+</code></pre>
+</div>
+
+
+  </div>
+
+  <div class="date">
+    Written on April 18, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

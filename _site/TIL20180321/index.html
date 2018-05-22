@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 3월 21일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="javascript
+계속 Udacity의 강의를 보고 있다. 예전 보다 아쉬운게 좀 많다.
+
+" />
+    <meta property="og:description" content="javascript
+계속 Udacity의 강의를 보고 있다. 예전 보다 아쉬운게 좀 많다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 3월 21일 TIL" />
+    <meta property="twitter:title" content="2018년 3월 21일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 3월 21일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="javascript">javascript</h2>
+<p>계속 Udacity의 강의를 보고 있다. 예전 보다 아쉬운게 좀 많다.</p>
+
+<h2 id="웹페이지를-만드는법">웹페이지를 만드는법</h2>
+<ol>
+  <li>콘텐츠를 하드 코딩하기</li>
+  <li>템블릿을 만들어두고 동적으로 로드 되게 하기</li>
+</ol>
+
+<h3 id="html-조작">HTML 조작</h3>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTag</span><span class="p">(</span><span class="s2">"tag"</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">().</span><span class="nx">html</span><span class="p">(</span><span class="s2">"&lt;tag&gt;"</span><span class="p">);</span> <span class="c1">//jquery</span>
+</code></pre>
+</div>
+
+<h3 id="number">Number</h3>
+<p>자바스크립트는 수가 모두 64비트 부동 소수점으로 저장된다.</p>
+
+<h3 id="clientheight-clientwidth">clientHeight, clientWidth</h3>
+<p>padding의 크기를 뜻한다.</p>
+
+<h3 id="document">document</h3>
+<p>웹페이지의 현재상태를 참조한다. 웹사이트에서 보이는 요소들을 모두 포함하는 DOM이다. 우리는 웹페이지에 변화를 주기 위해 DOM을 조작한다.</p>
+
+<h3 id="getelementsby-getelementby">getElementsBy, getElementBy[]</h3>
+<p>id는 유일해야 하므로 단수, 클래스나 태그는 여러개 있을 수 있으므로 복수이다.</p>
+
+<h3 id="elementstyle">Element.style</h3>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight">DOM property</a>이다. css를 값을 가진다.</p>
+
+<h3 id="문서에-html추가">문서에 html추가</h3>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTag</span><span class="p">(</span><span class="s2">"tag"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s1">'&lt;div&gt;&lt;/div&gt;'</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"tag"</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'&lt;div&gt;&lt;/div&gt;'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h3 id="boolean">Boolean</h3>
+<p>true, 0이 아닌수, “내용이 있는 문자열”, 객체, 배열, 함수
+false, 0, “”, undefined, null, Nan</p>
+
+<h3 id="-">&lt; &gt;</h3>
+<p>각각 <code class="highlighter-rouge">&lt;</code>와  <code class="highlighter-rouge">&gt;</code>를 나타냄</p>
+
+<h3 id="for의-방법">for의 방법</h3>
+<ol>
+  <li>for in : 객체와 요소를 반복, 배열일 경우는 인덱스가 반복됨</li>
+  <li>for of : 배열의 경우도 잘됨, 하지만 구형 ie에서 지원이 안되므로 주의</li>
+  <li>forEach : 배열 반복 문제 없이 잘됨
+```javascript
+[].forEach(fucntion(element){</li>
+</ol>
+
+<p>});</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+### 메서드 캡슐화
+```javascript
+object.func = function(){
+
+}
+</code></pre>
+</div>
+
+<h3 id="객체-정의하기">객체 정의하기</h3>
+<ol>
+  <li>문자 리터럴</li>
+  <li>.</li>
+  <li>[””]</li>
+</ol>
+
+<h3 id="스코프에서-주의할점">스코프에서 주의할점</h3>
+<p>if문은 스코프를 만들지 않는다.</p>
+
+<h3 id="함수-정의와-호출">함수 정의와 호출</h3>
+<p>이 경우에는 호출됨</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>example1();
+function example1() {
+    console.log("Ran the example");
+}
+</code></pre>
+</div>
+<p>호출되지 않음</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>example2();
+var example2 = function() {
+    console.log("Ran the example");
+}
+</code></pre>
+</div>
+<p>2번째 방법이 순차적이라서 좋은거 같다.ㄴ</p>
+
+<p>=== ==비교</p>
+
+  </div>
+
+  <div class="date">
+    Written on March 21, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

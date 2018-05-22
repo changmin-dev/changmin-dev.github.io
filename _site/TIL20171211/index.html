@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 12월 9일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Asp.Net Core &amp; Entity Framewrok
+Entity 프레임워크는 모델보다 컨텍스트에서 관계를 설정하는게 좋은거 같다. 생략한게 있으면 바로 알 수 있기 때문이다.
+
+" />
+    <meta property="og:description" content="Asp.Net Core &amp; Entity Framewrok
+Entity 프레임워크는 모델보다 컨텍스트에서 관계를 설정하는게 좋은거 같다. 생략한게 있으면 바로 알 수 있기 때문이다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 12월 9일 TIL" />
+    <meta property="twitter:title" content="2017년 12월 9일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 12월 9일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="aspnet-core--entity-framewrok">Asp.Net Core &amp; Entity Framewrok</h2>
+<p>Entity 프레임워크는 모델보다 컨텍스트에서 관계를 설정하는게 좋은거 같다. 생략한게 있으면 바로 알 수 있기 때문이다.</p>
+
+<h3 id="frombody">[FromBody]</h3>
+<p>JSON으로 입력을 받을때는 <code class="highlighter-rouge">[FromBody]</code>를 앞에 붙여 주어야 한다. POST가 계속 오류가나서 데이터 베이스 문제라고 생각했는데, <code class="highlighter-rouge">[FromBody]</code>를 붙여주지 않아서 였다.</p>
+<div class="language-c# highlighter-rouge"><pre class="highlight"><code><span class="na">[HttpPost]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Post</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Member</span> <span class="n">member</span><span class="p">){</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="mysql">Mysql</h2>
+
+<h2 id="utf8mb4">utf8mb4</h2>
+<p>텍스트에 4바이트 데이터가 생기면서 기존의 utf8로는 모든 것을 표현할 수가 없어져서 등장하게 되었다. 기존의 utf8을 사용한다면 3바이트로 되어있기 때문에 데이터가 손상될 것이다.</p>
+
+  </div>
+
+  <div class="date">
+    Written on December 11, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

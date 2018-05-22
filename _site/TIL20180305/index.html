@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 3월 5일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="알고리즘
+
+" />
+    <meta property="og:description" content="알고리즘
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 3월 5일 TIL" />
+    <meta property="twitter:title" content="2018년 3월 5일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 3월 5일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="알고리즘">알고리즘</h2>
+
+<h3 id="그래프">그래프</h3>
+<p>DFS와 BFS 구현을 해보았다. junit을 같이 해봤는데 통과하기가 어려웠다. 유닛 테스트가 있으면 정확하게 코딩을 할 수밖에 없는 거 같다.</p>
+
+<h2 id="프로젝트">프로젝트</h2>
+<p>이전에 완벽하게 완성하지 못한 프로젝트를 프런트까지 해보려고 한다.</p>
+
+<h3 id="astliteral_eval">ast.literal_eval()</h3>
+<p><a href="https://docs.python.org/3/library/ast.html#ast.literal_eval">문서</a>를 보면 리터럴을 
+적절한 자료형(dict, number 등등)으로 바꾸어준다. 나의 경우는 프론트엔드로부터 받은 json이 처리가 안되었다. <code class="highlighter-rouge">json.load()</code>함수는 파싱하는데 문제가 있는건지 오류가 발생했는데 ast.literal_eval을 활용하니 성공했다. <code class="highlighter-rouge">ast</code>모듈은 나중에 자세히 알아봐야겠다.</p>
+
+<h3 id="flask-프로토타입-만들기">Flask 프로토타입 만들기</h3>
+<p>지금 플라스크를 이용하고 있는데 아래처럼 아직 구현은 안 하지만 먼저 인터페이스만 만들어 두면 따로 문서 안 찾아봐도 되고 좋은 거 같다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@app</span><span class="o">.</span><span class="na">route</span><span class="o">(</span><span class="s">"/users/&lt;int:user_id&gt;/items"</span><span class="o">,</span> <span class="n">methods</span><span class="o">=[</span><span class="err">'</span><span class="n">GET</span><span class="err">'</span><span class="o">,</span> <span class="err">'</span><span class="n">POST</span><span class="err">'</span><span class="o">])</span>
+<span class="n">def</span> <span class="nf">item</span><span class="o">(</span><span class="n">displaymemo_id</span><span class="o">):</span>
+    <span class="s">"""
+    GET :
+    POST :
+    """</span>
+    <span class="k">return</span> <span class="s">"items"</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="na">route</span><span class="o">(</span><span class="s">"/users/&lt;int:user_id&gt;/items/&lt;int:item_id&gt;"</span><span class="o">,</span> <span class="n">methods</span><span class="o">=[</span><span class="err">'</span><span class="n">GET</span><span class="err">'</span><span class="o">,</span> <span class="err">'</span><span class="n">PUT</span><span class="err">'</span><span class="o">,</span> <span class="err">'</span><span class="n">DELETE</span><span class="err">'</span><span class="o">])</span>
+<span class="n">def</span> <span class="nf">item_by_id</span><span class="o">(</span><span class="n">item_id</span><span class="o">):</span>
+    <span class="s">"""
+    GET :
+    PUT :
+    DELETE :
+    """</span>
+    <span class="k">return</span> <span class="s">"item"</span>
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="date">
+    Written on March  5, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

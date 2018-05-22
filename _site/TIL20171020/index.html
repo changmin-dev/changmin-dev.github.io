@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 10월 20일 – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="크롤링
+어제 정리 못한 내용을 정리
+
+" />
+    <meta property="og:description" content="크롤링
+어제 정리 못한 내용을 정리
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 10월 20일" />
+    <meta property="twitter:title" content="2017년 10월 20일" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 10월 20일</h1>
+
+  <div class="entry">
+    <h1 id="크롤링">크롤링</h1>
+<p>어제 정리 못한 내용을 정리</p>
+
+<h2 id="find-findall">find(), findAll()</h2>
+<p>BeautifulSoup에서 가장 많이 사용 하는 함수라고 한다.
+find()는 1개만 findAll()은 조건을 만족하는 것을 전부 가져온다.
+<code class="highlighter-rouge">계.층.구.조.tag</code>와 같이 점으로 찍어야 하지만 find()를 사용하면 간단하게 찾을 수 있다.<br />
+findAll(tag, attribute, recursive, text, limit, keyword)</p>
+
+<ol>
+  <li>tag<br />
+가장 많이 사용한다. <code class="highlighter-rouge">findAll(tag)</code> 형태 이다.
+ </li>
+  <li>attribute<br />
+속성으로 된 딕셔너리를 입력으로 주어서 만족하는
+    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">findAll</span><span class="p">(</span><span class="s">"span"</span><span class="p">,{</span><span class="s">"class"</span><span class="p">:{</span><span class="s">"red"</span><span class="p">,</span> <span class="s">"blue"</span><span class="p">}})</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>recursive
+bool값으로 트리를 타고 내려갈 것인가 여부를 결정한다. False라면 최상위 태그만, True라면 트리 아래 계층까지 찾는다.</p>
+  </li>
+  <li>text
+텍스트 콘텐츠에 일치 하는지를 찾는다.
+    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">bs</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s">"20171020"</span><span class="p">)</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>limit
+처음 부터 (limit값)개 까지 찾는다. findAll()에서 limit=1이면 find()이다.</p>
+  </li>
+  <li>keyword
+attribute로 찾는다면 <code class="highlighter-rouge">or</code>이고 keyword로 찾는다면 <code class="highlighter-rouge">and</code>이다.
+    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">findAll</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">"name"</span><span class="p">)</span>
+<span class="n">findAll</span><span class="p">(</span><span class="n">class</span><span class="o">=</span><span class="s">"name"</span><span class="p">)</span><span class="c"># 위험! class는 파이썬의 키워드이다.</span>
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="트리-접근하기">트리 접근하기</h2>
+<p>마크업은 대부분 트리로 이루어 져있다. BeautifulSoup을 사용할 때도 자식 자속 접근을 할수 있다.</p>
+<ol>
+  <li>자식, 자손
+    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">bs</span><span class="o">.</span><span class="n">div</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="c"># div의 자손을 검색한다.</span>
+<span class="n">bs</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span><span class="o">.</span><span class="n">children</span> <span class="c"># 자식만 접근한다.</span>
+</code></pre>
+    </div>
+  </li>
+  <li>형제
+<code class="highlighter-rouge">next_siblings</code>을 이용한다. 이때 주의해야 되는것은 자기 자신은 형제가 아니라는 점이다.
+    <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">sibling</span> <span class="ow">in</span> <span class="n">bs</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span><span class="o">.</span><span class="n">next_siblings</span><span class="p">:</span>
+ <span class="k">print</span><span class="p">(</span><span class="n">sibling</span><span class="p">)</span> <span class="c">#자신을 제외한 형제들이 출력된다.</span>
+</code></pre>
+    </div>
+  </li>
+  <li>부모
+현재 태그의 부모 태그에 접근할 수 있다. <code class="highlighter-rouge">parent</code>를 사용한다. <code class="highlighter-rouge">parents</code>는 모든 부모를 가지고 온다.</li>
+</ol>
+
+<h1 id="알고리즘">알고리즘</h1>
+<p>도서관에 인터넷이 안되서 예전에 못푼 문제를 풀어 보았다.</p>
+
+  </div>
+
+  <div class="date">
+    Written on October 20, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

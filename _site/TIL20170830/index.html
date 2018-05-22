@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>8월 30일TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="TIL쓰는거 생각보다 벅차다. 공부를 다하고 쓰는것보다는 하면서 작성해야겠다. 지킬블로그는 포크해온것이라 화면 구성을 못하는데 조금씩 공부해서 카테고리를 추가해야겠다.
+
+" />
+    <meta property="og:description" content="TIL쓰는거 생각보다 벅차다. 공부를 다하고 쓰는것보다는 하면서 작성해야겠다. 지킬블로그는 포크해온것이라 화면 구성을 못하는데 조금씩 공부해서 카테고리를 추가해야겠다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="8월 30일TIL" />
+    <meta property="twitter:title" content="8월 30일TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>8월 30일TIL</h1>
+
+  <div class="entry">
+    <p>TIL쓰는거 생각보다 벅차다. 공부를 다하고 쓰는것보다는 하면서 작성해야겠다. 지킬블로그는 포크해온것이라 화면 구성을 못하는데 조금씩 공부해서 카테고리를 추가해야겠다.</p>
+
+<h2 id="자료구조">자료구조</h2>
+<p>DFS, BFS를 아이디어만 보고 구현하려고 시도했다. 처음에 DFS를 구현하려고 했는데 스택을사용한 BFS가 되어버린거 같아 혹시나해서 큐를 스택으로 바꾸었더니 BFS가 되었다.
+배열로 구현된 그래프로 구현하고 인접리스트로 구현을 시도 했는데 생각해보니 인터페이스가 같아서 함수를 그대로 사용해도 문제가 없었다.
+구현에 시간소요가 너무 오래걸린다.(DFS삽질로 인해) 지금 같은 페이스로는 1년뒤에나 책을 다볼듯 30분정도 고민하고 모르겠으면 책에서 힌트만 얻어서 구현 해야겠다.</p>
+
+<h3 id="그래프-계속">그래프 계속</h3>
+<p>깊이 우선 탐색(DFS)</p>
+<ul>
+  <li>끝까지 간다.</li>
+  <li>끝까지 가서 뒤로 돌아와서 가지 않은 곳으로 끝까지 가지 않은곳이 없다면 다시 뒤로</li>
+  <li>반복</li>
+  <li>구현하기 : 함수 하나로 끝내려고 하다가 많은 시행착오를 했다. 스택을 이용했다.
+    <div class="highlighter-rouge"><pre class="highlight"><code>public ArrayList dfs(int start) {
+  Stack visitStack = new Stack();
+  ArrayList visitedList = new ArrayList();
+
+  visitedList.add(start);
+  visitStack.push(start);
+
+  while(!visitStack.empty() &amp;&amp; visitedList.size() &lt; vertexCount){
+      int nextVisit = checkVertex(visitStack.peek() , visitedList);
+      if(nextVisit == -1)
+          visitStack.pop();
+      else{
+          visitedList.add(nextVisit);
+          visitStack.push(nextVisit);
+      }
+  }
+      return visitedList;
+  }
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<p>너비 우선 탐색(BFS)</p>
+<ul>
+  <li>시작 정점에서 갈 수 있는 정점을 방문한다.(1단계만)</li>
+  <li>방문한 정점에서 갈 수 있는 정점을 방문한다.(1단계만)</li>
+  <li>반복</li>
+  <li>구현하기 : 큐를 이용 해서 구현함
+    <div class="highlighter-rouge"><pre class="highlight"><code>public ArrayList bfs(int start) {
+      Queue visitQueue = new Queue();
+      ArrayList visitedList = new ArrayList();
+      visitQueue.offer(start);
+
+      while(!visitQueue.isEmpty()){
+          int visited = visitQueue.poll();
+          visitedList.add(visited);
+
+          for(int i = 0; i &lt; vertexCount; ++i){
+              if(visitedList.isExist(i))
+                  continue;
+              if(checkEdge(visited, i))
+                  visitQueue.offer(i);
+          }
+      }
+      return visitedList;
+}
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h2 id="html-javascript">HTML, Javascript</h2>
+<p>지금 개발하는 서비스의 관리페이지를 만들어야 해서 공부하고 있다. 백엔드인데 점점 풀스택이 되어가고 있네 만들면 테스도 용이해지고 해서 편하기는 할듯</p>
+<h3 id="form-데이터를-json으로-전송하기">form 데이터를 json으로 전송하기</h3>
+<p>Postman같이 post데이터를 지정해줄수 있는 enctype을 찾았는데 이제 지원을 하지 않는다고 한다.
+내일 다시 시도 하기로 했다.</p>
+
+<h2 id="기타">기타</h2>
+<h3 id="컴포넌트와-모듈의-차이">컴포넌트와 모듈의 차이</h3>
+<p>모듈은 구현의 단위고 컴포넌트는 실행 단위이다.
+서버 - 클라이언트 구조에서 서버 1개에 클라이언트가 10개라면 모듈은 2개이고 컴포넌트는 11개 이다.
+SE개념인가? 이것도 찾아봐야 할듯</p>
+
+
+  </div>
+
+  <div class="date">
+    Written on August 30, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

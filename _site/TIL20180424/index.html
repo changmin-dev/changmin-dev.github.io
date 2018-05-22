@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2018년 4월 24일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="Swift
+
+" />
+    <meta property="og:description" content="Swift
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2018년 4월 24일 TIL" />
+    <meta property="twitter:title" content="2018년 4월 24일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 4월 24일 TIL</h1>
+
+  <div class="entry">
+    <h2 id="swift">Swift</h2>
+
+<h3 id="property">Property</h3>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">MyClass</span><span class="p">{</span>
+    <span class="c1">//저장형 프로퍼티</span>
+    <span class="k">let</span> <span class="nv">property1</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">//읽기 전용</span>
+    <span class="k">var</span> <span class="nv">property2</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">//읽기 쓰기 전용</span>
+
+    <span class="c1">//지연 저장 프로퍼티 - 값에 접근하는 순간 클로저가 계산 된다.</span>
+    <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">property3</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">property2</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}()</span>
+    
+    <span class="c1">//계산형 프로퍼티</span>
+    <span class="k">var</span> <span class="nv">property4</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">otherProperty</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="p">}</span>
+        <span class="nf">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">otherProperty</span> <span class="o">=</span> <span class="n">value</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//프로퍼티 관찰자 </span>
+    <span class="k">var</span> <span class="nv">property5</span> <span class="o">=</span> <span class="mi">100</span> <span class="p">{</span>
+        <span class="c1">//프로퍼티가 변경 됬을때</span>
+        <span class="nf">didSet</span><span class="p">(</span><span class="n">oldValue</span><span class="p">){</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">oldValue</span><span class="se">)</span><span class="s"> to </span><span class="se">\(</span><span class="n">property5</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="c1">//프로퍼티가 변경 될때</span>
+        <span class="nf">willSet</span><span class="p">(){</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"willSet!"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">//타입 프로퍼티 - 타입 자체의 값 구조체는 static을 이용한다. </span>
+    <span class="kd">class</span> <span class="k">var</span> <span class="nv">typeProperty</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+<h4 id="접근-제어">접근 제어</h4>
+<p>모듈은 import되는 단위이다.</p>
+<ul>
+  <li>open : 모듈내부와 모듈을 가져온 다른 모듈에서 전체가가 보이고 서브클래스에서도 보인다.</li>
+  <li>public : 서브클래스에서 보이지 않는것을 제외하고는 open과 같음</li>
+  <li>internal : 기본값으로 같은 모듈에서 전체가 보인다.</li>
+  <li>fileprivate : 정의하는 소스 파일 안에서만 전체가 보인다.</li>
+  <li>private : 정의하는 영역 안에서만 전체가 보인다.</li>
+</ul>
+
+<h3 id="auto-closure">Auto Closure</h3>
+<p>중괄호를 안써도됨</p>
+<h3 id="escaping-closure">Escaping Closure</h3>
+<p>다음 동작이 실행되는 것을 보장함 - 리턴
+completion handler</p>
+
+<h2 id="ios">iOS</h2>
+<h3 id="테이블-뷰">테이블 뷰</h3>
+<ol>
+  <li>
+    <p>뷰 컨트롤러에 테이블 뷰와 테이블 뷰 셀을 추가하기 : 
+ViewController는 <code class="highlighter-rouge">UITableViewDataSource</code>와 <code class="highlighter-rouge">UITableViewDelegate</code>를 상속받아야한다. <code class="highlighter-rouge">tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell</code>에서 셀을 처리한다.
+<code class="highlighter-rouge">func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {</code>에서 셀의 개수를 리턴한다 보통 컬렉션의 길이 인거 같다.
+<code class="highlighter-rouge">@IBOutlet</code>을 통해 테이블 뷰와 연결한다.</p>
+  </li>
+  <li>
+    <p>테이블 뷰컨트롤러를 이용하기 : 
+상속 받을 필요가 없고 내부에 테이블 뷰를 가지고 있다.
+나머지는 <code class="highlighter-rouge">1</code>과 같다.</p>
+  </li>
+</ol>
+
+  </div>
+
+  <div class="date">
+    Written on April 24, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

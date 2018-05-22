@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2017년 9월 3일 TIL – Twibeat – 잊어 버리지 않기 위해서</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="TIL을 계속 쓰니까 왠지 문법이 많이 틀렸을꺼 같은 생각이 든다.
+프로세스 동기화
+경쟁 조건
+여러개의 프로세스가 동일한 자료에 접근하여 조작하고 실행결과가 접근이 발생한 특정 순서에 의존하는 상황을 경쟁 조건이라고 한다.
+
+" />
+    <meta property="og:description" content="TIL을 계속 쓰니까 왠지 문법이 많이 틀렸을꺼 같은 생각이 든다.
+프로세스 동기화
+경쟁 조건
+여러개의 프로세스가 동일한 자료에 접근하여 조작하고 실행결과가 접근이 발생한 특정 순서에 의존하는 상황을 경쟁 조건이라고 한다.
+
+" />
+    
+    <meta name="author" content="Twibeat" />
+
+    
+    <meta property="og:title" content="2017년 9월 3일 TIL" />
+    <meta property="twitter:title" content="2017년 9월 3일 TIL" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Twibeat - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Twibeat</a></h1>
+            <p class="site-description">잊어 버리지 않기 위해서</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/TIL">TIL</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 9월 3일 TIL</h1>
+
+  <div class="entry">
+    <p>TIL을 계속 쓰니까 왠지 문법이 많이 틀렸을꺼 같은 생각이 든다.</p>
+<h2 id="프로세스-동기화">프로세스 동기화</h2>
+<h3 id="경쟁-조건">경쟁 조건</h3>
+<p>여러개의 프로세스가 동일한 자료에 접근하여 조작하고 실행결과가 접근이 발생한 특정 순서에 의존하는 상황을 <code class="highlighter-rouge">경쟁 조건</code>이라고 한다.</p>
+
+<h3 id="임계-영역">임계 영역</h3>
+<p><code class="highlighter-rouge">임계영역</code>은 코드에서 다른 프로세스와 공동으로 사용하는 영역(변수, 테이블, 파일등을 변경하는 영역)이다. 각 프로세스는 임계 영역에 들어가기위해 요청을 해야하는데 이 코드 부분을 <code class="highlighter-rouge">진입영역</code>이라고 한다. 이후에 다른 프로세들이 진입할 수 있게 해주어야 하는데 이 코드 부분을 <code class="highlighter-rouge">출구영역</code>이라고 한다.</p>
+
+<h3 id="임계-영역-해결을-위한-3가지-요구-조건">임계 영역 해결을 위한 3가지 요구 조건</h3>
+<ol>
+  <li>상호배제 : 한 프로세스가 임계영역에서 실행되고 있다면 다른 프로세스는 자신의 임계영역에서 실행 될 수 없다.</li>
+  <li>진행 : 임계 구역을 실행하는 프로세스가 없을 때 임계 구역에 진입하려는 프로세스가 생긴다면, 진입 순서는 이들에 의해서만 결정 되어야 한다.</li>
+  <li>한정된 대기 : 한 프로세스가 자기의 임계영역에 진입하려는 요청을 한 후 부터 그 요청이 허용 되기까지 다른 프로세스가 자기의 임계 영역에 진입 할 수 있는 횟수에는 제한이 있어야 한다. (대기 시간이 한없이 길어지면 안된다.)</li>
+</ol>
+
+<h3 id="운영체제커널에서-임계-영역을-다루기위한-접근법">운영체제(커널)에서 임계 영역을 다루기위한 접근법</h3>
+<ol>
+  <li>선점형 커널 : 프로세스가 커널모드에서 실행되는 동안 선점하게함</li>
+  <li>비선점형 커널 : 커널모드에 들어 갈 수 있는 프로세스는 1개 라서 경쟁 조건이 없다.</li>
+</ol>
+
+<h2 id="임계영역을-문제-해결을-위한-방법들">임계영역을 문제 해결을 위한 방법들</h2>
+<h3 id="피터슨의-방법">피터슨의 방법</h3>
+<p>병렬로 실행된다고 생각해야 이해가 쉽다.
+load, store 명령어 때문에 문제가 발생할 여지가 있다고 한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>//임계 영역으로 진입할 순번
+int turn;
+// 임계 영역으로 진입할 준비가 되었는지를 나타내는 배열 
+boolean flag[2];//2개의 경우에만 
+while(true){
+    flag[i] = TRUE;
+    turn = j;
+    while(flag[j] &amp;&amp; turn == j);
+    //임계 영역
+    flag[i] = FALSE;//
+    //나머지 영역
+}
+</code></pre>
+</div>
+
+<h3 id="동기화-하드웨어">동기화 하드웨어</h3>
+<p>하드웨어 적으로 록을 사용한다. 공유변수가 변경되는 동안 인터럽트를 금지 시키는 방법으로 구현한다. 혹은 현대적인 하드웨어에서는 데이터 원자적으로 접근하는 명령어를 제공한다.</p>
+
+<h3 id="세마포어">세마포어</h3>
+<p>책이 공룡책 자바 버전이다 보니 wait(), signal()이 아니라 조금 다르다. 세마포어는 S에서 value로 표현 됨</p>
+
+<p>기본 적인 방식</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>//P연산 이라고도 불린다.
+acquire(){
+    while(value &lt;= 0);
+    value--;
+}
+//V연산이라고도 불린다.
+release(){
+    value++;
+}
+</code></pre>
+</div>
+<p>위의 방식은 Busy wating 문제(자원이 없으면 계속 While문 반복)가 있다.</p>
+
+<p>개선된 방법. 자원이 없는 경우 프로세스를 리스트에 넣고 대기하도록한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>acquire(){
+    value--;
+    if(value &lt; 0){
+        해당 프로세스를 리스트에 넣는다();
+        block();//호출한 프로세스를 대기 시킴
+    }
+}
+
+release(){
+    value++;
+    if(value &lt;= 0){
+        리스트로부터 하나의 프로세스를 꺼낸다();
+        wakeup(P);//프로세스 P를 재개 시킴
+    }
+}
+</code></pre>
+</div>
+
+<h3 id="모니터">모니터</h3>
+<p>프로그래머가 세마포어를 잘못 사용하면 다양한 유형의 오류가 생길 수 있다. 이를 해결하기 위한 방법 중 하나가 모니터이다.</p>
+
+<h4 id="자바의-모니터">자바의 모니터</h4>
+<p>자바에서는 synchronized와 wait(), notify()를 이용해서 동기화를 구현한다.<br />
+synchronized : synchronized가 선언된 부분은 실행시 록을 소유하게 되고 다른 스레드에서 접근 할수가 없다. 접근할 경우 록이 해제되도록 기다리는 <code class="highlighter-rouge">진입 집합(entry set)</code>에 들어가게 된다.<br />
+wait() : 스레드에게 호출되면 스레드는 객체에 대한 록을 방출하고 Blocking 상태가 된다. 그리고 <code class="highlighter-rouge">대기 집합(wait set)</code>에 들어가게 된다.<br />
+notify() : 대기 집합의 스레드 중에서 임의 스레드를 진입집합으로 옮기고 Blocking 상태에서 Runnable상태로 바꾼다.</p>
+
+<h2 id="교착상태dead-lock">교착상태(Dead lock)</h2>
+<p>프로세스(스레드)가 대기상태에서 벗어날수 없는 상황. 요청한 자원을 다른 프로세스가 점유하고 있고 점유하고 있는 프로세스도 대기 상태라면 교착상태가 될 수 있다.</p>
+
+<h3 id="교착-상태의-조건">교착 상태의 조건</h3>
+<p>조건중 하나만 만족하지 않는다면 교착상태에 빠지지 않는다.</p>
+<ol>
+  <li>상호배제</li>
+  <li>점유하며 대기</li>
+  <li>비선점</li>
+  <li>순환대기(circular wait)</li>
+</ol>
+
+  </div>
+
+  <div class="date">
+    Written on September  3, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/changmin-dev"><i class="svg-icon github"></i></a>
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
