@@ -1,0 +1,63 @@
+Integer.MAX_VALUE는 소수이다!!!
+Integer.MAX_VALUE-1까지는 간단하게 구해진다. 하지만 이전의 소수를 전부 구하므로 느려진다.
+아니면 배열의 최대크기가 Integer.MAX_VALUE인걸로 아는데 이걸 이용해서 에라토네스의 채를 이용해도 될것이다.
+코드워즈는 입력 조건이 구체적이지 않아서 아쉽다. 별도의 테스트 코드까지 제공하고 테스트 케이스를 모두 통과할경우 확인이 가능하다는 것이 장점이다.
+코드워즈의
+Primes in numbers라는 문제이다.
+
+```
+import java.util.List;
+import java.util.ArrayList;
+
+public class PrimeDecomp {
+    static List<Integer> primes = new ArrayList<>();
+
+    public static String factors(int n) {
+        //
+        if(n == Integer.MAX_VALUE){
+            return "(" + Integer.MAX_VALUE + ")";
+        }
+        // your code
+        StringBuilder stb = new StringBuilder();
+
+        while(n > 1){
+            int div = getNextPrime();
+            int count = 0;
+
+            while(n % div == 0){
+                count++;
+                n /= div;
+            }
+
+            if(count == 1){
+                stb.append(String.format("(%d)", div));
+            }else if(count >= 2){
+                stb.append(String.format("(%d**%d)", div, count));
+            }
+
+        }
+        return stb.toString();
+    }
+
+    public static int getNextPrime(){
+        if(primes.isEmpty()){
+            primes.add(2);
+            return 2;
+        }else{
+            int next = primes.get(primes.size()-1);
+
+            whileLoop:
+            while(true){
+                next += 1;
+                for(int prime : primes){
+                    if(next % prime == 0){
+                        continue whileLoop;
+                    }
+                }
+                primes.add(next);
+                return next;
+            }
+        }
+    }
+}
+```
