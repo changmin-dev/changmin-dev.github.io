@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Anaconda를 이용한 mac에서 Keras설치
+tags:
+- Anaconda
+- Keras
+- Python
 ---
 
 리눅스에는 Keras가 Anaconda로 바로 설치되었으나 맥에서는 안되었다. 다행히 패키지를 찾을 수 있어서 쉽게 설치할수 있었다.

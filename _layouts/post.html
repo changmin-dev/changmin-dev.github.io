@@ -4,11 +4,11 @@ layout: default
 
 <article class="post">
   <h1>{{ page.title }}</h1>
-
+  {% include post_tags.html %}
   <div class="entry">
     {{ content }}
   </div>
-  {% include post_tags.html %}
+  
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
