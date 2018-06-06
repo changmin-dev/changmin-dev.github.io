@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>2017년 12월 05일 TIL – Changmin-dev – 잊어 버리지 않기 위해서</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="IOS
+생각보다 진도가 안나가서 3분에 1정도 남았다.
+
+" />
+    <meta property="og:description" content="IOS
+생각보다 진도가 안나가서 3분에 1정도 남았다.
+
+" />
+    
+    <meta name="author" content="Changmin-dev" />
+
+    
+    <meta property="og:title" content="2017년 12월 05일 TIL" />
+    <meta property="twitter:title" content="2017년 12월 05일 TIL" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Changmin-dev - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+  <body>
+    <div class="wrapper-masthead">
+  <div class="container">
+    <header class="masthead clearfix">
+      
+        <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+      
+
+      <div class="site-info">
+        <h1 class="site-name"><a href="/">Changmin-dev</a></h1>
+        <p class="site-description">잊어 버리지 않기 위해서</p>
+      </div>
+
+      <nav>
+        
+        
+        <a href="/">Blog</a>
+        
+        
+        
+        <a href="/about">About</a>
+        
+        
+        
+        <a href="/archive">Archive</a>
+        
+        
+        
+        <a href="/tags">Tags</a>
+        
+        
+        
+        <a href="https://github.com/AWEEKJ/kiko-now">Theme</a>
+        
+        
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 12월 05일 TIL</h1>
+
+  <div clsss="meta">
+    <span class="date">
+      2017-12-05
+    </span>
+
+    <ul class="tag">
+      
+    </ul>
+  </div>
+
+  <div class="entry">
+    <h2 id="ios">IOS</h2>
+<p>생각보다 진도가 안나가서 3분에 1정도 남았다.</p>
+
+<h3 id="section">뷰</h3>
+<p>뷰는 계층적이다. 하나의 슈퍼 뷰가 있어서 그 안에 자식들이 있는 형식 뷰는 무한한 자식을 가진다.
+UIView를 생각하면 된다.
+UIWindow는 앱동안 1개 씩 스크린이 더 있다면 스크린 만큼 존재한다.
+view는 최상위 뷰에 연결된 포인터이다.
+최상위 뷰는 bound가 변하는 곳이다. 회전하는 경우 제약 조건을 주었다면 최상위 뷰에 맞게 변한다.</p>
+
+<h3 id="section-1">뷰 초기화</h3>
+<ol>
+  <li>init(frame: CSRect) : 코드를 생성 했을 때</li>
+  <li>init(coder: NSCore) 스토리보드 부터 연결할 때</li>
+</ol>
+
+<p>이런 방법으로 2개를 구현 하는 것을 권장</p>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">func</span><span class="w"> </span><span class="n">setup</span><span class="p">(){</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span><span class="n">override</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="n">init</span><span class="p">(</span><span class="n">frame</span><span class="o">:</span><span class="w"> </span><span class="n">CSRect</span><span class="p">){</span><span class="w">
+    </span><span class="n">super.init</span><span class="p">(</span><span class="n">frame</span><span class="o">:</span><span class="w"> </span><span class="n">frame</span><span class="p">)</span><span class="w">
+    </span><span class="n">setup</span><span class="p">()</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">required</span><span class="w"> </span><span class="n">init</span><span class="p">(</span><span class="n">coder</span><span class="o">:</span><span class="w"> </span><span class="n">NSCore</span><span class="p">){</span><span class="w">
+    </span><span class="n">super.init</span><span class="p">(</span><span class="n">coder</span><span class="o">:</span><span class="w"> </span><span class="n">aDecoder</span><span class="p">)</span><span class="w">
+    </span><span class="n">setup</span><span class="p">()</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="section-2">드로잉에 쓰는 자료형들</h3>
+<p>CGFloat :  드로잉할때 쓰이는 부동 소수점 형
+CGPoint : x,y
+CGSize : width, height로 구성
+CGRect : CGPoint와 CGsize 그리고 여러 메소드로 구성</p>
+
+<h3 id="section-3">좌표계</h3>
+<p>왼쪽 위가 (0,0)다. 아이폰 6s기준 포인트당 3픽셀이다.
+bound: 뷰에서 그려지는 부분이다.<br />
+center : 슈퍼뷰에서 중앙을 나타낸다. <br />
+frame : 슈퍼뷰안에서 뷰가 어디에 있는지를 나타낸다. CGRect형이다.</p>
+
+<h3 id="section-4">뷰가 회전 하는 경우</h3>
+<p>bound가 frame안에 있는데 프레임은 회전 하지 않고 바운드만 회전한다.</p>
+
+<h3 id="section-5">그리기</h3>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">let</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UIBezierPath</span><span class="p">()</span><span class="w">
+
+</span><span class="n">path.moveToPoint</span><span class="p">(</span><span class="n">CGPoint</span><span class="p">(</span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">
+</span><span class="n">path.addLineToPoint</span><span class="p">(</span><span class="n">CGPoint</span><span class="p">(</span><span class="m">140</span><span class="p">,</span><span class="w"> </span><span class="m">150</span><span class="p">))</span><span class="w">
+</span><span class="n">path.addLineToPoint</span><span class="p">(</span><span class="n">CGPoint</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">150</span><span class="p">))</span><span class="w">
+
+</span><span class="n">path.closePath</span><span class="p">()</span><span class="w">
+
+</span><span class="o">//</span><span class="err">컬러는</span><span class="w"> </span><span class="n">UI</span><span class="err">컬러</span><span class="w">
+</span><span class="n">UIColor.greenColor</span><span class="p">()</span><span class="n">.setFill</span><span class="p">()</span><span class="w">
+</span><span class="n">UIColor.redColor</span><span class="p">()</span><span class="n">.setStroke</span><span class="p">()</span><span class="w">
+
+</span><span class="o">//</span><span class="err">다시</span><span class="w"> </span><span class="err">그리는</span><span class="w"> </span><span class="err">부분은</span><span class="w"> </span><span class="n">UIBezierPath</span><span class="w">
+</span><span class="n">path.linewidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3.0</span><span class="w">
+</span><span class="n">path.fill</span><span class="p">()</span><span class="w">
+</span><span class="n">path.stroke</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+<p>UIBezierPath의 생성자를 통해서 다양한 모양을 그릴수 있다.</p>
+
+<p>containsPoint()으로 Hit detection가능</p>
+
+<h3 id="uicolor">UIColor</h3>
+<p>색상에 관한 것들이 static메소드로 있다. UIColor.greenColor()<br />
+alpha값을 설정 가능 colorWithAlphaComponent(0.5) <br />
+0(투명) ~ 1.0(불투명)값을 가진다.
+subview들을 이용해서 투명도를 이용한 overlap가능하다.</p>
+
+<h3 id="section-6">텍스트 그리기</h3>
+<p>UILable에 그린다.
+NSAttributedString, NSMutableAttributedString을 사용
+NSString, NSRange으로 다룬다. String, Range와 다르므로 주의해야한다.</p>
+
+<h3 id="section-7">폰트</h3>
+<p>UIFont</p>
+<ol>
+  <li>Prefered Font : static 메소드인 preferedFontForTextStyle()을 이용해 UIFont를 가져오기</li>
+  <li>System Font 사용하기 : 계산기 예제에서 사용했던 것</li>
+  <li>특정 폰트 사용하기(커스터마이징)</li>
+</ol>
+
+<h3 id="section-8">이미지 뷰</h3>
+<p>UIImageView를 사용 그 위에 또 그릴 수 있음
+UIImage 사용하기</p>
+<ol>
+  <li>파일 이름으로 가져오기 파일은 .xcassets파일에 등록 해야한다.
+    <div class="highlighter-rouge"><pre class="highlight"><code>let image: UIImage = UIImage(named: "filename")//optional
+</code></pre>
+    </div>
+  </li>
+  <li>파일 생성하기
+    <div class="highlighter-rouge"><pre class="highlight"><code>let image1 : UIImage? = UIImage(contentsOfFile: aString)
+let image2 : UIImage? = UIImage(data: anNSData)
+</code></pre>
+    </div>
+  </li>
+  <li>Core Graphic을 이용하기</li>
+</ol>
+
+<h3 id="section-9">화면 돌릴때 다시 그리기</h3>
+<p>성능을 위해서 기본적으로 화면에 맞추어 늘어난다. 그래서 다시 그려주어야 한다. <code class="highlighter-rouge">UIViewContentMode</code>를 통해서 조정한다.</p>
+
+<h3 id="section-10">뷰컨트롤러 이름 바꾸기</h3>
+<p>클래스 이름, 파일명 스토리보드의 인스펙터에서 커스텀클래스에서 이름 바꾸기</p>
+
+<p>스위프트는 리터럴에 대해서 자료형변경이 가능하다.</p>
+
+<h3 id="section-11">회전하는 화면에 대응하기</h3>
+<p>하단에 5개중 맨 오른쪽에있는 constrant에서 Reset Constrant하면 회전되어도 이미지가 적절하게 바뀌게 된다. 사이즈인스펙터에서 제약조건을 확인 가능하다. 그리고 뷰 인스펙터에서 Contnet mode Redraw하면 회언제 대응한다.</p>
+
+<h3 id="draw--bounds---">draw메소드 밖에서 bounds 같은 프로퍼티 사용하기</h3>
+<p>get{}사용하는데 get만 사용하면 그냥 return 해주면 된다.</p>
+
+<h3 id="section-12">코드로 작성한 것 스토리 보드에 적용하기</h3>
+<p>@IBDesignable : 스토리보드에 코드로 그린 내용을 적용 할수 있음
+@IBInspectable : 스토리보드에서 코드로 작성한 부분을 설정가능. 이때는 타입을 명시적으로 해야한다.</p>
+
+<h3 id="section-13">뷰가 다시 그려졌을 때를 처리</h3>
+<p>이런 식으로 처리한다.</p>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">var</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5.0</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+    </span><span class="n">didSet</span><span class="p">{</span><span class="w"> 
+        </span><span class="n">setNeedsDisplay</span><span class="p">()</span><span class="w"> 
+    </span><span class="p">}</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="section-14">제스쳐</h3>
+<p>IOS에는 사용자 입력을 제스처로 받는 추상레이어가 존재한다. UIGestureRecognizer가 있고 이를 상속 받는다.</p>
+<ol>
+  <li>UIView가 인식 - GestureRecognizer 설정한다.</li>
+  <li>핸들러 - 제스처 핸들러가 처리한다. <br />
+제스처 등록 예
+    <div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="o">@</span><span class="n">IBOutlet</span><span class="w"> </span><span class="n">weak</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="n">pannableView</span><span class="o">:</span><span class="w"> </span><span class="n">UIView</span><span class="p">{</span><span class="w">
+ </span><span class="n">didSet</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="n">let</span><span class="w"> </span><span class="n">recognizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UIPanGestureRecognizer</span><span class="p">(</span><span class="w">
+         </span><span class="n">target</span><span class="o">:</span><span class="w"> </span><span class="n">self</span><span class="p">,</span><span class="o">//</span><span class="err">누가</span><span class="w"> </span><span class="err">제스처를</span><span class="w"> </span><span class="err">처리할것인가</span><span class="o">?</span><span class="w"> 
+         </span><span class="n">action</span><span class="o">:</span><span class="w"> </span><span class="c1">#selector(ViewController.pan(_:))// 어떤 메서드가 호출 될것인가?
+</span><span class="w">     </span><span class="p">)</span><span class="w">
+     </span><span class="n">pannableView.addGestureRecognaizer</span><span class="p">(</span><span class="n">recognizer</span><span class="p">)</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+    </div>
+    <p><code class="highlighter-rouge">#selector</code>는 Objective-c의 요소이다. 이를 사용하기 위해서는 전달되는 함수에 <code class="highlighter-rouge">@objc</code>가 있어야한다.</p>
+  </li>
+</ol>
+
+<h3 id="uipangesturerecognizer">제스처 인식 예 UIPanGestureRecognizer</h3>
+<p>Pan은 화면을 터치하고 있으면서 움직이는 것을 뜻한ㄷ.</p>
+
+<h4 id="section-15">함수들</h4>
+<p>translationView() // 얼마나 움직였는가<br />
+velocityInView() // 움직임의 빠른정도<br />
+setTranslation() // translation을 조정함 0으로 초기화를 많이 한다.</p>
+
+<h3 id="uipangesturerecognizerstate">제스처 상태 예 UIPanGestureRecognizerState</h3>
+<p>.Changed ,.Ended, .Failed, .Cancelled 같은 상태가 있다. 각 상태에 대해서 처리 할 수 도 있고 안할 수 도 있다.</p>
+
+<h3 id="mvc--">MVC가 여러개인 경우</h3>
+
+<h4 id="uitabbarcontroller">UITabBarController</h4>
+<p>각각의 탭에 MVC가 각자 존재한다. 탭을 바뀌면 화면이 바뀐다.</p>
+
+<h4 id="uisplitviewcontroller">UISplitViewController</h4>
+<p>여러개 뷰가 있는 것이다. 각각의 뷰는 MVC가 각각이다. Master와 Deatila이 있다.</p>
+
+<h4 id="uinavigationcontroller">UINavigationController</h4>
+<p>navigation Item마다 MVC가 존재한다. 카드가 쌓여있다고 생각하면 된다. 계층으로 들어 갈 수록 쌓이고 상위로 올라가면(back으로 돌아가면) 사라진다. 맨첨음을 rootViewController라고 한다.</p>
+
+<h3 id="sub-mvc-">sub-MVC에 접근</h3>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">var</span><span class="w"> </span><span class="n">viewControllers</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">UIViewController</span><span class="p">]</span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="n">get</span><span class="w"> </span><span class="n">set</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<h3 id="mvc">MVC연결하기</h3>
+<p>splitview의 경우 드래그 한다. 사이즈가 작은 디바이스의 경우 Navigation Conroller러 embed가 능하다. 즉 디바이스 마다 다르게 할 수 있다.</p>
+
+<h3 id="segues---trainsition">Segues - 전환(trainsition)</h3>
+<p>MVC간의 전환을 뜻한다. Segue는 항상 MVC를 새로 만들게 된다.</p>
+<ol>
+  <li>show segue : 네비게이션에서 카드 push, modal</li>
+  <li>show detail : split view에서 detail로 보여줄께,</li>
+  <li>Modal segue : 전체가 바뀔때</li>
+  <li>Popover segue : pop over되는 window, 주변에 흐려지는 형태
+서로를 연결할때 정할 수 있다.(원하는 곳에 컨트롤 드래그)</li>
+</ol>
+
+<h3 id="segues-">Segues 준비하기</h3>
+<p>indentifier로 구분, switching하기</p>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">func</span><span class="w"> </span><span class="n">prepareForSegue</span><span class="p">(</span><span class="n">segue</span><span class="o">:</span><span class="w"> </span><span class="n">UIStoryboardSegue</span><span class="p">,</span><span class="w"> </span><span class="n">sender</span><span class="o">:</span><span class="w"> </span><span class="n">AnyObject</span><span class="o">?</span><span class="p">){</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">let</span><span class="w"> </span><span class="n">identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">segue.identifier</span><span class="p">{</span><span class="w">
+        </span><span class="n">switch</span><span class="w"> </span><span class="n">identifier</span><span class="p">{</span><span class="w">
+            </span><span class="n">case</span><span class="w"> </span><span class="s2">"Show Graph"</span><span class="o">:</span><span class="w">
+                </span><span class="k">if</span><span class="w"> </span><span class="n">let</span><span class="w"> </span><span class="n">vc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">segue.destinationViewController</span><span class="w"> </span><span class="n">as</span><span class="o">?</span><span class="w"> </span><span class="n">GraphController</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="n">...</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+        </span><span class="n">default</span><span class="o">:</span><span class="w"> </span><span class="k">break</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="segue-">Segue 막기</h3>
+<p>shouldPerformSegueWithIdentifier함수로 설정할수 있다.</p>
+
+<h3 id="viewcontrller">ViewContrller추가</h3>
+
+<h3 id="nabigation-controller-embed">nabigation Controller embed하기</h3>
+<p>2개 이상일때는 무시된다.</p>
+
+<h3 id="view-controller-lifecycle">View Controller의 Lifecycle</h3>
+<p>생성 - 준비 - Outlet 설정 - 나타남,사라짐 - 기하학적 변화 - 메모리 부족</p>
+
+<h4 id="viewdidload">viewDidLoad()</h4>
+<p>초기화 할때 사용, outlet설정도 가능하다. 한번만 수행 된다. updateUI 같은거 사용. geometry는 주의 해야한다. 여기서 조절 불가능하다. 그리고 복잡한 연산은 피해라.</p>
+
+<h4 id="viewwillappear">viewWillAppear()</h4>
+<p>복잡한 작업을 다른 쓰레드에게 위임한다.</p>
+
+<h4 id="viewdidappear">viewDidAppear()</h4>
+
+<h4 id="viewwilldisappear">viewWillDisappear()</h4>
+
+<h4 id="viewdiddisappear">viewDidDisappear()</h4>
+
+<h4 id="section-16">기하정보는 언제?</h4>
+<p>viewWillLayoutSubviews(), viewDidLayoutSubviews()에서 사용된다. 2합수 사이에 Autolayout작동</p>
+
+<h4 id="autorotation">Autorotation</h4>
+<p>bound가 바뀌 거나 constraint가 작동하는 것. 
+viewWillTransitionToSize()로 조정이 가능하다. 클로저를 제공이 가능하다. 제공된 클로저는 애니메이션과 함게 동작한다.</p>
+
+<h4 id="section-17">메모리 부족 상황</h4>
+<p>힙에서 메모리를 많이 차지하는 부분을 없앰</p>
+
+<h4 id="awkefromnib">awkeFromNib</h4>
+<p>초기에 스토리보드에서 연결되는 부분 이곳보다는 다른 곳에 로직이 있는게 더 좋다.</p>
+
+<h3 id="section-18">메모리관리</h3>
+<p>Automatic Refercence Counting : 참조 된 횟수를 센다.</p>
+
+<h4 id="strong-weak-unowned">strong, weak, unowned</h4>
+<p>strong : 디폴트. 참조가 없을때까지 계속 힙에 머물게한다.
+weak : 힙에 관심이 없으면 nil로 옵셔널 참조 포인터만 가능. outlet만들때 weak로 자동으로 설정됨 이는 뷰가 사라져서 연결이 끊길수 있기 때문
+unowned : 참조를 세지 말라는 뜻. 힙으로 가지 않고 사용후 소멸</p>
+
+<h3 id="section-19">클로저</h3>
+<p>힙메모리에 저장 기본적으로 참조 타입, 함수는 일반 타입이다. 클로저의 메소드 안에 있는 것은 모두 읽고 쓸수 있다. 클로저 안에서 캡처되는 모든 요소는 힙으로 가게 된다. 객체와 클로저가 서로 가르킬때는 문제가 된다.</p>
+
+<h3 id="section-20">클로저 변수 선언</h3>
+<p><code class="highlighter-rouge">[] in </code>을 사용해서 안에 변수를 선언해 준다.</p>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">addUnaryOperation</span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="n">unowned</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">]</span><span class="w"> </span><span class="k">in</span><span class="w">
+    </span><span class="n">me.display.textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UIColor.redColor</span><span class="p">()</span><span class="w">
+    </span><span class="n">return</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="o">$</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>self를 사용하면 순환적 참조가 되는데 unowned를 씀으로써 힙에 있지 않고 사용후 사라지므로 문제가 해결되었다. 이 경우는 viewController가 클로저보다 먼저 소멸하면 크래시 된다.</p>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">addUnaryOperation</span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="n">weak</span><span class="w"> </span><span class="n">weakSelf</span><span class="p">]</span><span class="w"> </span><span class="k">in</span><span class="w">
+    </span><span class="n">weakSelf.display.textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UIColor.redColor</span><span class="p">()</span><span class="w">
+    </span><span class="n">return</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="o">$</span><span class="m">0</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>이런 방법으로 해결 할수 있다.</p>
+
+<h3 id="extensions">Extensions</h3>
+<p>소스가 없더라도 클래스/구조체/열거형에 메소드나 프로퍼티를 추가 가능하다. 객체 지향 방식에 맞게 사용해야한다. 연산 프로퍼티만 가능 저장은 불가능하다. 이미 있는것은 호출 불가능</p>
+
+<h3 id="section-21">프로토콜</h3>
+<p>타입을 쓸수 있는 곳은 모두 사용가능하다. 프로토콜은 프로토콜을 호출 하지 않는다. extension가능 저장 공간을 가지지 않는다. 프로토콜은 선택적으로 실행 불가능하다. Objective-C에서는 부분 실행이 가능하다. @objc를 달면 된다.
+프로토콜은 상속이 가능하다. 다중 상속도 가능하다.</p>
+<h4 id="section-22">사용을 위한 단계</h4>
+<ol>
+  <li>프로토콜 선언</li>
+  <li>클래스/구조체/열거형에서 프로토콜 사용을 선언</li>
+  <li>프로토콜을 사용하기로한 곳에서 구현 한다. 익스텐션도 마찬가지</li>
+</ol>
+
+<h4 id="section-23">예제</h4>
+<p>class가 있으므로 이 프로토콜은 클래스만 사용가능하다.</p>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">protocol</span><span class="w"> </span><span class="n">SomeProtocol</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">InheritedProtocol1</span><span class="p">,</span><span class="w"> </span><span class="n">InheritedProtocol2</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">var</span><span class="w"> </span><span class="n">someProperty</span><span class="o">:</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">set</span><span class="p">}</span><span class="w">
+    </span><span class="n">func</span><span class="w"> </span><span class="n">aMethod</span><span class="p">(</span><span class="n">arg1</span><span class="o">:</span><span class="w"> </span><span class="n">Double</span><span class="p">,</span><span class="w"> </span><span class="n">anotherArgment</span><span class="o">:</span><span class="w"> </span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">SomeType</span><span class="w">
+    </span><span class="n">mutating</span><span class="w"> </span><span class="n">func</span><span class="w"> </span><span class="n">changIt</span><span class="p">()</span><span class="o">//</span><span class="err">변화할수도</span><span class="w"> </span><span class="err">있는</span><span class="w"> </span><span class="err">것</span><span class="w">
+    </span><span class="n">init</span><span class="p">(</span><span class="n">arg</span><span class="o">:</span><span class="w"> </span><span class="n">Type</span><span class="p">)</span><span class="o">//</span><span class="err">이런</span><span class="w"> </span><span class="err">형태의</span><span class="w"> </span><span class="err">생성자를</span><span class="w"> </span><span class="err">가져야한다는</span><span class="w"> </span><span class="err">것을</span><span class="w"> </span><span class="err">알림</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<p>구현은 이런 식으로</p>
+<div class="language-s highlighter-rouge"><pre class="highlight"><code><span class="n">class</span><span class="w"> </span><span class="n">SomeClass</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Superclass</span><span class="p">,</span><span class="w"> </span><span class="n">SomeProtocol1</span><span class="p">,</span><span class="w"> </span><span class="n">SomeProtocol2</span><span class="p">{</span><span class="w">
+    </span><span class="o">//</span><span class="err">구현</span><span class="w">
+    </span><span class="n">required</span><span class="w"> </span><span class="n">init</span><span class="p">()</span><span class="o">//</span><span class="err">요청된</span><span class="w"> </span><span class="err">생성자</span><span class="w"> </span><span class="err">구현</span><span class="w"> </span><span class="err">필요</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="section-24">델리게이트</h3>
+
+
+  </div>
+
+  <div class="pagination">
+    
+      <span class="prev" >
+          <a href="/TIL20171204/">
+            &#xE000; 2017년 12월 04일 TIL
+          </a>
+      </span>
+    
+    
+      <span class="next" >
+          <a href="/TIL20171206/">
+            2017년 12월 06일 TIL &#xE001;
+          </a>
+      </span>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/changmin-dev" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>© 2017 Kiko Now</p>
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

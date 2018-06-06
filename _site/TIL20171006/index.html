@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>2017년 10월 6일 – Changmin-dev – 잊어 버리지 않기 위해서</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="알고리즘
+1시간 하고 안되면 풀이 보기로 했는데 자꾸 오기가 생겨서 계속하게 된다. 오늘도 결국 풀이를 보고 말았다. 아직도 DP는 힘들다.
+
+" />
+    <meta property="og:description" content="알고리즘
+1시간 하고 안되면 풀이 보기로 했는데 자꾸 오기가 생겨서 계속하게 된다. 오늘도 결국 풀이를 보고 말았다. 아직도 DP는 힘들다.
+
+" />
+    
+    <meta name="author" content="Changmin-dev" />
+
+    
+    <meta property="og:title" content="2017년 10월 6일" />
+    <meta property="twitter:title" content="2017년 10월 6일" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Changmin-dev - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+  <body>
+    <div class="wrapper-masthead">
+  <div class="container">
+    <header class="masthead clearfix">
+      
+        <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+      
+
+      <div class="site-info">
+        <h1 class="site-name"><a href="/">Changmin-dev</a></h1>
+        <p class="site-description">잊어 버리지 않기 위해서</p>
+      </div>
+
+      <nav>
+        
+        
+        <a href="/">Blog</a>
+        
+        
+        
+        <a href="/about">About</a>
+        
+        
+        
+        <a href="/archive">Archive</a>
+        
+        
+        
+        <a href="/tags">Tags</a>
+        
+        
+        
+        <a href="https://github.com/AWEEKJ/kiko-now">Theme</a>
+        
+        
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 10월 6일</h1>
+
+  <div clsss="meta">
+    <span class="date">
+      2017-10-06
+    </span>
+
+    <ul class="tag">
+      
+    </ul>
+  </div>
+
+  <div class="entry">
+    <h1 id="section">알고리즘</h1>
+<p>1시간 하고 안되면 풀이 보기로 했는데 자꾸 오기가 생겨서 계속하게 된다. 오늘도 결국 풀이를 보고 말았다. 아직도 DP는 힘들다.</p>
+
+<h2 id="section-1">1로 만들기</h2>
+<p><a href="https://www.acmicpc.net/problem/1463">백준 저지</a>문제이다. 어설프게 람다 공부했다고 자꾸 쓰고 있다. 잘하는건지 모르겠다.</p>
+
+<h3 id="section-2">풀이</h3>
+<p>재귀를 이용한다면 다음과 같다. 주어진 입력에 대하여 3가지 연산을 재귀적으로 진행하고 1이 되었을때 횟수를 리스트에 넣고 끝낸다.
+리스트에서 최소값을 구한다. 이 풀이는 제출하면 시간초과 된다.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BJ1463</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">counts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="n">solution</span><span class="o">(</span><span class="n">counts</span><span class="o">,</span> <span class="n">count</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">output</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+                            <span class="o">.</span><span class="na">min</span><span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
+                                <span class="o">-&gt;</span> <span class="n">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">))</span>
+                            <span class="o">.</span><span class="na">get</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">output</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">solution</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">output</span><span class="o">,</span> <span class="kt">int</span> <span class="n">count</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">){</span>
+            <span class="n">output</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="n">solution</span><span class="o">(</span><span class="n">output</span><span class="o">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="n">solution</span><span class="o">(</span><span class="n">output</span><span class="o">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">solution</span><span class="o">(</span><span class="n">output</span><span class="o">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<h3 id="section-3">풀이 2</h3>
+<p>DP를 이용한다면 다음과 같다. 하지만 이 방법도 생각보다 느리다. 거의 3초(2956 MS)가 걸렸다. 자바가 느리긴 한데 이 정도 까지는 아닐 것이다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BJ1463</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">DP</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+            <span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">solution</span><span class="o">(</span><span class="n">DP</span><span class="o">,</span> <span class="n">count</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">]);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">DP</span><span class="o">,</span> <span class="kt">int</span> <span class="n">count</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">){</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+
+        <span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">solution</span><span class="o">(</span><span class="n">DP</span><span class="o">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">],</span> <span class="n">solution</span><span class="o">(</span><span class="n">DP</span><span class="o">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">3</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">],</span> <span class="n">solution</span><span class="o">(</span><span class="n">DP</span><span class="o">,</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h3 id="section-4">풀이 3</h3>
+<p>solution이라는 함수가 꼬리 재귀가 아니라서 발생하는거 같다. 함수 호출을 하지 않는 방법으로 개선했다. 약 1/25 만큼 실행 시간이 줄어 들었다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BJ1463</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">DP</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">){</span>
+            <span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">DP</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+                <span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">DP</span><span class="o">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+                <span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">DP</span><span class="o">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">3</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">]);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+
+  </div>
+
+  <div class="pagination">
+    
+      <span class="prev" >
+          <a href="/TIL20171005/">
+            &#xE000; 2017년 10월 5일 TIL
+          </a>
+      </span>
+    
+    
+      <span class="next" >
+          <a href="/TIL20171007/">
+            2017년 10월 7일 TIL &#xE001;
+          </a>
+      </span>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/changmin-dev" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>© 2017 Kiko Now</p>
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

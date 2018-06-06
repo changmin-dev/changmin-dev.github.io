@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>2017년 10월 8일 TIL – Changmin-dev – 잊어 버리지 않기 위해서</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="네트워크
+TCP 특징
+
+  Point to Point : 한 쌍의 통신을 책임 짐
+  Reliable : 하나도 유실되지 않고 순서대로
+  Pipeline : 윈도우 크기만큼 한번에
+  Full duplex(전이중) : 모두가 Sender이면서 Receiver 서버는 리스폰스 리퀘스트, 클라이언트는 요청하고 데이터를 받음
+  버퍼 : 파이프라인의 윈도우 크기만 큼 버퍼가 필요, 재전송을 위해서(Sender), 버리지 않고 저장할 버퍼(Receiver) 
+서버와  클라이언트는 Receiver, Sender를 위한 버퍼를 각각 가지고 있다.(2개다 있음)
+  Flow control
+  Congesstion control
+
+
+" />
+    <meta property="og:description" content="네트워크
+TCP 특징
+
+  Point to Point : 한 쌍의 통신을 책임 짐
+  Reliable : 하나도 유실되지 않고 순서대로
+  Pipeline : 윈도우 크기만큼 한번에
+  Full duplex(전이중) : 모두가 Sender이면서 Receiver 서버는 리스폰스 리퀘스트, 클라이언트는 요청하고 데이터를 받음
+  버퍼 : 파이프라인의 윈도우 크기만 큼 버퍼가 필요, 재전송을 위해서(Sender), 버리지 않고 저장할 버퍼(Receiver) 
+서버와  클라이언트는 Receiver, Sender를 위한 버퍼를 각각 가지고 있다.(2개다 있음)
+  Flow control
+  Congesstion control
+
+
+" />
+    
+    <meta name="author" content="Changmin-dev" />
+
+    
+    <meta property="og:title" content="2017년 10월 8일 TIL" />
+    <meta property="twitter:title" content="2017년 10월 8일 TIL" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Changmin-dev - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+  <body>
+    <div class="wrapper-masthead">
+  <div class="container">
+    <header class="masthead clearfix">
+      
+        <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+      
+
+      <div class="site-info">
+        <h1 class="site-name"><a href="/">Changmin-dev</a></h1>
+        <p class="site-description">잊어 버리지 않기 위해서</p>
+      </div>
+
+      <nav>
+        
+        
+        <a href="/">Blog</a>
+        
+        
+        
+        <a href="/about">About</a>
+        
+        
+        
+        <a href="/archive">Archive</a>
+        
+        
+        
+        <a href="/tags">Tags</a>
+        
+        
+        
+        <a href="https://github.com/AWEEKJ/kiko-now">Theme</a>
+        
+        
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2017년 10월 8일 TIL</h1>
+
+  <div clsss="meta">
+    <span class="date">
+      2017-10-08
+    </span>
+
+    <ul class="tag">
+      
+    </ul>
+  </div>
+
+  <div class="entry">
+    <h1 id="section">네트워크</h1>
+<h2 id="tcp-">TCP 특징</h2>
+<ul>
+  <li>Point to Point : 한 쌍의 통신을 책임 짐</li>
+  <li>Reliable : 하나도 유실되지 않고 순서대로</li>
+  <li>Pipeline : 윈도우 크기만큼 한번에</li>
+  <li>Full duplex(전이중) : 모두가 Sender이면서 Receiver 서버는 리스폰스 리퀘스트, 클라이언트는 요청하고 데이터를 받음</li>
+  <li>버퍼 : 파이프라인의 윈도우 크기만 큼 버퍼가 필요, 재전송을 위해서(Sender), 버리지 않고 저장할 버퍼(Receiver) 
+서버와  클라이언트는 Receiver, Sender를 위한 버퍼를 각각 가지고 있다.(2개다 있음)</li>
+  <li>Flow control</li>
+  <li>Congesstion control</li>
+</ul>
+
+<h2 id="tcp--">TCP 세그먼트 구조</h2>
+<p>Segment = TCP Header + message</p>
+<ul>
+  <li>Port번호 : 소스 16비트/ dest 16비트, 0 ~ 2^16 - 1</li>
+  <li>sequnce number : DATA부분의 제일 첫 바이트 순서 ex) 데이터가 computer라면 c의 순서</li>
+  <li>Ack number : 누적되는 ACK, ACK(n) : n-1까지 잘 받음 n번 데이터 부터 요청</li>
+  <li>Checksum</li>
+  <li>Receive window : Receive버퍼의 빈 공간</li>
+  <li>Flags(ACK, FIN 등)</li>
+</ul>
+
+<h2 id="tcp--1">TCP의 버퍼</h2>
+<ul>
+  <li>Sender buffer - 자기 자신이 만드는 번호</li>
+  <li>Reciver buffer - 상대가 보낸것을저장, ACK값</li>
+</ul>
+
+<h2 id="ack-time-out">ACK와 Time out</h2>
+<p>바로 ACK를 안하고 타이머를 기다림</p>
+<ol>
+  <li>데이터를 보내면서 ACK</li>
+  <li>commulate ACK라서 마지막 ACK를 확인하면서 함
+    <h3 id="timeout--trade-off">Timeout 주기의 Trade off</h3>
+    <ul>
+      <li>짧게 : 오버헤드, 빠르다.</li>
+      <li>길게 : 적은 오버헤드, 느리다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="timeout-rtt">timeout값은 RTT로 한다면?</h3>
+<ol>
+  <li>각 세그먼트가 지나가는 경로가 다르다.</li>
+  <li>같은 라우터를 지나가도 큐잉 딜레이 때문에 RTT가 다르다.</li>
+</ol>
+
+<h3 id="time-out--rtt">Time out을 위한 RTT</h3>
+<ul>
+  <li>SampleRTT : ACK가 올때까지의 RTT</li>
+  <li>EstimateRTT : 보정된 RTT, (1-a)EstimateRTT * (a)SampleRTT</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>DevRTT(RTT변화율) : (1-b)*DevRTT + b</td>
+          <td>SampleRTT - EstimatedRTT</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>TimeOut주기 = EstimateRTT + 4 DevRTT</li>
+</ul>
+
+<p>식은 중요하지 않음!!!</p>
+
+<h2 id="relable-data-transfer">Relable data transfer</h2>
+<p>타이머 한개를 사용한다. Timeout되면 해당하는 세그먼트만 재전송</p>
+<ol>
+  <li>ACK가 유실된 경우 : 세그먼트를 다시 보냄</li>
+  <li>ACK가 도착하기 전에 타임아웃 : 세그먼트를 다시 보냄, 상대는 중복되는 세그먼트는 무시하고 다음 ACK를 보낸다.</li>
+  <li>2개의 ACK중 이전의 1개만 유실 : 2번째 ACK를 받았다면 이전 ACK를 받은 것이므로 넘어감</li>
+</ol>
+
+<h3 id="fast-retransmission--">Fast Retransmission 권고 사항</h3>
+<p>타임아웃 - 타이머가 터저야 패킷유실을 판단, 타이아웃시간은 길다 타이머가 터지기전에 패킷 유실을 판단?
+다음 ACK가 왔는데도 같은 이전 ACK가 계속 온다? -&gt; 이미 도착한 ACK에 대해서 3번 중복 되는 ACK 받으면 유실(총 4번 도착)</p>
+
+<h2 id="flow-control">Flow Control</h2>
+<p>소켓 API - recv는 recv버퍼에서 가져오는거임
+recv buf에서 가능한 공간 만큼 sender가 보내줘야 한다. - 헤더에 가용 공간을 적어준다. 
+구현은 단순하지만 중요한 기능 
+컨트롤 하는거는 보내는양? 보낸는 속도?
+양이 많으면 속도가 빠른거임!!! bit/sec</p>
+
+<p>빈공간이 없으면 0을 보냄 -&gt; Sender는 멈춰야함 -&gt; 그럼 언제 보내야하는가? 
+실제로는 멈추지 않고 주기적으로 데이터가 없는 segment를 보낸다. - 연결을 유지!!!</p>
+
+<h2 id="connection-management">Connection management</h2>
+
+<h3 id="tcp-3way-hand-shake">TCP 3way hand shake</h3>
+<p>왜 2way가 아니라 3way인가?서버에서는 응답이 없으므로 확실하지 않다. 3way성공하면에서 버퍼를 만든다!!</p>
+
+<h4 id="connection">Connection</h4>
+<p>클라이언트이언트는 데이터x 헤더에 SYN bit=1이고 seq number=x 세그먼트 전달
+서버는 SYN bit=1 ACK bit=1 seq number=y AckNum=x+1 세그먼트 전달
+ACK bit=1</p>
+
+<h4 id="connection-close">Connection Close</h4>
+<p>클라이언트이언트는 FIN=1인 Segment보냄
+서버는 ACK와 FIN이 1인 segment를 보냄
+클라이언트이언트도 ACK보냄 이후 일정 시간 동안은 기다림 (서버가 ACK를 받을때까지 못받으면 서버가 다시 ACK를 보낼꺼임)</p>
+
+<h2 id="congestion-control-">Congestion Control 개요</h2>
+<p>Sender의 보내는 정보는 네트워크의 한계, reciver의 한계 중 작은거에 맞춰야한다.
+Reciver의 상태는 flow control로 알 수 있다. 네트워크의 상태는? congestion control이 필요하다.
+네트워크는 Public이다. 주인이 없다.</p>
+
+<h3 id="section-1">네트워크가 막힌다?</h3>
+<p>TCP는 더 네트워크를 악화 시킨다. 패킷이 잘 안가면 재전송함 이것은 실제 데이터보다 더 보내게된다는 의미이다. TCP는 네트워크를 막히지 않도록 해야한다. 마구잡이로 보내는게 아니라 네트워크 상태를 고려해서 보내는 데이터의 양을 제어, 각각의 TCP연결은 데이터의 양을 조절해서 네트워크를 안정화 시키려고 한다.</p>
+
+<h3 id="section-2">네트워크 상태를 어떻게 파악 할 것인가?</h3>
+<ol>
+  <li>End to End
+실제로 구현된 방식, ACK가 어떻게 동작하는가</li>
+  <li>Network assitant
+네트워크로 부터 받음(라우터의 상황 등), 구현이 안된다. 라우터가 너무 바쁨</li>
+</ol>
+
+<h1 id="section-3">알고리즘</h1>
+
+<h2 id="section-4">쉬운 계단 수</h2>
+<p><a href="https://www.acmicpc.net/problem/10844">백준 저지</a>의 문제<br />
+처음에 스트링으로 하는건줄 알고 시간 소요하다가 Case를 공책에 그려보니 방향성을 찾았다.
+테스트 케이스를 보면 자리수가 1인 경우에도 계단 수로 생각해서 9이다.
+자리 수 2은 일의 자리가 0~9 경우에서 추가 되는 것을 생각 하면 된다. 처음에 가장 높은 자리수로 하다가 해맸다.
+0-1 1-0,2 2-1,3 3-2,4, 4-3,5 5-4,6 6-5,7 7-6,8 8-9</p>
+
+<p>반복적으로 일의 자리에서 n-1 자리를 추가한다고 생각해서 답을 구하면된다.<br />
+<code class="highlighter-rouge">DP[row][col] = DP[row - 1][col - 1] + DP[row + 1][col + 1]</code><br />
+일의 자리가 0인 경우는 이전 단계의 1을 사용한다. xxx10이 되기 때문
+<code class="highlighter-rouge">DP[row][0] = DP[row-1][1]</code> <br />
+주의 할점은 출력만 나머지를 구하는게 아니라 DP배열 값을 구할때도 나머지 연산을 해줘야한다. 값이 너무 크게 나오기 때문이다. 최대값인 100을 입력하니 음수가 나와서 당황했다.<code class="highlighter-rouge">((a % m) + (b % m)) % m = (a + b) % m</code>이 성립한다는 것을 기억 해야겠다.(곱셈에 대해서도 성립)</p>
+
+<h3 id="section-5">구현</h3>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BJ10844</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">MOD</span> <span class="o">=</span> <span class="mi">1000000000</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">long</span> <span class="n">output</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="o">){</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="kt">long</span><span class="o">[][]</span> <span class="n">DP</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">][</span><span class="mi">11</span><span class="o">];</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">DP</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">row</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="o">++</span><span class="n">row</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">DP</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">col</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="o">;</span> <span class="o">++</span><span class="n">col</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">col</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+                        <span class="n">DP</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="n">DP</span><span class="o">[</span><span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">%</span> <span class="n">MOD</span><span class="o">;</span>
+                    <span class="k">else</span>
+                        <span class="n">DP</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="n">DP</span><span class="o">[</span><span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="o">][</span><span class="n">col</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">DP</span><span class="o">[</span><span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="o">][</span><span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="o">])</span> <span class="o">%</span> <span class="n">MOD</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">col</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="o">;</span> <span class="o">++</span><span class="n">col</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">output</span> <span class="o">+=</span> <span class="n">DP</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">col</span><span class="o">];</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">output</span> <span class="o">%</span> <span class="n">MOD</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+  </div>
+
+  <div class="pagination">
+    
+      <span class="prev" >
+          <a href="/TIL20171007/">
+            &#xE000; 2017년 10월 7일 TIL
+          </a>
+      </span>
+    
+    
+      <span class="next" >
+          <a href="/TIL20171009/">
+            2017년 10월 9일 &#xE001;
+          </a>
+      </span>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/changmin-dev" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>© 2017 Kiko Now</p>
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>2018년 5월 31일 TIL – Changmin-dev – 잊어 버리지 않기 위해서</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="네트워크에 대해서 조금씩 다시 공부 하고 있다.
+
+" />
+    <meta property="og:description" content="네트워크에 대해서 조금씩 다시 공부 하고 있다.
+
+" />
+    
+    <meta name="author" content="Changmin-dev" />
+
+    
+    <meta property="og:title" content="2018년 5월 31일 TIL" />
+    <meta property="twitter:title" content="2018년 5월 31일 TIL" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Changmin-dev - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+  <body>
+    <div class="wrapper-masthead">
+  <div class="container">
+    <header class="masthead clearfix">
+      
+        <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+      
+
+      <div class="site-info">
+        <h1 class="site-name"><a href="/">Changmin-dev</a></h1>
+        <p class="site-description">잊어 버리지 않기 위해서</p>
+      </div>
+
+      <nav>
+        
+        
+        <a href="/">Blog</a>
+        
+        
+        
+        <a href="/about">About</a>
+        
+        
+        
+        <a href="/archive">Archive</a>
+        
+        
+        
+        <a href="/tags">Tags</a>
+        
+        
+        
+        <a href="https://github.com/AWEEKJ/kiko-now">Theme</a>
+        
+        
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 5월 31일 TIL</h1>
+
+  <div clsss="meta">
+    <span class="date">
+      2018-05-31
+    </span>
+
+    <ul class="tag">
+      
+      <li>
+        <a href="/tags#TIL">
+          TIL
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+
+  <div class="entry">
+    <p>네트워크에 대해서 조금씩 다시 공부 하고 있다.</p>
+
+<h2 id="section">회선 교환과 패킷 교환</h2>
+<ul>
+  <li>
+    <p>회선 교환 : 회선을 연결해서 통신. 회선은 기본적으로 하나의 쌍만 연결이 가능하지만, 교환기를 통해서 여러 개가 연될된다. 회선이 많을 수록 이용율이 올라간다. 사용하고 있는 회선은 사용할 수가 없다. 연결이 많은경우 통신이 불가능 할 수 있다. 연결이 된다면 확실하게 수신처에 데이터를 제공 가능하다.</p>
+  </li>
+  <li>
+    <p>패킷 교환 : 주고 받는 데이터를 패킷으로 나누어서 통신하는 방식. 패킷에는 수신처가 표시된다. 복수의 엔드 포인트가 회선을 공유가능하다. 여러 수신처의 패킷이 섞에서 송신된다. 패킷의 순서가 바뀌거나 패킷이 수신처에 도착하지 못할 수도 있다. 패킷 교환기의 역할을 하는 장치를 라우터라고 한다.</p>
+  </li>
+</ul>
+
+<h2 id="section-1">멀티 엑세스와 포인트 투 포인트</h2>
+<ul>
+  <li>멀티 엑세스 : 허브를 통해서 여러 컴퓨터가 연결 된다. 허브를 통해서 연결되는 범위를 세그먼트라고 부른다.</li>
+  <li>포인트 투 포인트 : 전용선으로 고정된 컴퓨터에만 연결한다.</li>
+</ul>
+
+<h2 id="aws-ec2-ubuntu">AWS EC2 Ubuntu</h2>
+<p>삽질을하다 겨우 클라우드에 설치 했는데 재현 해보려고 했다.</p>
+<h3 id="section-2">접속하기, 업데이트</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>ssh -i pemkey.pem ubuntu@주소
+sudo apt-get install update
+</code></pre>
+</div>
+
+<h3 id="imagemagick">ImageMagick설치</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>wget https://www.imagemagick.org/download/ImageMagick.tar.gz
+$ tar xvzf ImageMagick.tar.gz
+$ cd ImageMagick-*
+./configure --prefix=[원하는 설치 경로]
+make
+make install
+</code></pre>
+</div>
+
+
+  </div>
+
+  <div class="pagination">
+    
+      <span class="prev" >
+          <a href="/JMagickVSim4java/">
+            &#xE000; Java 이미지 도구 비교
+          </a>
+      </span>
+    
+    
+      <span class="next" >
+          <a href="/TIL20180603/">
+            2018년 6월 3일 TIL &#xE001;
+          </a>
+      </span>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/changmin-dev" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>© 2017 Kiko Now</p>
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

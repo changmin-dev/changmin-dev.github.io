@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>HTTP 공부하기 4 – Changmin-dev – 잊어 버리지 않기 위해서</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="HTTP 공부하기 4
+네트워크 책에 HTTP내용과 연계해서 진행 하였다.
+
+" />
+    <meta property="og:description" content="HTTP 공부하기 4
+네트워크 책에 HTTP내용과 연계해서 진행 하였다.
+
+" />
+    
+    <meta name="author" content="Changmin-dev" />
+
+    
+    <meta property="og:title" content="HTTP 공부하기 4" />
+    <meta property="twitter:title" content="HTTP 공부하기 4" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Changmin-dev - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+  <body>
+    <div class="wrapper-masthead">
+  <div class="container">
+    <header class="masthead clearfix">
+      
+        <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+      
+
+      <div class="site-info">
+        <h1 class="site-name"><a href="/">Changmin-dev</a></h1>
+        <p class="site-description">잊어 버리지 않기 위해서</p>
+      </div>
+
+      <nav>
+        
+        
+        <a href="/">Blog</a>
+        
+        
+        
+        <a href="/about">About</a>
+        
+        
+        
+        <a href="/archive">Archive</a>
+        
+        
+        
+        <a href="/tags">Tags</a>
+        
+        
+        
+        <a href="https://github.com/AWEEKJ/kiko-now">Theme</a>
+        
+        
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>HTTP 공부하기 4</h1>
+
+  <div clsss="meta">
+    <span class="date">
+      2017-10-04
+    </span>
+
+    <ul class="tag">
+      
+    </ul>
+  </div>
+
+  <div class="entry">
+    <h1 id="http--4">HTTP 공부하기 4</h1>
+<p>네트워크 책에 HTTP내용과 연계해서 진행 하였다.</p>
+
+<h2 id="urluniform-resource-locater">URL(Uniform Resource Locater)</h2>
+<p>브라우저에 입력하는 주소. 브라우저가 처음하는 일은 웹서버에 보내는 리퀘스트의 메시지를 작성하기 위해 URL을 해독한다. 
+아래는 “http프로토콜로 twibeat.github.io라는 주소의 웹서버의 80번 포트에서 resource/index.html을 가져온다. 쿼리로 test값 1을 제공하고 chap1부분을 가져온다.”라는 의미이다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>http://twibeat.github.io:80/resource/index.html?test=1#chap1
+</code></pre>
+</div>
+<h3 id="section">스키마</h3>
+<p><code class="highlighter-rouge">http:</code>에 해당한다. ex) ftp:, file:, mailto: 등</p>
+
+<h3 id="section-1">웹 서버 주소</h3>
+<p><code class="highlighter-rouge">twibeat.github.io</code>에 해당한다. ex) google.com 등</p>
+
+<h3 id="section-2">포트 번호</h3>
+<p><code class="highlighter-rouge">80</code>에 해당한다. <code class="highlighter-rouge">:</code> 이후에 나온다. 임의로 할당한 포트가 아니라면 생략 가능하다. ex) 80(HTTP), 443(HTTPS) 등</p>
+
+<h3 id="section-3">데이터 경로</h3>
+<p><code class="highlighter-rouge">/resource/index.html</code>에 해당한다. 
+api로 받아오는 json이나 xml도 해당 포맷의 파일을 가져오는것이다.</p>
+
+<h3 id="section-4">쿼리 문자열</h3>
+<p><code class="highlighter-rouge">test=1</code>에 해당한다. <code class="highlighter-rouge">?</code>뒤에 나온다. <code class="highlighter-rouge">test=1&amp;years=2017</code>처럼 <code class="highlighter-rouge">&amp;</code>로 여러개를 사용가능하다. 구글이나 네이버 같은 검색사이트에서 검색하면 자주 볼 수 있다.
+생략가능하다.</p>
+
+<h3 id="section-5">프래그 먼트 식별자</h3>
+<p><code class="highlighter-rouge">chap1</code>에 해당한다. <code class="highlighter-rouge">#</code>뒤에 나올수있고 여러개가 <code class="highlighter-rouge">,</code>와 <code class="highlighter-rouge">&amp;</code>를 이용해서 같이 쓰인다. 자주 보이지 는 않지만, 지메일을 사용할때 브라우저 창을 보면 볼 수 있다. 생략가능하다.
+<a href="https://en.wikipedia.org/wiki/Fragment_identifier">위키 피디아</a>에 잘 설명되어 있다.</p>
+
+<h2 id="uriuniform-resource-identifier">URI(Uniform Resource Identifier)</h2>
+<p>URL이 네트워크상 위치를 나타낸다면, URI는 리소스를 식별하기 위한 문자열을 나타낸다.<br />
+다음과 같은 것도 URI에 해당 된다. URL은 URI의 서브셋이다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>tel:+82-031-123-1234
+</code></pre>
+</div>
+<ul>
+  <li>Uniform: 여러가지 종류의 리소스 지정 방법을 같은 맥락에서 구별 없이 취급 할 수 있도록한다.</li>
+  <li>Resource : 식별 가능한 모든 것</li>
+  <li>Identifier : 식별 가능한 것을 참조 하는 오브젝트</li>
+</ul>
+
+  </div>
+
+  <div class="pagination">
+    
+      <span class="prev" >
+          <a href="/TIL20171001/">
+            &#xE000; 2017년 10월 1일 TIL
+          </a>
+      </span>
+    
+    
+      <span class="next" >
+          <a href="/OS3/">
+            Operating System 3 &#xE001;
+          </a>
+      </span>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/changmin-dev" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>© 2017 Kiko Now</p>
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

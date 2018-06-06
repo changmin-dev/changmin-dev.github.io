@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>im4java – Changmin-dev – 잊어 버리지 않기 위해서</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="im4java는 커멘드로 사용하는 ImageMagick을 자바로 사용하도록 만들었다. 프로세스를 실행하는 방법으로 사용되는거 같다. JNI를 이용한 JMagick과는 다른 방법이다. 문서가 JMagick보다 잘되어있다.
+
+" />
+    <meta property="og:description" content="im4java는 커멘드로 사용하는 ImageMagick을 자바로 사용하도록 만들었다. 프로세스를 실행하는 방법으로 사용되는거 같다. JNI를 이용한 JMagick과는 다른 방법이다. 문서가 JMagick보다 잘되어있다.
+
+" />
+    
+    <meta name="author" content="Changmin-dev" />
+
+    
+    <meta property="og:title" content="im4java" />
+    <meta property="twitter:title" content="im4java" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Changmin-dev - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+  <body>
+    <div class="wrapper-masthead">
+  <div class="container">
+    <header class="masthead clearfix">
+      
+        <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+      
+
+      <div class="site-info">
+        <h1 class="site-name"><a href="/">Changmin-dev</a></h1>
+        <p class="site-description">잊어 버리지 않기 위해서</p>
+      </div>
+
+      <nav>
+        
+        
+        <a href="/">Blog</a>
+        
+        
+        
+        <a href="/about">About</a>
+        
+        
+        
+        <a href="/archive">Archive</a>
+        
+        
+        
+        <a href="/tags">Tags</a>
+        
+        
+        
+        <a href="https://github.com/AWEEKJ/kiko-now">Theme</a>
+        
+        
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>im4java</h1>
+
+  <div clsss="meta">
+    <span class="date">
+      2018-05-22
+    </span>
+
+    <ul class="tag">
+      
+    </ul>
+  </div>
+
+  <div class="entry">
+    <p>im4java는 커멘드로 사용하는 ImageMagick을 자바로 사용하도록 만들었다. 프로세스를 실행하는 방법으로 사용되는거 같다. JNI를 이용한 JMagick과는 다른 방법이다. <a href="http://im4java.sourceforge.net/index.html">문서</a>가 JMagick보다 잘되어있다.</p>
+
+<h2 id="os-x-sierra">사용하기(OS X Sierra)</h2>
+<p>MacOS sierra에서 IntelliJ를 사용하였고 Maven 메뉴를 이용해서 프로젝트를 생성했다.</p>
+
+<h3 id="brew--imagemagick-">brew를 통해서 ImageMagick 설치</h3>
+<p>im4java는 ProcessBuild를 통해서 내부에서 ImageMagick을 호출한다. 때문에 ImageMagick을 설치해야 한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>brew install imagemagick
+</code></pre>
+</div>
+
+<h3 id="maven---">Maven을 통해서 의존성 추가</h3>
+<p><a href="https://mvnrepository.com">mvnrepository</a>에서 찾아서 의존성을 추가 해주어야한다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+         <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+    <span class="nt">&lt;groupId&gt;</span>im4javaTest<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>im4javaTest<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.im4java/im4java --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.im4java<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>im4java<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="section">테스트 프로젝트</h3>
+<p>이미지 사이즈 크기를 바꾸는 명령을 테스트하였다.(convert -resize 200x300 Input.jpg Output.jpg에 해당한다.)이미지 파일의 위치는 IntelliJ에서 생성한 프로젝트 폴더 최상위에 위치한다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.im4java.core.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestIm4java</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">{</span>
+        <span class="c1">// 커멘드를 만든다. ImageMagick의 명령중하나인 convert에 해당한다.</span>
+        <span class="n">ConvertCmd</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConvertCmd</span><span class="o">();</span>
+
+        <span class="c1">// Operation은 ImageMagick의 인자들에 해당한다.</span>
+        <span class="n">IMOperation</span> <span class="n">op</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IMOperation</span><span class="o">();</span>
+        <span class="c1">// resize함수는 순서가 뒤에 와도 상관이 없다. 하지만 입출력 파일의 순서는 지켜야한다.</span>
+        <span class="n">op</span><span class="o">.</span><span class="na">resize</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">op</span><span class="o">.</span><span class="na">addImage</span><span class="o">(</span><span class="s">"Input.jpg"</span><span class="o">);</span>
+        <span class="n">op</span><span class="o">.</span><span class="na">addImage</span><span class="o">(</span><span class="s">"Output.jpg"</span><span class="o">);</span>
+
+        <span class="c1">// 실행한다.</span>
+        <span class="n">cmd</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">op</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h2 id="section-1">후기</h2>
+<p>im4java는 문서가 잘되어 있지만, 프로세스를 실행시키는 방식으로 되어 있기 때문에 인터페이스가 직관적이지는 않다. 또한 Mac에서는 brew를 통해서 쉽게 했지만, Windows나 Linux에서는 의존성 설정이 필요할 수 있다. 문서에서는  Windows에는 의존성 설정이 필요한거로 나온다.<img src="/images/im4java1.png" alt="의존성" /></p>
+
+  </div>
+
+  <div class="pagination">
+    
+      <span class="prev" >
+          <a href="/git-flow-practice/">
+            &#xE000; Git Flow
+          </a>
+      </span>
+    
+    
+      <span class="next" >
+          <a href="/JMagick/">
+            JMagick &#xE001;
+          </a>
+      </span>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/changmin-dev" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>© 2017 Kiko Now</p>
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

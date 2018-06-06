@@ -1,0 +1,49 @@
+<h2 id="http">HTTP</h2>
+<p>동아리에서 HTTP스터디를 하고 있다. 메시지에 대해서 공부하고 있는데 보고 신나서 동아리 프로젝트 리팩토링을 했다. 상태코드에 대해서 알게되어 적절한 상태 코드를 전달할 수 있는 정도인데 재밌다.</p>
+
+<h2 id="spring">Spring</h2>
+
+<h3 id="restcontroller">RestController</h3>
+<p>이전에는 REST규격에 맞추어 API를 구현하기 위해 Controller와 ResponseBody 어노테이션을 사용했어야 했다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">class</span> <span class="nc">RestController</span><span class="o">{</span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/data"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nd">@ResponseBody</span> <span class="n">Data</span> <span class="nf">getData</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<p>하지만 RestController를 사용하면 ResponseBody어노테이션을 써주지 않아도 동작한다. <a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RestController.html">문서</a>를 보면 RestController는 ResponseBody어노테이션을 상속받고 있다. RestController는 스프링 버전 4.3 부터 지원된다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@RestController</span>
+<span class="kd">class</span> <span class="nc">RestController</span><span class="o">{</span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/data"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Data</span> <span class="nf">getData</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<h4 id="section">참고 자료</h4>
+<p><a href="http://highcode.tistory.com/24">http://highcode.tistory.com/24</a></p>
+
+<h3 id="responseentity">ResponseEntity</h3>
+<p>응답을 주는 경우 ResponseEntity로 바디와 더불어 헤더와 응답코드를 정해 줄 수 있다. <a href="https://docs.spring.io/spring/docs/current/javadoc-api/index.html?org/springframework/http/ResponseEntity.html">문서</a>를 보면 생성자 오버로딩으로 매개변수가 1개일때는 상태, 2개일때는 바디와 상태, 3개일때는 바디와 헤더와 상태인거 같다. 헤더는 <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/HttpHeaders.html">HTTPHeader</a> 클래스를 사용하면 된다.</p>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="nd">@PostMapping</span><span class="o">(</span><span class="n">path</span><span class="o">=</span><span class="s">"user/{id}"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">addDataAll</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"id"</span><span class="o">)</span> <span class="n">Long</span> <span class="n">id</span><span class="o">,</span> <span class="nd">@RequestBody</span> <span class="n">Data</span> <span class="n">data</span><span class="o">){</span>
+
+    <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">UserRepository</span><span class="o">.</span><span class="na">findOne</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+    
+    <span class="k">if</span><span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">"No User"</span><span class="o">,</span> <span class="n">HttpStatus</span><span class="o">.</span><span class="na">BAD_REQUEST</span><span class="o">);</span>
+
+    <span class="n">Data</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+    <span class="n">DataRepositiory</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">"Data create"</span><span class="o">,</span> <span class="n">HttpStatus</span><span class="o">.</span><span class="na">CREATED</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h4 id="section-1">참고자료</h4>
+<p><a href="http://heeestorys.tistory.com/566">http://heeestorys.tistory.com/566</a></p>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>2018년 2월 26일 TIL – Changmin-dev – 잊어 버리지 않기 위해서</title>
+
+      <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="TIL에 정리하지 말고 주제 별로 포스트를 하려고 했으나 진행이 잘 되고 있는거 같지 않아서 다시 일일 TIL을 정리하려고 한다.
+추후에 블로그 레이아웃을 고친다면 TIL 부분은 따로 빼야 겠다.
+
+" />
+    <meta property="og:description" content="TIL에 정리하지 말고 주제 별로 포스트를 하려고 했으나 진행이 잘 되고 있는거 같지 않아서 다시 일일 TIL을 정리하려고 한다.
+추후에 블로그 레이아웃을 고친다면 TIL 부분은 따로 빼야 겠다.
+
+" />
+    
+    <meta name="author" content="Changmin-dev" />
+
+    
+    <meta property="og:title" content="2018년 2월 26일 TIL" />
+    <meta property="twitter:title" content="2018년 2월 26일 TIL" />
+    
+  <!-- Async font loading -->
+<script>
+  window.WebFontConfig = {
+      custom: {
+          families: ['Spoqa Han Sans:100,300,400,700'],
+          urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+      },
+      timeout: 60000
+  };
+  (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+  })(document);
+</script>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Changmin-dev - 잊어 버리지 않기 위해서" href="/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
+  <body>
+    <div class="wrapper-masthead">
+  <div class="container">
+    <header class="masthead clearfix">
+      
+        <a href="/" class="site-avatar"><img src="https://github.com/identicons/changmin-dev.png" /></a>
+      
+
+      <div class="site-info">
+        <h1 class="site-name"><a href="/">Changmin-dev</a></h1>
+        <p class="site-description">잊어 버리지 않기 위해서</p>
+      </div>
+
+      <nav>
+        
+        
+        <a href="/">Blog</a>
+        
+        
+        
+        <a href="/about">About</a>
+        
+        
+        
+        <a href="/archive">Archive</a>
+        
+        
+        
+        <a href="/tags">Tags</a>
+        
+        
+        
+        <a href="https://github.com/AWEEKJ/kiko-now">Theme</a>
+        
+        
+      </nav>
+    </header>
+  </div>
+</div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>2018년 2월 26일 TIL</h1>
+
+  <div clsss="meta">
+    <span class="date">
+      2018-02-26
+    </span>
+
+    <ul class="tag">
+      
+    </ul>
+  </div>
+
+  <div class="entry">
+    <p>TIL에 정리하지 말고 주제 별로 포스트를 하려고 했으나 진행이 잘 되고 있는거 같지 않아서 다시 일일 TIL을 정리하려고 한다.
+추후에 블로그 레이아웃을 고친다면 TIL 부분은 따로 빼야 겠다.</p>
+
+<h2 id="swift-strong-weak">Swift의 strong과 weak</h2>
+<p>strong으로 선언 된 변수는 다른 곳에서 참조하고 있을 경우 메모리에서 제거 되지 않는다. weak로 선언된 변수는 다른 곳에서 참조 되어도 시스템에서 임으로 메모리에서 제거 될 수 있다. 디폴트는 strong이다. weak는 예제를 보면 <code class="highlighter-rouge">@IBOutlet</code> 키워드와 많이 쓰이는거 같다.</p>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="n">strong</span> <span class="k">var</span> <span class="nv">imageView</span>
+<span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">imageView</span>
+</code></pre>
+</div>
+
+<h2 id="viewdidload">viewDidLoad()</h2>
+<p>뷰가 불러지면 호출되는 함수</p>
+
+<h2 id="uicontrolstate">UIControlState</h2>
+<ol>
+  <li>normal</li>
+  <li>highlighted</li>
+  <li>disabled</li>
+  <li>selected</li>
+  <li>focused</li>
+  <li>application : 어플리케이션에서 사용하기 위해 추가한 상태들</li>
+  <li>reserved: 내부 프레임 워크에 의해 예약된 상태들</li>
+</ol>
+
+<h2 id="selector-objc">#selector(), @objc</h2>
+<p><code class="highlighter-rouge">#selector()</code> 는 함수를 지정한다. 스위프트에서는 함수가 1급 객체라서 변수에 저장 할 수 있는데 그때를 위해서 사용하는 듯하다.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>let mySelector: Selector = #selector(ViewController.foo)
+</code></pre>
+</div>
+<p>swift4에서는 Objective-C와의 호환성을 위하여 함수 앞에 <code class="highlighter-rouge">@objc</code> 키워드를 붙여야한다.</p>
+
+  </div>
+
+  <div class="pagination">
+    
+      <span class="prev" >
+          <a href="/gcdlcm/">
+            &#xE000; 최대 공약수와 최소 공배수
+          </a>
+      </span>
+    
+    
+      <span class="next" >
+          <a href="/TIL20180227/">
+            2018년 2월 27일 TIL &#xE001;
+          </a>
+      </span>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          <!-- Refer to https://codepen.io/ruandre/pen/howFi -->
+<ul class="svg-icon">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <li><a href="https://github.com/changmin-dev" class="icon-13 github" title="GitHub"><svg viewBox="0 0 512 512"><path d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]--></a></li>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+
+
+<p>© 2017 Kiko Now</p>
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

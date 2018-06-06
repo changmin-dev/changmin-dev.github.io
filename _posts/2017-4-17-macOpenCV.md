@@ -1,9 +1,7 @@
 ---
 layout: post
 title: mac 시에라에서 OpenCV 사용하기 (Xcode)
-tags:
-- OpenCV
-- Xcode
+tags: [OpenCV, Xcode]
 ---
 이번에 mac을 구매해서 OpenCV를 설치해 보았다. 3.x 보다는 2.4가 안정적이고 예전에 사용했던 소스도 사용할 수 있을 것 같아서 2.4로 설치하였다.
 기본적인 소스는 잘되지만, 과거에 했던것들도 잘될지는 모르겠다.

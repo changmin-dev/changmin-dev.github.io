@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-개발자가 되고 싶은 사람입니다.
+Some information about you!
 
 ### More Information
-TIL TIL!
 
+A place to include any other types of information that you'd like to include about yourself.
 
 ### Contact me
 
-[changmin043@gmail.com](mailto:changmin043@gmail.com)
+[email@domain.com](mailto:email@domain.com)

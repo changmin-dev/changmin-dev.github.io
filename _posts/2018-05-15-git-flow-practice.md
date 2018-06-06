@@ -1,6 +1,7 @@
 ---
 layout: post
 title : Git Flow
+tag : [git]
 ---
 
 Git-flow가 어떻게 진행되는지 대략적으로 알고 있었으나 제대로 써본 적은 없어서 연습해 보았다. 

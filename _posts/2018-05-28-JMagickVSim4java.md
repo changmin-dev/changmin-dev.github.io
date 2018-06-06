@@ -1,11 +1,7 @@
 ---
 layout: post
 title : Java 이미지 도구 비교
-tags:
-- JMagick
-- im4java
-- image
-- Java
+tags: [JMagick, im4java, image, Java]
 ---
 Java에서 이미지를 다룰 필요가 있었다.(gif 관련) 때문에 몇가지 도구를 비교해 보았다. 대상은 JMagick, im4java, 자바의 이미지 관련 클래스이다.
 
